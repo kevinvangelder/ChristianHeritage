@@ -1,0 +1,189 @@
+{
+  "friday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Registration",
+        "startTime": "8:00AM",
+        "endTime": "9:00AM"
+      },{
+        "id": 1,
+        "name": "Keynote",
+        "startTime": "9:00AM",
+        "endTime": "10:30AM"
+      },{
+        "id": 2,
+        "name": "Break",
+        "startTime": "10:30AM",
+        "endTime": "11:15AM"
+      },{
+        "id": 3,
+        "name": "Workshop A",
+        "startTime": "11:15AM",
+        "endTime": "12:15PM"
+      },{
+        "id": 4,
+        "name": "Lunch",
+        "startTime": "12:15PM",
+        "endTime": "1:45PM"
+      },{
+        "id": 5,
+        "name": "Workshop B",
+        "startTime": "1:45PM",
+        "endTime": "2:45PM"
+      },{
+        "id": 6,
+        "name": "Break",
+        "startTime": "2:45PM",
+        "endTime": "3:30PM"
+      },{
+        "id": 7,
+        "name": "Keynote",
+        "startTime": "3:30PM",
+        "endTime": "4:30PM"
+      },{
+        "id": 8,
+        "name": "Dinner",
+        "startTime": "4:30PM",
+        "endTime": "6:30PM"
+      },{
+        "id": 9,
+        "name": "Family Night",
+        "startTime": "6:30PM",
+        "endTime": "8:30PM"
+      }
+    ],
+    "activities": {
+      "0": [{
+        "name": "Registration",
+        "location": "Registration Table",
+        "speaker": null
+      },
+      {
+        "name": "Silent Auction",
+        "location": "Upper Hallway",
+        "speaker": null
+      }],
+      "1": [{
+        "name": "How to Raise Up Generations to Defend the Christian Faith in an Increasingly Hostile Culture",
+        "location": "Auditorium A",
+        "speaker": "Ken Ham"
+      }],
+      "2": [{
+        "name": "Vendor Hall",
+        "location": "Vendor Hall",
+        "speaker": null
+      }, {
+        "name": "Silent Auction",
+        "location": "Upper Hallway",
+        "speaker": null
+      }],
+      "3": [{
+        "name": "What Happened to the Church in America? Why Is the Church Not Impacting the Culture as It Used To?",
+        "location": "Auditorium A",
+        "speaker": "Ken Ham"
+      }, {
+        "name": "Unleashing Men & Fathers of the Word",
+        "location": "Auditorium B",
+        "speaker": "Dr. Carlton McLeod"
+      }]
+    }
+  },
+  "saturday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Registration",
+        "startTime": "8:00AM",
+        "endTime": "9:00AM"
+      },
+      {
+        "id": 1,
+        "name": "Keynote",
+        "startTime": "9:00AM",
+        "endTime": "10:15AM"
+      },{
+        "id": 2,
+        "name": "Break",
+        "startTime": "10:15AM",
+        "endTime": "10:45AM"
+      },{
+        "id": 3,
+        "name": "Workshop C",
+        "startTime": "10:45AM",
+        "endTime": "11:45AM"
+      },{
+        "id": 4,
+        "name": "Lunch",
+        "startTime": "11:45AM",
+        "endTime": "1:00PM"
+      },{
+        "id": 5,
+        "name": "Workshop D",
+        "startTime": "1:00PM",
+        "endTime": "2:00PM"
+      },{
+        "id": 6,
+        "name": "Break",
+        "startTime": "2:00PM",
+        "endTime": "2:30PM"
+      },{
+        "id": 7,
+        "name": "Workshop E",
+        "startTime": "2:30PM",
+        "endTime": "3:30PM"
+      },{
+        "id": 8,
+        "name": "Break",
+        "startTime": "3:30PM",
+        "endTime": "4:15PM"
+      },{
+        "id": 9,
+        "name": "Keynote",
+        "startTime": "4:15PM",
+        "endTime": "5:55PM"
+      },{
+        "id": 10,
+        "name": "End of Conference",
+        "startTime": "5:55PM",
+        "endTime": "6:30PM"
+      }
+    ],
+    "activities": {
+      "0": [{
+        "name": "Registration",
+        "location": "Registration Table",
+        "speaker": null
+      },
+      {
+        "name": "Silent Auction",
+        "location": "Upper Hallway",
+        "speaker": null
+      }],
+      "1": [{
+        "name": "America and the Great Divide: It's a Full-On War",
+        "location": "Auditorium A",
+        "speaker": "Ken Ham"
+      }],
+      "2": [{
+        "name": "Vendor Hall",
+        "location": "Vendor Hall",
+        "speaker": null
+      }, {
+        "name": "Silent Auction",
+        "location": "Upper Hallway",
+        "speaker": null
+      }],
+      "3": [{
+        "name": "The Biblical foundation for Christian education—How to Raise Godly Offspring",
+        "location": "Auditorium A",
+        "speaker": "Ken Ham"
+      }],
+      "4": [{
+        "name": "Lunch",
+        "location": "Auditorium B & Lower Hallway",
+        "speaker": null
+      }]
+    }
+  }
+}

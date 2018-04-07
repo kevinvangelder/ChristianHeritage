@@ -7,11 +7,14 @@
   "errors": {
     "invalidEmail": "Invalid email address."
   },
-  "firstExampleScreen": {
-    "header": "First Screen",
+  "scheduleScreen": {
+    "header": "Schedule Screen",
     "nextScreenButton": "Next Screen"
   },
-  "secondExampleScreen": {
-    "header": "Second Screen"
+  "venueScreen": {
+    "header": "Venue Screen"
+  },
+  "infoScreen": {
+    "header": "Info Screen"
   }
 }

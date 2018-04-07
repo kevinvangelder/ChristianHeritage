@@ -34,6 +34,8 @@ export async function setupRootStore() {
     env.reactotron.setRootStore(rootStore, data)
   }
 
+  rootStore.navigationStore.reset()
+
   // track changes & save to storage
   onSnapshot(rootStore, snapshot => storage.save(ROOT_STATE_STORAGE_KEY, snapshot))
 
