@@ -1,5 +1,5 @@
 import * as React from "react"
-import { FlatList, Text } from "react-native"
+import { FlatList, View, Text } from "react-native"
 import { NavigationScreenProps } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TimeSlot } from "./time-slot"
@@ -22,7 +22,7 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, {}> {
   }
 
   onPress = (item, timeSlotActivities) => {
-    this.props.navigation.navigate("scheduleDetail", { item, timeSlotActivities })
+    this.props.navigation.navigate("scheduleDetail", { item, timeSlotActivities, title: item.name })
   }
 
   renderTimeSlot = ({ item }: any) => {
@@ -39,11 +39,21 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, {}> {
     )
   }
 
+  // renderCurrentTimeIndicator = () => {
+  //   const shouldRender = true //moment().isBetween(moment().hour(08), moment().hour(20).minute(30))
+  //   if (!shouldRender) return null
+  //   const offset = 20
+  //   return (
+  //     <View style={{width: "100%", height: 1, backgroundColor: "red", position: "absolute", top: offset}} />
+  //   )
+  // }
+
   render() {
     const { selectedDay } = this.state
     const dayTimeSlots = data[selectedDay].timeSlots
     return (
       <Screen preset="fixed">
+        {/* {this.renderCurrentTimeIndicator} */}
         <FlatList
           data={dayTimeSlots}
           extraData={this.state}

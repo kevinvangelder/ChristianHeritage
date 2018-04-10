@@ -5,88 +5,340 @@
         "id": 0,
         "name": "Registration",
         "startTime": "8:00AM",
-        "endTime": "9:00AM"
-      },{
+        "endTime": "9:00AM",
+        "duration": 60
+      },
+      {
         "id": 1,
         "name": "Keynote",
         "startTime": "9:00AM",
-        "endTime": "10:30AM"
-      },{
+        "endTime": "10:30AM",
+        "duration": 90
+      },
+      {
         "id": 2,
         "name": "Break",
         "startTime": "10:30AM",
-        "endTime": "11:15AM"
-      },{
+        "endTime": "11:15AM",
+        "duration": 45
+      },
+      {
         "id": 3,
         "name": "Workshop A",
         "startTime": "11:15AM",
-        "endTime": "12:15PM"
-      },{
+        "endTime": "12:15PM",
+        "duration": 60
+      },
+      {
         "id": 4,
         "name": "Lunch",
         "startTime": "12:15PM",
-        "endTime": "1:45PM"
-      },{
+        "endTime": "1:45PM",
+        "duration": 90
+      },
+      {
         "id": 5,
         "name": "Workshop B",
         "startTime": "1:45PM",
-        "endTime": "2:45PM"
-      },{
+        "endTime": "2:45PM",
+        "duration": 60
+      },
+      {
         "id": 6,
         "name": "Break",
         "startTime": "2:45PM",
-        "endTime": "3:30PM"
-      },{
+        "endTime": "3:30PM",
+        "duration": 45
+      },
+      {
         "id": 7,
         "name": "Keynote",
         "startTime": "3:30PM",
-        "endTime": "4:30PM"
-      },{
+        "endTime": "4:30PM",
+        "duration": 60
+      },
+      {
         "id": 8,
         "name": "Dinner",
         "startTime": "4:30PM",
-        "endTime": "6:30PM"
-      },{
+        "endTime": "6:30PM",
+        "duration": 120
+      },
+      {
         "id": 9,
-        "name": "Family Night",
+        "name": "Family Night -FREE- Invite Your Friends!",
         "startTime": "6:30PM",
-        "endTime": "8:30PM"
+        "endTime": "8:30PM",
+        "duration": 120
       }
     ],
     "activities": {
-      "0": [{
-        "name": "Registration",
-        "location": "Registration Table",
-        "speaker": null
-      },
-      {
-        "name": "Silent Auction",
-        "location": "Upper Hallway",
-        "speaker": null
-      }],
-      "1": [{
-        "name": "How to Raise Up Generations to Defend the Christian Faith in an Increasingly Hostile Culture",
-        "location": "Auditorium A",
-        "speaker": "Ken Ham"
-      }],
-      "2": [{
-        "name": "Vendor Hall",
-        "location": "Vendor Hall",
-        "speaker": null
-      }, {
-        "name": "Silent Auction",
-        "location": "Upper Hallway",
-        "speaker": null
-      }],
-      "3": [{
-        "name": "What Happened to the Church in America? Why Is the Church Not Impacting the Culture as It Used To?",
-        "location": "Auditorium A",
-        "speaker": "Ken Ham"
-      }, {
-        "name": "Unleashing Men & Fathers of the Word",
-        "location": "Auditorium B",
-        "speaker": "Dr. Carlton McLeod"
-      }]
+      "0": [
+        {
+          "name": "Registration",
+          "location": "Registration Table",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Upper Hallway",
+          "speaker": null
+        }
+      ],
+      "1": [
+        {
+          "name":
+            "How to Raise Up Generations to Defend the Christian Faith in an Increasingly Hostile Culture",
+          "location": "Auditorium A",
+          "speaker": "Ken Ham",
+          "description":
+            "About two-thirds of young people leave church by college age-with few returning. Ken looks at new statistical research published in Ready to Return, to show that the millennial generation is more secular in worldview than ever. Millennials who currently attend church are its future voice. A strong stand on biblical authority is needed (rooting out compromise and teaching apologetics) to reclaim lost and coming generations for Christ."
+        }
+      ],
+      "2": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Upper Hallway",
+          "speaker": null
+        }
+      ],
+      "3": [
+        {
+          "name":
+            "What Happened to the Church in America? Why Is the Church Not Impacting the Culture as It Used To?",
+          "location": "Auditorium A",
+          "speaker": "Ken Ham",
+          "description":
+            "Find out how Genesis 1-11 is foundational to developing a truly Christian worldview. As Ken walks you through the 7 C’s of history, you will see how all the Christian doctrines, essential for a truly biblical worldview, are founded in the geology, biology, astronomy, and anthropology that is recorded in Genesis."
+        },
+        {
+          "name": "Unleashing Men & Fathers of the Word",
+          "location": "Auditorium B",
+          "speaker": "Dr. Carlton McLeod",
+          "description":
+            "No one said fatherhood would be easy! It’s challenging to be a godly father with the desire to see his children walk in his footsteps. Dr. McLeod encourages fathers and teaches us what our Lord says of fathers."
+        },
+        {
+          "name": "What if I Ruin My Child?",
+          "location": "Auditorium C",
+          "speaker": "Connie Albers",
+          "description":
+            "Have you wondered if homeschooling would ruin your child? If you answered yes, then take comfort; youare not alone. We all struggle at some point. After all, homeschooling is “on the job”training. When Connie started homeschooling twenty-five years ago, that is what she thought as well. Parents, come learn truths from a mom who knows you are not ruining your child."
+        },
+        {
+          "name":
+            "When More Is Less: A Call to Simplicity in Your Schedule, Your Home, and Your Children's Education",
+          "location": "Auditorium D",
+          "speaker": "Sonya Shafer",
+          "description":
+            "It’s easy to get caught up in the mentality that we’ve got to add more: we must do more, we must get more, and our children must study more. More, more, more! But the funny thing is that when we keep adding more, we usually end up with less of what really matters. Come discover the richness that simplicity can bring to your schedule, your home, and your children’s education."
+        },
+        {
+          "name": "Why a Home Based Business?",
+          "location": "Room E",
+          "speaker": "Allen Blain",
+          "description":
+            "Do you want to learn about benefits of operating a home business? Advantages include bringing fathers and mothers home full-time, having a part-time project, creating a second income, and providing financial relief.  Allan shares a biblical foundation for ways to create stronger family bonds and provide financial and time freedom to “do life” as a family and serve others in purposeful and impactful ways."
+        },
+        {
+          "name": "College Madness - When the Crowd is Wrong",
+          "location": "Room F",
+          "speaker": "Jonathan Brush",
+          "description":
+            "Many say, “Go to school, get good grades, and go to a good college so you can get a good job and live The American Dream!” Join Jonathan to learn about crowd dynamics, group think, and how to make sure you understand the incredible changes, opportunities, and challenges happening in higher education today… regardless of what the crowd is doing."
+        },
+        {
+          "name": "Modern History That Shook the World!",
+          "location": "Room G",
+          "speaker": "Linda Hobar",
+          "description":
+            "Want to understand today’s headlines? Planning to teach modern history? Then join Linda to recount world-shaking events from the 20th century to present day, with a biblical worldview. Vivid snapshots of the Cold War, formation of Israel, war in Korea, collapse of the Soviet Union, and more,reveal the past so students and teachers can understand clearly and better prepare for the future!"
+        },
+        {
+          "name": "Building Godly Character with Older Books",
+          "location": "Room H",
+          "speaker": "Dennis Gunderson",
+          "description":
+            "Homeschool families often say, “Older books are SO much better!” Is that true? Find out why Christian books from the 18th and 19th centuries were unique—richer in content and more prone to form godly character. Learn how you can best use literature from that era to strengthen Christian character in your children."
+        },
+        {
+          "name": "Has Radiometric Dating Poinsoned Your Faith?",
+          "location": "Room I",
+          "speaker": "Patrick Nurre",
+          "description":
+            "Is radiometric dating as scientific as secular geologists say it is? The church is fast buckling under the supposed weight of radiometric dating evidence for an old earth. What is the truth of the matter?"
+        },
+        {
+          "name": "Managing the Homeschool from the Sick Bed",
+          "location": "Room J",
+          "speaker": "Julianne Primer",
+          "description":
+            "As a cancer survivor and endurer of Lyme Disease, Julianne shares practical tips and encouragement that will keep a home and homeschool running smoothly during a mom’s extended illness."
+        },
+        {
+          "name": "\"HLEP!\" My Kid Can't Spell!",
+          "location": "Room K",
+          "speaker": "Faith Berens",
+          "description":
+            "Find out why spelling is so important in a child’s education. Faith shares various strategies, techniques,and fun, hands-on, multi-sensory methods you can use for spelling practice. The goal is to transform “I am aterrible speller” into “I am a good speller!”"
+        },
+        {
+          "name": "The Supernatural Invasion of Our Homes",
+          "location": "Room L",
+          "speaker": "Eric Barger",
+          "description":
+            "Eric Barger exposes how the supernatural world is invading our homes, while neutralizing the fears that many have about this mysterious topic."
+        },
+        {
+          "name": "Christian Heritage Chorale",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "Concessions",
+          "location": "Front Driveway",
+          "speaker": null,
+          "description": "List of concessions"
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Upper Hallway",
+          "speaker": null
+        },
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        }
+      ],
+      "5": [
+        {
+          "name": "",
+          "location": "Auditorium A",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium B",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium C",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium D",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room E",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room F",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room G",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room H",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room I",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room J",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room K",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room L",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "Christian Heritage Chorale",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "6": [
+        {
+          "name": "",
+          "location": "",
+          "speaker": "",
+          "description": ""
+        }
+      ],
+      "7": [
+        {
+          "name": "Reform the Family . . . The Foundation of the Kingdom",
+          "location": "Auditorium A",
+          "speaker": "Dr. Carlton McLeod",
+          "description":
+            "“The family—the much maligned, attacked, misunderstood, vilified, and thought to be irrelevant biblical family.” —Dr. Carlton McLeod, The Playbook. Just a brief look at our culture reveals the breakdown of the family and the consequences of compromising this holy institution. Find out more about God’s vision for the family, the need for family reformation, and the family’s impact on the Kingdom of God."
+        }
+      ],
+      "8": [
+        {
+          "name": "",
+          "location": "",
+          "speaker": "",
+          "description": ""
+        }
+      ],
+      "9": [
+        {
+          "name": "Mini Concert Performed by Homeschooled Students",
+          "location": "Auditorium A",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "Living on Borrowed Time - The Nine Practices of The Proactive Parent",
+          "location": "Auditorium A",
+          "speaker": "Dr. Steve Scheibner",
+          "description":
+            "Dr. Scheibner was originally scheduled to be co-pilot on the first flight hijacked on Sept. 11th, 2001. Now, he tells a deeply moving story of God's providence and how he teaches parents to parent with purpose and urgency. He shares the Nine Practices of the Proactive Parent to give parents both tools and hope, to build a Christ-centered character-driven home environment."
+        }
+      ]
     }
   },
   "saturday": {
@@ -95,95 +347,362 @@
         "id": 0,
         "name": "Registration",
         "startTime": "8:00AM",
-        "endTime": "9:00AM"
+        "endTime": "9:00AM",
+        "duration": 60
       },
       {
         "id": 1,
         "name": "Keynote",
         "startTime": "9:00AM",
-        "endTime": "10:15AM"
-      },{
+        "endTime": "10:15AM",
+        "duration": 75
+      },
+      {
         "id": 2,
         "name": "Break",
         "startTime": "10:15AM",
-        "endTime": "10:45AM"
-      },{
+        "endTime": "10:45AM",
+        "duration": 30
+      },
+      {
         "id": 3,
         "name": "Workshop C",
         "startTime": "10:45AM",
-        "endTime": "11:45AM"
-      },{
+        "endTime": "11:45AM",
+        "duration": 60
+      },
+      {
         "id": 4,
         "name": "Lunch",
         "startTime": "11:45AM",
-        "endTime": "1:00PM"
-      },{
+        "endTime": "1:00PM",
+        "duration": 75
+      },
+      {
         "id": 5,
         "name": "Workshop D",
         "startTime": "1:00PM",
-        "endTime": "2:00PM"
-      },{
+        "endTime": "2:00PM",
+        "duration": 60
+      },
+      {
         "id": 6,
         "name": "Break",
         "startTime": "2:00PM",
-        "endTime": "2:30PM"
-      },{
+        "endTime": "2:30PM",
+        "duration": 30
+      },
+      {
         "id": 7,
         "name": "Workshop E",
         "startTime": "2:30PM",
-        "endTime": "3:30PM"
-      },{
+        "endTime": "3:30PM",
+        "duration": 60
+      },
+      {
         "id": 8,
         "name": "Break",
         "startTime": "3:30PM",
-        "endTime": "4:15PM"
-      },{
+        "endTime": "4:15PM",
+        "duration": 45
+      },
+      {
         "id": 9,
         "name": "Keynote",
         "startTime": "4:15PM",
-        "endTime": "5:55PM"
-      },{
+        "endTime": "5:55PM",
+        "duration": 100
+      },
+      {
         "id": 10,
         "name": "End of Conference",
         "startTime": "5:55PM",
-        "endTime": "6:30PM"
+        "endTime": "6:30PM",
+        "duration": 35
       }
     ],
     "activities": {
-      "0": [{
-        "name": "Registration",
-        "location": "Registration Table",
-        "speaker": null
-      },
-      {
-        "name": "Silent Auction",
-        "location": "Upper Hallway",
-        "speaker": null
-      }],
-      "1": [{
-        "name": "America and the Great Divide: It's a Full-On War",
-        "location": "Auditorium A",
-        "speaker": "Ken Ham"
-      }],
-      "2": [{
-        "name": "Vendor Hall",
-        "location": "Vendor Hall",
-        "speaker": null
-      }, {
-        "name": "Silent Auction",
-        "location": "Upper Hallway",
-        "speaker": null
-      }],
-      "3": [{
-        "name": "The Biblical foundation for Christian education—How to Raise Godly Offspring",
-        "location": "Auditorium A",
-        "speaker": "Ken Ham"
-      }],
-      "4": [{
-        "name": "Lunch",
-        "location": "Auditorium B & Lower Hallway",
-        "speaker": null
-      }]
+      "0": [
+        {
+          "name": "Registration",
+          "location": "Registration Table",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Upper Hallway",
+          "speaker": null
+        }
+      ],
+      "1": [
+        {
+          "name": "America and the Great Divide: It's a Full-On War",
+          "location": "Auditorium A",
+          "speaker": "Ken Ham"
+        }
+      ],
+      "2": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Upper Hallway",
+          "speaker": null
+        }
+      ],
+      "3": [
+        {
+          "name": "The Biblical foundation for Christian education—How to Raise Godly Offspring",
+          "location": "Auditorium A",
+          "speaker": "Ken Ham"
+        },
+        {
+          "name": "",
+          "location": "Auditorium B",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium C",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium D",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room E",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room F",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room G",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room H",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room I",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room J",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room K",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room L",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "Christian Heritage Chorale",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "Lunch",
+          "location": "Auditorium B & Lower Hallway",
+          "speaker": null
+        }
+      ],
+      "5": [
+        {
+          "name": "",
+          "location": "Auditorium A",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium B",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium C",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium D",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room E",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room F",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room G",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room H",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room I",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room J",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room K",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room L",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "Christian Heritage Chorale",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "6": [],
+      "7": [
+        {
+          "name": "",
+          "location": "Auditorium A",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium B",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium C",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Auditorium D",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room E",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room F",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room G",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room H",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room I",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room J",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room K",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "",
+          "location": "Room L",
+          "speaker": "",
+          "description": ""
+        },
+        {
+          "name": "Christian Heritage Chorale",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "8": [],
+      "9": [],
+      "10": []
     }
   }
 }
