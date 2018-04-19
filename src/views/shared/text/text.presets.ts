@@ -30,17 +30,19 @@ export const presets = {
   /**
    * Large headers.
    */
-  header: { ...BASE, fontSize: 24, fontWeight: "600" } as TextStyle,
+  header: { ...BASE, fontSize: 20, fontWeight: "600" } as TextStyle,
+
+  subheader: { ...BASE, fontSize: 18, fontWeight: "600" } as TextStyle,
 
   /**
    * Field labels that appear on forms above the inputs.
    */
-  fieldLabel: { ...BASE, fontSize: 13, color: color.palette.darkGrey, lineHeight: 22 } as TextStyle,
+  fieldLabel: { ...BASE, fontSize: 13, color: color.palette.bayoux, lineHeight: 22 } as TextStyle,
 
   /**
    * A smaller piece of secondard information.
    */
-  secondary: { ...BASE, fontSize: 9, color: color.palette.darkGrey, lineHeight: 22 } as TextStyle,
+  secondary: { ...BASE, fontSize: 12, color: color.palette.darkGrey, lineHeight: 14 } as TextStyle,
 }
 
 /**
