@@ -9,4 +9,6 @@ export const palette = {
   lighterGrey: "#CDD4DA",
   angry: "#dd3333",
   bayoux: "#4C6772",
+  bayoux40: "#4C677240",
+  bahamaBlue: "#006699",
 }
