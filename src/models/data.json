@@ -81,7 +81,7 @@
         },
         {
           "name": "Silent Auction",
-          "location": "Upper Hallway",
+          "location": "Second Floor Hallway",
           "speaker": null
         }
       ],
@@ -101,12 +101,14 @@
         {
           "name": "Vendor Hall",
           "location": "Vendor Hall",
-          "speaker": null
+          "speaker": null,
+          "description": null
         },
         {
           "name": "Silent Auction",
-          "location": "Upper Hallway",
-          "speaker": null
+          "location": "Second Floor Hallway",
+          "speaker": null,
+          "description": null
         }
       ],
       "3": [
@@ -212,7 +214,7 @@
         },
         {
           "name": "Silent Auction",
-          "location": "Upper Hallway",
+          "location": "Second Floor Hallway",
           "speaker": null
         },
         {
@@ -223,76 +225,89 @@
       ],
       "5": [
         {
-          "name": "",
+          "name": "How to Deal with Racism and Prejudice in a Divided Nation",
           "location": "Auditorium A",
-          "speaker": "",
-          "description": ""
+          "speaker": "Ken Ham",
+          "description":
+            "So-called racial issues continue to heat up in America. Our culture needs the answers from God’s Word. Understanding what happened at the Tower of Babel is key to understanding the origin of nations, “races,” and prejudice. Ken shares Charles Darwin’s destructive ideas about skin color, facial features, etc. and on the lighter side, a comical perspective on poodles to explain natural selection and speciation."
         },
         {
-          "name": "",
+          "name": "Training Teens to Take The Initiative",
           "location": "Auditorium B",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dr. Steve Scheibner",
+          "description":
+            "Want to transition your young adults from simple obedience to mature responsibility? Dr. Scheibner shares the important phases teens need to learn to take responsibility for their lives. Watch your kids move from childish irresponsibility to becoming young adults who embrace ownership and initiative as they move up the \"Responsibility Tree.\""
         },
         {
-          "name": "",
+          "name": "Help for Mompreneurs",
           "location": "Auditorium C",
-          "speaker": "",
-          "description": ""
+          "speaker": "Connie Albers",
+          "description":
+            "The rise of Mom-preneurs exposes a need for moms to find balance betweenhomeschooling, career, and family while generatingincome. There are effective ways to delegate, set realistic goals, and seek work to fit a homeschooling lifestyle. Glean insights from a mom who has lost the battle many times, but her resilient spirit and desire to finish well can help you in your journey."
         },
         {
-          "name": "",
+          "name": "Teach from a Flowing Stream, Not a Stagnant Pool",
           "location": "Auditorium D",
-          "speaker": "",
-          "description": ""
+          "speaker": "Sonya Shafer",
+          "description":
+            "A drink from a vibrant, flowing stream is much more refreshing than one from a scummy, stagnant pool! Sonya encourages you to breathe vivacity back into your personal life—for your children’s benefit as well as your own. Discover a practical flexible way to rejuvenate your weekly schedule to help you embrace living, not settle for surviving."
         },
         {
-          "name": "",
+          "name": "Home Based Business Considerations",
           "location": "Room E",
-          "speaker": "",
-          "description": ""
+          "speaker": "Allen Blain",
+          "description":
+            "In part two of the Why a Home-Based Business workshop, Allan shareshow to better evaluate types of businesses to find the right fit for a family. Learn about entrepreneurial mindset, product/service evaluation, God’s calling, the Harvard Business Law of an expanding market, passive income and leverage, family strengths, and mentors."
         },
         {
-          "name": "",
+          "name":
+            "Standing on the Solid Rock: How to Radically Transform Your Family Through Family Bible Study",
           "location": "Room F",
-          "speaker": "",
-          "description": ""
+          "speaker": "Jonathan Brush",
+          "description":
+            "Faithfully having a time for daily family Bible study and worship transforms families, supercharges faith, and changes lives. Planning and leading doesn’t require any specialized training and yields benefits you can’t imagine. Jonathan shares about how his life, and the life of his family, has been transformed by this simple discipline. Leave equipped to change your family!"
         },
         {
-          "name": "",
+          "name": "When Bible History and World History Meet Face to Face",
           "location": "Room G",
-          "speaker": "",
-          "description": ""
+          "speaker": "Linda Hobar",
+          "description":
+            "Looking for inspiration in your study of ancient times? With Linda, discover what happens when Bible and world history meet face to face—literally! With a look at Daniel and Belshazzar, Esther and Xerxes, Jesus and Pilate, and more, see Bible characters and world history figures “meet” on one seamless thought-provoking timeline. Through stories and activities for all ages, let His story be revealed."
         },
         {
-          "name": "",
+          "name": "Building A Good Conscience in Your Child",
           "location": "Room H",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dennis Gundersen",
+          "description":
+            "\"A good conscience\" is vital for children to form in their youth! When parents strengthen the conscience, a child can grow into an adult of strong convictions and righteous choices, even when parents are not present. Let’s make one of the goals of our instruction \"a good conscience\" (1 Timothy 1:5) and plan to achieve it! Dennis shares a practicalway to get started."
         },
         {
-          "name": "",
+          "name": "Biblical Worldview & Culture: An Amazing Story",
           "location": "Room I",
-          "speaker": "",
-          "description": ""
+          "speaker": "Daniel Smithwick",
+          "description":
+            "A history “fly over” from creation to today helps us gain a deeper understanding of the providence of God in the affairs of men and nations. Twelve key events, occurring at 500-year intervals over the past 10,000 years, show the amazing story of how God advances his purposes for the Kingdom of Christ through key individuals acting in his timing. Learn how important the sphere of education is in our time."
         },
         {
-          "name": "",
+          "name": "The Toddler Toolbox",
           "location": "Room J",
-          "speaker": "",
-          "description": ""
+          "speaker": "Megan Scheibner",
+          "description":
+            "Are the “Terrible Twos” eating your lunch? Need help managing your homeschool day with toddlers in the house? Megan draws on her many years of homeschooling experience with eight toddlers in tow to help you craft a plan for success. This workshop is intensely practical and will help you transform the Terrible Twos into the Terrific Twos!"
         },
         {
-          "name": "",
+          "name": "Phonemic Awareness - The Missing Ingredient in Reading",
           "location": "Room K",
-          "speaker": "",
-          "description": ""
+          "speaker": "Faith Berens",
+          "description":
+            "Phonemic awareness could be why a child struggles with beginning reading instruction or has “sloppy speech” or doesn’t seem to “hear” things correctly. Find out more about these skills and how they (or a lack thereof) impact a child’s ability to become a proficient reader. Receive an assessment to use at home, “play” with phonemic awareness, plus more on these important, foundational skills."
         },
         {
-          "name": "",
+          "name": "Evangelizing in Perilous Times",
           "location": "Room L",
-          "speaker": "",
-          "description": ""
+          "speaker": "Eric Barger",
+          "description":
+            "Free speech is under assault and our politically correct culture demands no dissent. The Bible and Christianity are increasingly viewed as \"hate speech.\" Persecution isn’t coming. IT’S HERE! Our mandate to \"go into all the world and preach the gospel\" hasn't changed, so in view of God's prophetic Word, thoughtful Christians will recognize the times and know how to respond in these last days."
         },
         {
           "name": "Christian Heritage Chorale",
@@ -303,10 +318,14 @@
       ],
       "6": [
         {
-          "name": "",
-          "location": "",
-          "speaker": "",
-          "description": ""
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
         }
       ],
       "7": [
@@ -320,10 +339,20 @@
       ],
       "8": [
         {
-          "name": "",
-          "location": "",
-          "speaker": "",
-          "description": ""
+          "name": "Concessions",
+          "location": "Front Driveway",
+          "speaker": null,
+          "description": "List of concessions"
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        },
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
         }
       ],
       "9": [
@@ -432,7 +461,7 @@
         },
         {
           "name": "Silent Auction",
-          "location": "Upper Hallway",
+          "location": "Second Floor Hallway",
           "speaker": null
         }
       ],
@@ -440,7 +469,9 @@
         {
           "name": "America and the Great Divide: It's a Full-On War",
           "location": "Auditorium A",
-          "speaker": "Ken Ham"
+          "speaker": "Ken Ham",
+          "description":
+            "Most evangelistic programs today (and most missionaries and evangelists) do not see Genesis as a key part of reaching people with the gospel. The history in Genesis (e.g. the origin of sin) is foundational to a full understanding of the gospel message. Realizing how culture now thinks (and has changed its thinking) in relation to earth history, is a key to approaching people and presenting the gospel!"
         }
       ],
       "2": [
@@ -451,7 +482,7 @@
         },
         {
           "name": "Silent Auction",
-          "location": "Upper Hallway",
+          "location": "Second Floor Hallway",
           "speaker": null
         }
       ],
@@ -462,70 +493,82 @@
           "speaker": "Ken Ham"
         },
         {
-          "name": "",
+          "name": "The Importance of a Biblical Marriage",
           "location": "Auditorium B",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dr. Carlton McLeod",
+          "description":
+            "When husband and wife suffer in their relationship, it affects an entire home. It makes discipleship more difficult and spiritually weakens the home. What is the purpose of family? Dr. McLeod shares the value of cultivating a strong marriage and the greater goal of leading our children to Christ."
         },
         {
-          "name": "",
+          "name": "Starving the Fear",
           "location": "Auditorium C",
-          "speaker": "",
-          "description": ""
+          "speaker": "Connie Albers",
+          "description":
+            "I can’t do this! How can I teach my child when I don’t know Phonics or Physics? Has this thought run through your mind? Connie knows all too well the anxiety surrounding homeschooling. After twenty-one years of teaching her five children, she proclaims you don’t need a degree; you need determination and discernment, and consistent devotions. Find out three truths tostarve the fears and finish well"
         },
         {
-          "name": "",
+          "name": "Fine Arts the Charlotte Mason Way",
           "location": "Auditorium D",
-          "speaker": "",
-          "description": ""
+          "speaker": "Sonya Shafer",
+          "description":
+            "You don’t have to have a music degree or be an art aficionado to teach fine arts to your children. In this hands-on presentation, you’ll discover an easy yet effective way to give your children music and art appreciation that will enrich their lives and yours! Sonya shares practical ways to study music, composers, and artists. Learn a simple method that takes just ten minutes once a week!"
         },
         {
-          "name": "",
+          "name": "The importance of Finding, Building, and Keeping Great Relationships",
           "location": "Room E",
-          "speaker": "",
-          "description": ""
+          "speaker": "Jonathan Brush",
+          "description":
+            "Your relationships with others determine your happiness, success, and well-being in life. They measure how you serve others, make a difference in the world, and influence your legacy. Knowing how to find, build, and keep them is very important! Learn how to choose critically when making them, prioritize them, and invest wisely to keep them."
         },
         {
-          "name": "",
+          "name": "Training Young Men to be Gentlemen in a Feminist Culture",
           "location": "Room F",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dr. Steve Scheibner",
+          "description":
+            "Is acting like a gentleman an outdated and antiquated idea? Join Dr. Scheibner as he teaches how young men can be masculine in a culture seeking to squeeze them with a feminine mold. Becoming a gentleman starts at home, so come discover ways to cultivate masculinity without raising men who are brutes!"
         },
         {
-          "name": "",
+          "name": "Mary and Martha Decide to Homeschool – a Workshop for Mary’s Only!",
           "location": "Room G",
-          "speaker": "",
-          "description": ""
+          "speaker": "Linda Hober",
+          "description":
+            "If Mary and Martha were to homeschool, Martha might have her plans in place (but be frustrated), and Mary might be at the feet of Jesus (but behind schedule.) We relate to Mary and Martha, but this workshop is for those, like Mary, who love the Lord but need help and structure to homeschool. Linda, a self-proclaimed Mary, managed to homeschool for seventeen years, and still likes to talk about it!"
         },
         {
-          "name": "",
+          "name": "Doing Family Worship without being a Bible Scholar",
           "location": "Room H",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dennis Gundersen",
+          "description":
+            "Many godly fathers are aware that, as family shepherd, they should build a habit of family worship–time in the Word of God and prayer together. But many feel inadequate. “How on earth do I lead my children into understanding God’s Word, when I’m just an ordinary Christian man?” Dennis presents simple, practical ideas any dad can put into practice.You can do this! You don’t have to be a Bible scholar."
         },
         {
-          "name": "",
+          "name": "Want to Change the World? Living a Significant Life as a Daughter of the King",
           "location": "Room I",
-          "speaker": "",
-          "description": ""
+          "speaker": "Megan Craig",
+          "description":
+            "We all want to do something meaningful with our lives, and Secret Strategies of Success for the Socially Superior Single Young Woman are a dime a dozen.  But how does the Christian young lady sort through ideas and find her real place in changing the world for Jesus?  Megan shares encouragement from the Word, practical ideas, and joy for the journey to change the world – God’s way"
         },
         {
-          "name": "",
+          "name": "Second Class Christians: The Scary Things God Calls You To",
           "location": "Room J",
-          "speaker": "",
-          "description": ""
+          "speaker": "Sydney Simao",
+          "description":
+            "Practicing evangelism and apologetics might seem only for those who: graduated from seminary, know flaws of every religion, and are slightly rude and argumentative. But, God still calls us, fearful “second-class” Christians, to preach the gospel and defend the faith. It’s not hard. You don’t have to know it all, be rude (the Bible commands you not to be), or win the argument-just be faithful to the gospel."
         },
         {
-          "name": "",
+          "name":
+            "Life on the Homeschool High Wire - Balancing Life and Lesson Plans: A Practical Survival Guide",
           "location": "Room K",
-          "speaker": "",
-          "description": ""
+          "speaker": "Faith Berens",
+          "description":
+            "Find encouraging ideas for how to make homeschooling fit in yourfamily’s unique situation and needs, as well as your teaching style, and your children’slearning styles. Faith shares suggestions for scheduling, time management, organization, andteaching multiple ages of children"
         },
         {
-          "name": "",
+          "name": "Homeschooling Biblically and Homeschooling Legally - Are They Compatible?",
           "location": "Room L",
-          "speaker": "",
-          "description": ""
+          "speaker": "Susan Bradrick",
+          "description":
+            "By God’s grace, Washington homeschoolers can confidently homeschool biblically and legally. But a clear understanding of God’s commands for training children, state homeschool law, and your parental rights is critical. Learn about the law’s annual Declaration of Intent and testing directives, enrollment options, pros and cons of \"government school at home programs,\" and more."
         },
         {
           "name": "Christian Heritage Chorale",
@@ -536,164 +579,205 @@
       ],
       "4": [
         {
-          "name": "Lunch",
-          "location": "Auditorium B & Lower Hallway",
+          "name": "Concessions",
+          "location": "Front Driveway",
+          "speaker": null,
+          "description": "List of concessions"
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        },
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
           "speaker": null
         }
       ],
       "5": [
         {
-          "name": "",
+          "name": "Pastors' and Church Leaders' Workshop: The Church in a Pickle",
           "location": "Auditorium A",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dr. Carlton McLeod",
+          "description":
+            "A true look at the church in America finds that she is stuck between the world and God’s Word.Many churches have the best intentions to do the Lord’s work, but find themselves stuck. They are stuck between decades of following the world and the need to return to Scripture, and between man’s desire to hear pleasant words and a lessening influence on culture. All are welcome to this workshop for pastors, church leaders, and those who aspire to this level of leadership."
         },
         {
-          "name": "",
+          "name": "Battling With Behavior",
           "location": "Auditorium B",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dr. Steve Scheibner",
+          "description":
+            "Want your teen to take more initiative around the house? Want to reduce the “drama” level in the family? Want to get your pre-teens, teens, and young adults excited about character and healthy living? Dr. Scheibner reveals seven practical steps to raising the behavior bar in your home. These steps will begin the process of moving your young people from ordinary to extraordinary."
         },
         {
-          "name": "",
+          "name": "Building Sibling Friendships",
           "location": "Auditorium C",
-          "speaker": "",
-          "description": ""
+          "speaker": "Connie Albers",
+          "description":
+            "Will my children be friends when they grow-up? Connie wanted her five children to love each other, but then all they did was fight and argue! Sound familiar? Connie helped her children build lifelong friendships with each other during her homeschool journey and you can too. She believes homeschooling is the perfect environment for teaching children how to love each other."
         },
         {
-          "name": "",
+          "name": "Why Should Anyone Believe the Bible?",
           "location": "Auditorium D",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dan Kreft",
+          "description":
+            "If someone were to ask you right now why you believe the Bible, would you have an answer? Would your answer be based upon facts or feelings? In this workshop, we'll look at the construction of the Bible, how we know that what we have today is what the original authors wrote, and consider the jaw-dropping, eye-popping odds that its prophecies about a Savior could all come true in one man."
         },
         {
-          "name": "",
+          "name": "Biblical Worldview & Culture: A Troubling Story",
           "location": "Room E",
-          "speaker": "",
-          "description": ""
+          "speaker": "Daniel Smithwick",
+          "description":
+            "The deep meaning of “worldview” has key spheres in life: family, church, and state. Daniel reveals how our youth have been taken captive to an anti-biblical worldview by comparing the worldviews of biblical and secular / atheist scholars, to Christian youth. This troubling story must be understood by Christian educators today!"
         },
         {
-          "name": "",
+          "name": "Boy Meets Girl. What Now?!",
           "location": "Room F",
-          "speaker": "",
-          "description": ""
+          "speaker": "Daniel Craig",
+          "description":
+            "So you like this girl—or you think he’s cute. NOW WHAT? Marriage is God’s blessing, but the path to the altar often seems covered with broken glass–at least that’s what many couples’ bloody feet would indicate! Using God’s principles, Daniel and Megan share insights with peers and perspectives for parents based on their marriage and having grown up in the homeschool / courtship movement."
         },
         {
-          "name": "",
+          "name": "What Tweens and Teens Should Know About WWI",
           "location": "Room G",
-          "speaker": "",
-          "description": ""
+          "speaker": "Linda Hobar",
+          "description":
+            "From trenches and truces on the Western Front to famous flying aces in the sky, Linda walks you through a \"5-4-3-2-1 Countdown\" of what 'tweens and teens should know about World War I along with unforgettable stories to make it inspiring!"
         },
         {
-          "name": "",
+          "name": "Homeschooling with a Broken Spirit",
           "location": "Room H",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dennis Gundersen",
+          "description":
+            "Homeschool moms have a busy life! The comprehensive, multi-faceted work can become overwhelming. If you, or a mother you know, feel depressed, this is the workshop for you. As Don Francisco sang, “It ain’t sin to get the blues,” but it’s not pleasant either. Dennis helps many a parent overcome depression and, just as importantly, find ways to still walk faithfully with God during that time of life."
         },
         {
-          "name": "",
+          "name": "Surviving Suffering",
           "location": "Room I",
-          "speaker": "",
-          "description": ""
+          "speaker": "Julianne Primer",
+          "description":
+            "Julianne, a pastor's wife, mother of nine, cancer survivor, endurer of Lyme Disease, shares candidly about the journey from \"Why Me God?\" to \"My Soul Finds Rest In God Alone.\" Four truths will strengthen you to become deeper, softer, more confident in Christ,and freer than ever."
         },
         {
-          "name": "",
+          "name": "When Life is Nothing Special: How to Serve God in the Ordinary",
           "location": "Room J",
-          "speaker": "",
-          "description": ""
+          "speaker": "Sydney Simao",
+          "description":
+            "God might call you to serve Him by demanding great sacrifices, leading through earth-shattering challenges, or bringing glorious triumphs. Many of us feel, by God’s grace, that we could dutifully trust Him through the seemingly impossible. But what if your call is to serve in plain, out-of-sight, seemingly easy ways? Sometimes facing the ordinary is a lot harder than changing the world."
         },
         {
-          "name": "",
+          "name":
+            "Tackling Tricky High School Issues: Practical Help and Guidance for Homeschooling High School Students with Special Needs",
           "location": "Room K",
-          "speaker": "",
-          "description": ""
+          "speaker": "Faith Berens",
+          "description":
+            "Challenged with home educating struggling or atypical learners in high school? Faith encourages you with alternative course work, specialized curricula, assistive technology, transcript options, graduation guidelines/high school programs, post-high school options, as well as offers tips to navigate the process of applying for testing accommodations in college entrance exams."
         },
         {
-          "name": "",
+          "name": "The A to Z of a Character Healthy Homeschool",
           "location": "Room L",
-          "speaker": "",
-          "description": ""
-        },
-        {
-          "name": "Christian Heritage Chorale",
-          "location": "Chorale Room",
-          "speaker": "Neil Craig",
-          "description": ""
+          "speaker": "Megan Scheibner",
+          "description":
+            "If we homeschool simply to achieve high academic marks, we are squandering the opportunity to influence our children for Christ. Character healthy leaders are those children who have learned to elevate virtues above feelings. If we spend our homeschooling hours simply on academics and activities, we may win the praise of man, but we risk losing the hearts of our children. In our few short years with our children we must focus on the first things first and character is always the first thing! In this conference, Megan, a homeschooling mother of eight, will challenge your homeschoolers to use every opportunity to teach their children to serve God by loving others and to love others by faithfully serving God."
         }
       ],
-      "6": [],
+      "6": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
       "7": [
         {
-          "name": "",
+          "name": "2ML (Second Mile Leadership For Men)",
           "location": "Auditorium A",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dr. Steve Scheibner",
+          "description":
+            "Second mile leaders are counter-intuitive servants of God who develop a consistent love of virtue, a disciplined approach to gratification, and a submissive love for the authority of God’s Word. Male leadership is essential to the success of marriages, families, the church, and society. Earn the right to be heard and more—powerful!"
         },
         {
-          "name": "",
+          "name": "Critical Skills Your Child Needs to be Successful",
           "location": "Auditorium B",
-          "speaker": "",
-          "description": ""
+          "speaker": "Jonathan Brush",
+          "description":
+            "Academic knowledge is important, but does it prepare for success in future employment? Is your student becoming a collaborator, communicator, critical thinker, and creator? Are they developing media, information, technology, life,and career skills? Surveyed college professors and CEOs disagree on how prepared a graduate is for modern life. Learn how to plan for success… beyond the curriculum."
         },
         {
-          "name": "",
+          "name": "Remaining Steadfast During High School",
           "location": "Auditorium C",
-          "speaker": "",
-          "description": ""
+          "speaker": "Connie Albers",
+          "description":
+            "It’s hard to stay the course during the high school years. Everything is changing: the rules, the requirements, and the relationship. Your teen is changing too. So why is staying the course a crucial goal of your homeschooling journey, even though the rules aren’t working anymore? Well, teens need you to be a steady force in their life. This time can be the most rewarding of your parenting journey."
         },
         {
-          "name": "",
+          "name": "Keep it Simple: How to Teach Your Whole Family Together",
           "location": "Auditorium D",
-          "speaker": "",
-          "description": ""
+          "speaker": "Sonya Shafer",
+          "description":
+            "Save time and money by teaching most school subjects to all of your students together. Sonja shares strategies to lower your stress level, provide a well-rounded education, and help you build sweet memories. Learn how to do school subjects together and which subjects arebest done one-on-one. Take a sample schedule to get started. Teach your whole family together with Charlotte Mason methods!"
         },
         {
-          "name": "",
+          "name": "Biblical Worldview & Culture: The Forgotten Story",
           "location": "Room E",
-          "speaker": "",
-          "description": ""
+          "speaker": "Daniel Smithwick",
+          "description":
+            "There is a \"worldview shift\" occurring in America over the past four hundred years. Understand this Colonial Education Era in America by studying the character of the people, how they determined what was real, how they knew what they knew, and what demonstrated a good life. This shift from a biblical-based to a secular-based education system is the Forgotten Story of today."
         },
         {
-          "name": "",
+          "name": "Starting a Side Hustle, Growing a Family Enterprise",
           "location": "Room F",
-          "speaker": "",
-          "description": ""
+          "speaker": "Larry Cormick",
+          "description":
+            "Christian families that start an entrepreneurial endeavor begin a better family legacy today than ever before. The availability of information in our highly technical age creates an incredible opportunity for new businesses. The perfect way to start that business and reach financial freedom is as a family!"
         },
         {
-          "name": "",
+          "name": "To Grade or Not to Grade: A Practical Workshop on Grades in Homeschool",
           "location": "Room G",
-          "speaker": "",
-          "description": ""
+          "speaker": "Linda Hobar",
+          "description":
+            "Shaped by our personality types, grades have the power to motivate some and destroy others. Linda shares grading theories, as well as practical tips to make keeping grades simple. With Linda’s “real life” examples from the work of her own children, be encouraged—newbies and veterans alike!"
         },
         {
-          "name": "",
+          "name": "A Hebrew Boy's Education in the Time of Christ",
           "location": "Room H",
-          "speaker": "",
-          "description": ""
+          "speaker": "Dennis Gundersen",
+          "description":
+            "It’s hard for Westerners to understand how Hebrew families viewed the essentials of education. Consider the schooling the young Jesus of the Bible would have received. Take a journey back to Nazareth’s school and see unique perspectives and goals encouraged there. We can learn a lot from an ancient Hebrew schoolhouse!"
         },
         {
-          "name": "",
+          "name": "Rock Identification Made Easy",
           "location": "Room I",
-          "speaker": "",
-          "description": ""
+          "speaker": "Patrick Nurre",
+          "description":
+            "What do you do with those rocks your kids are bringing home? You identify them! This workshop will give you a short primer in basic rock identification, with encouragement to not be afraid of a dirty subject."
         },
         {
-          "name": "",
+          "name": "From Grumbling to Gratitude",
           "location": "Room J",
-          "speaker": "",
-          "description": ""
+          "speaker": "Naomi Gundersen",
+          "description":
+            "A joyful, gratitude-filled home with an absence ofgrumbling and discontentment can be cultivated and encouraged in any home! Children tend to pick up what we manifest the most. Naomi shares her heart about what it takes to shift from a mindset of a grumbling grater to a grateful spreader of joy in the family and beyond."
         },
         {
-          "name": "",
+          "name": "Laying a Foundation for Reading Comprehension in the Preschool Years",
           "location": "Room K",
-          "speaker": "",
-          "description": ""
+          "speaker": "Faith Berens",
+          "description":
+            "Comprehension, the ultimate goal of reading instruction, involves various types of thinking and processing skills. Faith shares tips, techniques, and strategies that develop veryyoung children’s vocabulary. Good habits of mind lay a solid foundationfor comprehension with our wee ones from birth to five years old."
         },
         {
-          "name": "",
+          "name": "The Disciple-Making Mom",
           "location": "Room L",
-          "speaker": "",
-          "description": ""
+          "speaker": "Megan Scheibner",
+          "description":
+            "Being a Mom is about so much more than feeding, dressing, and driving our kids to play-dates. With only a few short years to impart important spiritual truths to our children, every day becomes an eternal opportunity for teaching, training, and modeling Christlikeness. The Disciple-Making Mom session will give mothers the tools they need to disciple their children in the most important areas of prayer, service, Bible study, scripture memorization, and true fellowship. Moms will walk away encouraged and strengthened, knowing that although discipling their children seems a huge task, God is on their side!"
         },
         {
           "name": "Christian Heritage Chorale",
@@ -702,9 +786,38 @@
           "description": ""
         }
       ],
-      "8": [],
-      "9": [],
-      "10": []
+      "8": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction Pick Up",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        },
+        {
+          "name": "Order CDs, DVDs, or MP3s",
+          "location": "Audio Duplication",
+          "speaker": null
+        }
+      ],
+      "9": [
+        {
+          "name": "Battle for Our Children",
+          "location": "Auditorium A",
+          "speaker": "Dr. Carlton McLeod",
+          "description":
+            "Are we fighting hard enough for our children? What happens to them as we raise them in the fear of the Lord? We know the statistics showing that 70-80% of children leave the faith by the time they reach college. Dr. McLeod encourages us in how and why we should fight even more for the next generation."
+        }
+      ],
+      "10": [
+        {
+          "name": "End of Conference",
+          "description": "Final opportunity to pick up CDs, DVDs, and MP3s. Doors close at 6:30 PM"
+        }
+      ]
     }
   }
 }
