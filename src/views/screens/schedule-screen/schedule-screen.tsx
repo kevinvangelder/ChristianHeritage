@@ -1,15 +1,24 @@
 import * as React from "react"
-import { FlatList, View, Text } from "react-native"
+import { FlatList, View, TouchableOpacity, ViewStyle } from "react-native"
 import { NavigationScreenProps } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TimeSlot } from "./time-slot"
-import { TitleBar } from "../../../views/shared/title-bar"
+import { TitleBar } from "../../shared/title-bar"
+import { Text } from "../../shared/text"
+import { spacing } from "../../../theme/spacing"
+import { palette } from "../../../theme/palette"
 const data = require("../../../models/data.json")
 const moment = require("moment")
 
 export interface ScheduleScreenProps extends NavigationScreenProps<{}> {}
 
-export class ScheduleScreen extends React.Component<ScheduleScreenProps, {}> {
+const NAV_ITEM: ViewStyle = {
+  flex: 1,
+  width: "50%",
+  padding: spacing[3],
+}
+
+export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selectedDay: string }> {
   static navigationOptions = {
     headerTitle: <TitleBar />,
   }
@@ -25,13 +34,14 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, {}> {
     this.props.navigation.navigate("scheduleDetail", { item, timeSlotActivities, title: item.name })
   }
 
-  renderTimeSlot = ({ item }: any) => {
+  renderTimeSlot = ({ item, index }: any) => {
     const { selectedDay } = this.state
     const timeSlotActivities = data[selectedDay].activities[item.id]
     return (
       <TimeSlot
         timeSlot={item}
         timeSlotActivities={timeSlotActivities}
+        last={index === data[selectedDay].timeSlots.length - 1}
         onPress={() => {
           this.onPress(item, timeSlotActivities)
         }}
@@ -61,6 +71,26 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, {}> {
           keyExtractor={(item, index) => `${selectedDay}-${item.id}`}
           style={{ width: "100%" }}
         />
+        <View
+          style={{ flexDirection: "row", borderTopWidth: 1, borderTopColor: palette.lightGrey }}
+        >
+          <TouchableOpacity
+            onPress={() => this.setState({ selectedDay: "friday" })}
+            style={[NAV_ITEM, selectedDay === "friday" && { backgroundColor: palette.bayoux40 }]}
+          >
+            <Text text="Friday" style={{ textAlign: "center" }} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.setState({ selectedDay: "saturday" })}
+            style={[
+              NAV_ITEM,
+              { borderLeftWidth: 1, borderLeftColor: palette.lightGrey },
+              selectedDay === "saturday" && { backgroundColor: palette.bayoux40 },
+            ]}
+          >
+            <Text text="Saturday" style={{ textAlign: "center" }} />
+          </TouchableOpacity>
+        </View>
       </Screen>
     )
   }

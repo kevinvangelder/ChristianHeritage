@@ -103,13 +103,6 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
                   style={{ width: 110, height: 60, marginHorizontal: spacing[3] }}
                 />
               </TouchableOpacity>
-              <Text text=" by " />
-              <TouchableOpacity onPress={() => Linking.openURL(IR_URL)}>
-                <Image
-                  source={require("./infinite-red.png")}
-                  style={{ width: 110, height: 49, marginHorizontal: spacing[3] }}
-                />
-              </TouchableOpacity>
             </View>
           </View>
         </View>

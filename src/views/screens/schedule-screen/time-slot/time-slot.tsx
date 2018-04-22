@@ -7,7 +7,7 @@ const moment = require("moment")
 
 export class TimeSlot extends React.Component<TimeSlotProps, {}> {
   render() {
-    const { timeSlot, timeSlotActivities = [], onPress } = this.props
+    const { timeSlot, timeSlotActivities = [], onPress, last } = this.props
     const keynoteSummary =
       timeSlot.name === "Keynote"
         ? `${(timeSlotActivities[0] || {}).speaker}: ${(timeSlotActivities[0] || {}).name}`
@@ -20,15 +20,31 @@ export class TimeSlot extends React.Component<TimeSlotProps, {}> {
     return (
       <TouchableOpacity
         onPress={onPress}
-        style={{ flexDirection: "row", borderBottomWidth: 1, borderBottomColor: palette.lightGrey }}
+        style={{
+          flexDirection: "row",
+          borderBottomWidth: last ? 0 : 1,
+          borderBottomColor: palette.lightGrey,
+        }}
       >
         <View
-          style={{ flexDirection: "column", justifyContent: "space-between", padding: 5, height }}
+          style={{
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: 5,
+            height,
+            minHeight: 60,
+          }}
         >
-          <Text preset="secondary" text={timeSlot.startTime} />
-          {timeSlot.id === 9 && <Text preset="secondary" text={timeSlot.endTime} />}
+          <Text preset="secondary" text={timeSlot.startTime} style={{ paddingTop: 5 }} />
+          {last && (
+            <Text
+              preset="secondary"
+              text={timeSlot.endTime}
+              style={{ position: "absolute", bottom: 10, left: 5 }}
+            />
+          )}
         </View>
-        <View style={{ flexDirection: "column", padding: 5, flex: 1, height }}>
+        <View style={{ flexDirection: "column", padding: 5, flex: 1, height, minHeight: 60 }}>
           <Text preset="header" text={timeSlot.name} />
           <Text preset="fieldLabel" text={keynoteSummary || summary} />
         </View>
