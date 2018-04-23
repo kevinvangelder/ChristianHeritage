@@ -76,7 +76,7 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
         >
           <TouchableOpacity
             onPress={() => this.setState({ selectedDay: "friday" })}
-            style={[NAV_ITEM, selectedDay === "friday" && { backgroundColor: palette.bayoux40 }]}
+            style={[NAV_ITEM, selectedDay === "friday" && { backgroundColor: palette.endeavour40 }]}
           >
             <Text text="Friday" style={{ textAlign: "center" }} />
           </TouchableOpacity>
@@ -85,7 +85,7 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
             style={[
               NAV_ITEM,
               { borderLeftWidth: 1, borderLeftColor: palette.lightGrey },
-              selectedDay === "saturday" && { backgroundColor: palette.bayoux40 },
+              selectedDay === "saturday" && { backgroundColor: palette.endeavour40 },
             ]}
           >
             <Text text="Saturday" style={{ textAlign: "center" }} />

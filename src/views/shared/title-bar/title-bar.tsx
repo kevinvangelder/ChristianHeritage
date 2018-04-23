@@ -17,10 +17,6 @@ export class TitleBar extends React.Component<TitleBarProps, {}> {
       <View>
         <Image source={backgroundImage} style={{ height: 76 }} />
         <NavButton onPress={this.props.goBack} />
-        <Image
-          source={logo}
-          style={{ height: 50, width: 57, position: "absolute", top: 11, left: 45 }}
-        />
         {title && <Text text={title} style={{ position: "absolute", top: 11, left: 75 }} />}
       </View>
     )

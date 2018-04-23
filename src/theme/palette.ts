@@ -11,4 +11,7 @@ export const palette = {
   bayoux: "#4C6772",
   bayoux40: "#4C677240",
   bahamaBlue: "#006699",
+  endeavour: "#0061AE",
+  endeavour40: "#0061AE40",
+  shipCove: "#778AB8",
 }

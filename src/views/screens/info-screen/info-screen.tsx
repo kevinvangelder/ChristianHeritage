@@ -23,7 +23,7 @@ const LINK: TextStyle = {
 }
 const CTA: ViewStyle = {
   flex: 1,
-  backgroundColor: palette.bayoux40,
+  backgroundColor: palette.endeavour40,
   padding: spacing[2],
   borderColor: palette.bahamaBlue,
   borderWidth: 1,
