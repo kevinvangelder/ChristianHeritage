@@ -8,6 +8,7 @@ import { BackButtonHandler } from "../navigation/back-button-handler"
 import { contains } from "ramda"
 import { DEFAULT_NAVIGATION_CONFIG } from "../navigation/navigation-config"
 import { SafeAreaView } from "react-navigation"
+import { palette } from "../theme/palette"
 
 interface RootComponentState {
   rootStore?: RootStore

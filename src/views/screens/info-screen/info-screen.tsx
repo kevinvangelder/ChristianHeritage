@@ -1,5 +1,13 @@
 import * as React from "react"
-import { View, ViewStyle, Image, Linking, TextStyle, TouchableOpacity } from "react-native"
+import {
+  View,
+  ViewStyle,
+  Image,
+  Linking,
+  TextStyle,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native"
 import { Text } from "../../shared/text"
 import { NavigationScreenProps } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -49,9 +57,9 @@ const IR_URL = "https://infinite.red"
 export class InfoScreen extends React.Component<InfoScreenProps, {}> {
   render() {
     return (
-      <Screen preset="scrollStack">
+      <Screen preset="fixed">
         <TitleBar title="Info" />
-        <View style={ROOT}>
+        <ScrollView style={ROOT}>
           <Image
             source={require("./christian_heritage_logo.png")}
             style={{ alignSelf: "center" }}
@@ -102,7 +110,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </Screen>
     )
   }
