@@ -19,9 +19,9 @@ const NAV_ITEM: ViewStyle = {
 }
 
 export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selectedDay: string }> {
-  static navigationOptions = {
-    headerTitle: <TitleBar />,
-  }
+  // static navigationOptions = {
+  //   headerTitle: TitleBar,
+  // }
 
   constructor(props) {
     super(props)
@@ -31,7 +31,7 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
   }
 
   onPress = (item, timeSlotActivities) => {
-    this.props.navigation.navigate("scheduleDetail", { item, timeSlotActivities, title: item.name })
+    this.props.navigation.push("scheduleDetail", { item, timeSlotActivities, title: item.name })
   }
 
   renderTimeSlot = ({ item, index }: any) => {
@@ -64,6 +64,7 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
     return (
       <Screen preset="fixed">
         {/* {this.renderCurrentTimeIndicator} */}
+        <TitleBar title="Schedule" />
         <FlatList
           data={dayTimeSlots}
           extraData={this.state}
@@ -76,19 +77,31 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
         >
           <TouchableOpacity
             onPress={() => this.setState({ selectedDay: "friday" })}
-            style={[NAV_ITEM, selectedDay === "friday" && { backgroundColor: palette.endeavour40 }]}
+            style={[NAV_ITEM, selectedDay === "friday" && { backgroundColor: palette.shipCove }]}
           >
-            <Text text="Friday" style={{ textAlign: "center" }} />
+            <Text
+              text="Friday"
+              style={{
+                textAlign: "center",
+                color: selectedDay === "friday" ? palette.white : palette.darkGrey,
+              }}
+            />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.setState({ selectedDay: "saturday" })}
             style={[
               NAV_ITEM,
               { borderLeftWidth: 1, borderLeftColor: palette.lightGrey },
-              selectedDay === "saturday" && { backgroundColor: palette.endeavour40 },
+              selectedDay === "saturday" && { backgroundColor: palette.shipCove },
             ]}
           >
-            <Text text="Saturday" style={{ textAlign: "center" }} />
+            <Text
+              text="Saturday"
+              style={{
+                textAlign: "center",
+                color: selectedDay === "saturday" ? palette.white : palette.darkGrey,
+              }}
+            />
           </TouchableOpacity>
         </View>
       </Screen>

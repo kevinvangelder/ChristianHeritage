@@ -1,10 +1,9 @@
 import * as React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle } from "react-native"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, ScrollView } from "react-native"
 import { Text } from "../../shared/text"
 import { NavigationScreenProps } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../../views/shared/title-bar"
-import { NavButton } from "../../../views/shared/nav-button"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
 
@@ -14,6 +13,7 @@ const ROOT: ViewStyle = {
   flex: 1,
   paddingHorizontal: spacing[4],
   paddingVertical: spacing[3],
+  width: "100%",
 }
 
 const TITLE: TextStyle = {
@@ -63,11 +63,20 @@ const IMAGES = {
 
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {
   static navigationOptions = ({ navigation }) => ({
-    headerTitle: <TitleBar goBack={navigation.goBack} />,
+    headerTitle: TitleBar,
   })
 
   render() {
-    return <Screen preset="scrollStack">{this.renderContent()}</Screen>
+    return (
+      <Screen preset="fixed">
+        <TitleBar
+          back
+          onPress={this.props.navigation.popToTop}
+          title={this.props.navigation.state.params.title}
+        />
+        {this.renderContent()}
+      </Screen>
+    )
   }
 
   renderContent = () => {
@@ -100,7 +109,9 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   renderOther = () => {
     const { timeSlotActivities } = this.props.navigation.state.params
     return (
-      <View style={ROOT}>{timeSlotActivities.map(activity => this.renderActivity(activity))}</View>
+      <ScrollView style={ROOT}>
+        {timeSlotActivities.map(activity => this.renderActivity(activity))}
+      </ScrollView>
     )
   }
 
@@ -108,9 +119,11 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
     return (
       <View style={ACTIVITY} key={activity.name}>
         <Text preset="subheader" text={activity.name} style={TITLE} />
-        <Text preset="default" text={activity.speaker} style={SPEAKER} />
+        {activity.speaker && <Text preset="default" text={activity.speaker} style={SPEAKER} />}
         {activity.location && <Text preset="fieldLabel" text={activity.location} style={TIME} />}
-        <Text preset="secondary" text={activity.description} style={DESCRIPTION} />
+        {activity.description && (
+          <Text preset="secondary" text={activity.description} style={DESCRIPTION} />
+        )}
       </View>
     )
   }

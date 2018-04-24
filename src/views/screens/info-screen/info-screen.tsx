@@ -47,13 +47,10 @@ const IGNITE_URL = "https://infinite.red/ignite"
 const IR_URL = "https://infinite.red"
 
 export class InfoScreen extends React.Component<InfoScreenProps, {}> {
-  static navigationOptions = {
-    headerTitle: <TitleBar />,
-  }
-
   render() {
     return (
       <Screen preset="scrollStack">
+        <TitleBar title="Info" />
         <View style={ROOT}>
           <Image
             source={require("./christian_heritage_logo.png")}

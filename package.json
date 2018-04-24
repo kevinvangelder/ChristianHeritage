@@ -49,7 +49,6 @@
     "babel-plugin-transform-inline-environment-variables": "^0.3.0",
     "babel-preset-react-native": "4.0.0",
     "husky": "^0.14.3",
-    "ignite-ir-boilerplate": "file:C:\\Users\\kevin\\Code\\ignite-ir-boilerplate",
     "jest": "22.4.3",
     "jest-preset-ignite": "^0.5.0",
     "lint-staged": "^7.0.0",

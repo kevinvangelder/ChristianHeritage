@@ -1,0 +1,12 @@
+patch-package
+--- a/node_modules/react-navigation/src/views/Header/Header.js
++++ b/node_modules/react-navigation/src/views/Header/Header.js
+@@ -560,7 +560,7 @@ const styles = StyleSheet.create({
+     position: 'absolute',
+     alignItems: 'center',
+     flexDirection: 'row',
+-    justifyContent: Platform.OS === 'ios' ? 'center' : 'flex-start',
++    justifyContent: 'flex-start',
+   },
+   left: {
+     left: 0,

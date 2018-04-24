@@ -10,7 +10,6 @@ export interface VenueScreenProps extends NavigationScreenProps<{}> {}
 
 const ROOT: ViewStyle = {
   flex: 1,
-  padding: spacing[2],
 }
 const TEXT: TextStyle = {
   marginBottom: spacing[3],
@@ -20,19 +19,19 @@ const IMAGE: ImageStyle = {
   flex: 1,
   resizeMode: "contain",
   maxWidth: "100%",
-  maxHeight: "200%",
+  maxHeight: "150%",
   marginBottom: spacing[5],
 }
 
 export class VenueScreen extends React.Component<VenueScreenProps, {}> {
-  static navigationOptions = {
-    headerTitle: <TitleBar />,
-  }
-
   render() {
     return (
       <Screen preset="fixed" style={ROOT}>
-        <ScrollView>
+        <TitleBar title="Venue" />
+        <ScrollView
+          style={{ maxWidth: "100%", padding: spacing[2] }}
+          contentContainerStyle={{ maxWidth: "100%" }}
+        >
           <Text preset="header" text="First Floor" style={TEXT} />
           <Image source={require("./floor-1.png")} style={IMAGE} />
           <Text preset="header" text="Second Floor" style={TEXT} />

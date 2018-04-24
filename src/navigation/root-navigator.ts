@@ -3,6 +3,7 @@ import { ScheduleScreen } from "../views/screens/schedule-screen"
 import { ScheduleDetailScreen } from "../views/screens/schedule-detail-screen"
 import { VenueScreen } from "../views/screens/venue-screen"
 import { InfoScreen } from "../views/screens/info-screen"
+import { TabBar } from "../views/shared/tab-bar"
 
 export const RootNavigator = StackNavigator(
   {
@@ -23,11 +24,20 @@ export const RootNavigator = StackNavigator(
       },
       {
         tabBarPosition: "bottom",
+        tabBarComponent: TabBar,
       },
     ),
   },
   {
-    navigationOptions: { gesturesEnabled: false },
+    headerMode: "none",
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerStyle: {
+        elevation: 0,
+        shadowRadius: 0,
+        paddingTop: 0,
+      },
+    },
     initialRouteName: "tabs",
   },
 )

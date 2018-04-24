@@ -7,6 +7,7 @@ import { Provider } from "mobx-react"
 import { BackButtonHandler } from "../navigation/back-button-handler"
 import { contains } from "ramda"
 import { DEFAULT_NAVIGATION_CONFIG } from "../navigation/navigation-config"
+import { SafeAreaView } from "react-navigation"
 
 interface RootComponentState {
   rootStore?: RootStore
@@ -58,11 +59,17 @@ export class RootComponent extends React.Component<{}, RootComponentState> {
     // --- am: end list of stores ---
 
     return (
-      <Provider rootStore={rootStore} navigationStore={rootStore.navigationStore} {...otherStores}>
-        <BackButtonHandler canExit={this.canExit}>
-          <StatefulNavigator />
-        </BackButtonHandler>
-      </Provider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Provider
+          rootStore={rootStore}
+          navigationStore={rootStore.navigationStore}
+          {...otherStores}
+        >
+          <BackButtonHandler canExit={this.canExit}>
+            <StatefulNavigator />
+          </BackButtonHandler>
+        </Provider>
+      </SafeAreaView>
     )
   }
 }
