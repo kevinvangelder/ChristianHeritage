@@ -53,6 +53,11 @@ const ACTIVITY: ViewStyle = {
   paddingVertical: spacing[3],
 }
 
+const INVISIBLE: ViewStyle = {
+  height: 0,
+  width: 0,
+}
+
 const IMAGES = {
   "Ken Ham": "https://www.christianheritageonline.org/wp-content/uploads/2016/12/Ham_Ken_lg.png",
   "Dr. Steve Scheibner":
@@ -119,10 +124,20 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
     return (
       <View style={ACTIVITY} key={activity.name}>
         <Text preset="subheader" text={activity.name} style={TITLE} />
-        {activity.speaker && <Text preset="default" text={activity.speaker} style={SPEAKER} />}
-        {activity.location && <Text preset="fieldLabel" text={activity.location} style={TIME} />}
-        {activity.description && (
+        {activity.speaker ? (
+          <Text preset="default" text={activity.speaker} style={SPEAKER} />
+        ) : (
+          <View style={INVISIBLE} />
+        )}
+        {activity.location ? (
+          <Text preset="fieldLabel" text={activity.location} style={TIME} />
+        ) : (
+          <View style={INVISIBLE} />
+        )}
+        {activity.description ? (
           <Text preset="secondary" text={activity.description} style={DESCRIPTION} />
+        ) : (
+          <View style={INVISIBLE} />
         )}
       </View>
     )
