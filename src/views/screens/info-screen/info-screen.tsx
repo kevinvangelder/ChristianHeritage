@@ -18,6 +18,7 @@ import { palette } from "../../../theme/palette"
 export interface InfoScreenProps extends NavigationScreenProps<{}> {}
 
 const ROOT: ViewStyle = {
+  width: "100%",
   paddingHorizontal: spacing[4],
   paddingBottom: spacing[3],
 }
@@ -58,7 +59,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
     return (
       <Screen preset="fixed">
         <TitleBar title="Info" />
-        <ScrollView style={ROOT}>
+        <ScrollView style={ROOT} contentContainerStyle={{ width: "100%" }}>
           <Image
             source={require("./christian_heritage_logo.png")}
             style={{ alignSelf: "center" }}
