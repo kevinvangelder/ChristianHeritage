@@ -24,6 +24,7 @@ export class TimeSlot extends React.Component<TimeSlotProps, {}> {
           flexDirection: "row",
           borderBottomWidth: last ? 0 : 1,
           borderBottomColor: palette.lightGrey,
+          overflow: "hidden",
         }}
       >
         <View

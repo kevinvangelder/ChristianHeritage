@@ -97,7 +97,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
     const { timeSlotActivities, item } = this.props.navigation.state.params
     const activity = timeSlotActivities[0]
     return (
-      <View style={ROOT}>
+      <ScrollView style={ROOT}>
         <Text preset="header" text={activity.name} style={TITLE} />
         <View style={KEYNOTE_WRAPPER}>
           <View style={KEYNOTE_CONTENT}>
@@ -107,7 +107,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
           </View>
           <Image source={{ uri: IMAGES[activity.speaker] }} style={IMAGE} />
         </View>
-      </View>
+      </ScrollView>
     )
   }
 

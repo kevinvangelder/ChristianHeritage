@@ -12,7 +12,7 @@ export class NavButton extends React.Component<NavButtonProps, {}> {
     return (
       <TouchableOpacity
         onPress={this.props.onPress}
-        style={{ paddingVertical: 16, paddingHorizontal: 10 }}
+        style={{ paddingVertical: 16, paddingHorizontal: 15 }}
       >
         <Image source={back} />
       </TouchableOpacity>

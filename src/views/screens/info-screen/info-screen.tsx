@@ -50,9 +50,8 @@ const PADDED_TEXT: TextStyle = {
 
 const FACEBOOK_URL = "https://www.facebook.com/christianheritagehomeeducators"
 const WEBSITE_URL = "https://www.christianheritageonline.org/"
-const AMAZON_SMILE_URL = "https://www.christianheritageonline.org/partner_with_us/amazonsmile/"
+const MISSION_URL = "https://www.christianheritageonline.org/about/our-mission/"
 const IGNITE_URL = "https://infinite.red/ignite"
-const IR_URL = "https://infinite.red"
 
 export class InfoScreen extends React.Component<InfoScreenProps, {}> {
   render() {
@@ -79,15 +78,11 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
               style={LINK}
             />
           </View>
-          <TouchableOpacity style={[CENTER, CTA]} onPress={() => Linking.openURL(AMAZON_SMILE_URL)}>
+          <TouchableOpacity style={[CENTER, CTA]} onPress={() => Linking.openURL(MISSION_URL)}>
+            <Text preset="default" text="Mission" style={CTA_HEADER} />
             <Text
               preset="default"
-              text="Support Christian Heritage by Shopping on Amazon"
-              style={CTA_HEADER}
-            />
-            <Text
-              preset="default"
-              text="AmazonSmile will donate 0.5% of the purchase price from your eligible Amazon purchases to YOUR charity of choice...at no additional cost to you."
+              text="Christian Heritage equips parents to Biblically disciple and educate their children. Christian Heritage accomplishes this through events, instruction, training, resources, and support."
               style={PADDED_TEXT}
             />
             <Text text="Learn More" style={LINK} />
