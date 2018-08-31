@@ -32,12 +32,13 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
           style={{ maxWidth: "100%", padding: spacing[2] }}
           contentContainerStyle={{ maxWidth: "100%" }}
         >
-          <Text preset="header" text="First Floor" style={TEXT} />
+          <Image source={require("./ocean-shores.png")} style={IMAGE} />
+          {/* <Text preset="header" text="First Floor" style={TEXT} />
           <Image source={require("./floor-1.png")} style={IMAGE} />
           <Text preset="header" text="Second Floor" style={TEXT} />
           <Image source={require("./floor-2.png")} style={IMAGE} />
           <Text preset="header" text="Third Floor" style={TEXT} />
-          <Image source={require("./floor-3.png")} style={IMAGE} />
+          <Image source={require("./floor-3.png")} style={IMAGE} /> */}
         </ScrollView>
       </Screen>
     )

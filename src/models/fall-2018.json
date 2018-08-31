@@ -1,0 +1,418 @@
+{
+  "friday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Registration",
+        "startTime": "8:00AM",
+        "endTime": "9:00AM",
+        "duration": 60
+      },
+      {
+        "id": 1,
+        "name": "Keynote",
+        "startTime": "9:00AM",
+        "endTime": "10:30AM",
+        "duration": 90
+      },
+      {
+        "id": 2,
+        "name": "Break",
+        "startTime": "10:30AM",
+        "endTime": "11:00AM",
+        "duration": 30
+      },
+      {
+        "id": 3,
+        "name": "Workshop A",
+        "startTime": "11:00AM",
+        "endTime": "12:00PM",
+        "duration": 60
+      },
+      {
+        "id": 4,
+        "name": "Lunch",
+        "startTime": "12:00PM",
+        "endTime": "1:30PM",
+        "duration": 90
+      },
+      {
+        "id": 5,
+        "name": "Keynote",
+        "startTime": "1:30PM",
+        "endTime": "2:30PM",
+        "duration": 60
+      },
+      {
+        "id": 6,
+        "name": "Break",
+        "startTime": "2:30PM",
+        "endTime": "3:00PM",
+        "duration": 30
+      },
+      {
+        "id": 7,
+        "name": "Workshop B",
+        "startTime": "3:00PM",
+        "endTime": "4:00PM",
+        "duration": 60
+      },
+      {
+        "id": 8,
+        "name": "Dinner",
+        "startTime": "4:00PM",
+        "endTime": "6:00PM",
+        "duration": 120
+      },
+      {
+        "id": 9,
+        "name": "Keynote",
+        "startTime": "6:00PM",
+        "endTime": "7:45PM",
+        "duration": 75
+      },
+      {
+        "id": 10,
+        "name": "Desert Social",
+        "startTime": "7:45PM",
+        "endTime": "9:00PM",
+        "duration": 75
+      }
+    ],
+    "activities": {
+      "0": [
+        {
+          "name": "Registration",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "1": [
+        {
+          "name": "Everywhere You Look: Totally Integrating God's Word Into Your Family Life",
+          "location": "Pacific Hall",
+          "speaker": "Kevin Swanson",
+          "description": ""
+        }
+      ],
+      "2": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "3": [
+        {
+          "name": "For Dads",
+          "location": "Pacific C",
+          "speaker": "Todd Friel",
+          "description": ""
+        },
+        {
+          "name": "A Transformed Woman of the Word",
+          "location": "Wave & Surf",
+          "speaker": "Wendy Walker",
+          "description": ""
+        },
+        {
+          "name": "Biblical Preaching: Why Your Family Can't Live Without It",
+          "location": "Tide & Jetty",
+          "speaker": "Dwight Cover",
+          "description": ""
+        },
+        {
+          "name": "Tearing Up Tracks Leading to Destruction: Destroying Every False Idea",
+          "location": "Pacific A & B",
+          "speaker": "Bill Jack",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "5": [
+        {
+          "name": "You Can't Give What You Don't Got: Abiding in the Word",
+          "location": "Pacific Hall",
+          "speaker": "Steve Walker",
+          "description": ""
+        }
+      ],
+      "6": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "7": [
+        {
+          "name": "Read it Right: How to Rightly Interpret Scripture",
+          "location": "Pacific C",
+          "speaker": "Todd Friel",
+          "description": ""
+        },
+        {
+          "name": "Raising Sons of the Word",
+          "location": "Wave & Surf",
+          "speaker": "Wendy Walker",
+          "description": ""
+        },
+        {
+          "name": "Training Children in the Word: Psalms and Proverbs",
+          "location": "Tide & Jetty",
+          "speaker": "Kevin Swanson",
+          "description": ""
+        },
+        {
+          "name": "Seven Habits of Highly Suppressive People",
+          "location": "Pacific A & B",
+          "speaker": "Bill Jack",
+          "description": ""
+        }
+      ],
+      "8": [],
+      "9": [
+        {
+          "name": "God Said It, That Settles It: The Absolute Authority of God's Word",
+          "location": "Pacific Hall",
+          "speaker": "Todd Friel",
+          "description": ""
+        }
+      ],
+      "10": [
+        {
+          "name": "Desert Social",
+          "location": "Pacific Hall",
+          "speaker": null
+        }
+      ]
+    }
+  },
+  "saturday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Ultimate Frisbee on the Beach",
+        "startTime": "7:00AM",
+        "endTime": "8:00AM",
+        "duration": 60
+      },
+      {
+        "id": 1,
+        "name": "Keynote",
+        "startTime": "9:00AM",
+        "endTime": "10:30AM",
+        "duration": 90
+      },
+      {
+        "id": 2,
+        "name": "Break",
+        "startTime": "10:30AM",
+        "endTime": "11:00AM",
+        "duration": 30
+      },
+      {
+        "id": 3,
+        "name": "Workshop C",
+        "startTime": "11:00AM",
+        "endTime": "12:0PM",
+        "duration": 60
+      },
+      {
+        "id": 4,
+        "name": "Lunch",
+        "startTime": "12:00PM",
+        "endTime": "1:30PM",
+        "duration": 90
+      },
+      {
+        "id": 5,
+        "name": "Workshop D",
+        "startTime": "1:30PM",
+        "endTime": "2:30PM",
+        "duration": 60
+      },
+      {
+        "id": 6,
+        "name": "Break",
+        "startTime": "2:30PM",
+        "endTime": "3:00PM",
+        "duration": 30
+      },
+      {
+        "id": 7,
+        "name": "Workshop E",
+        "startTime": "3:00PM",
+        "endTime": "4:00PM",
+        "duration": 60
+      },
+      {
+        "id": 8,
+        "name": "Break",
+        "startTime": "4:00PM",
+        "endTime": "4:30PM",
+        "duration": 30
+      },
+      {
+        "id": 9,
+        "name": "Keynote",
+        "startTime": "4:30PM",
+        "endTime": "5:30PM",
+        "duration": 60
+      },
+      {
+        "id": 10,
+        "name": "Free Pizza Party",
+        "startTime": "5:30PM",
+        "endTime": "8:00PM",
+        "duration": 150
+      }
+    ],
+    "activities": {
+      "0": [
+        {
+          "name": "Ultimate Frisbee on the Beach",
+          "location": "Meet on the beach by the public access.",
+          "speaker": null,
+          "description": "All are welcome!"
+        }
+      ],
+      "1": [
+        {
+          "name": "What is Family Discipleship All About? Discipling Disciple-Makers",
+          "location": "Pacific Hall",
+          "speaker": "Todd Friel",
+          "description": ""
+        }
+      ],
+      "2": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "3": [
+        {
+          "name": "Husbands, Love Your Wives, Wash Them with the Word",
+          "location": "Pacific C",
+          "speaker": "Steve Walker",
+          "description": ""
+        },
+        {
+          "name": "Titus 2: Using the Word to Mentor Women",
+          "location": "Wave & Surf",
+          "speaker": "Wendy Walker",
+          "description": ""
+        },
+        {
+          "name": "How Can Christians Know that We Know the Truth?",
+          "location": "Tide & Jetty",
+          "speaker": "Mark Ward",
+          "description": ""
+        },
+        {
+          "name": "What the Bible Says About Living the Good Life: Life Calling & Honor",
+          "location": "Pacific A & B",
+          "speaker": "Daniel Craig",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "5": [
+        {
+          "name": "William Tyndale: That Every Ploughboy May Know the Word",
+          "location": "Pacific C",
+          "speaker": "Kevin Swanson",
+          "description": ""
+        },
+        {
+          "name": "What the Bible Says About Work and Business",
+          "location": "Wave & Surf",
+          "speaker": "Steve Walker",
+          "description": ""
+        },
+        {
+          "name": "Artificial Authority: How to Recognize False Authorities",
+          "location": "Tide & Jetty",
+          "speaker": "Bill Jack",
+          "description": ""
+        },
+        {
+          "name": "Miley Cyrus, Jesus and Me: What the Bible Says About Engaging Pop Culture",
+          "location": "Pacific A & B",
+          "speaker": "Daniel Craig",
+          "description": ""
+        }
+      ],
+      "6": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "7": [
+        {
+          "name": "How Fundamentalism Fails: Losing the Spirit of the Word in the Letter",
+          "location": "Pacific C",
+          "speaker": "Steve Walker",
+          "description": ""
+        },
+        {
+          "name": "Teaching Your Children to Love Christ the Living Word",
+          "location": "Wave & Surf",
+          "speaker": "Dwight Cover",
+          "description": ""
+        },
+        {
+          "name": "Who Decided What's in My Bible?",
+          "location": "Tide & Jetty",
+          "speaker": "Mark Ward",
+          "description": ""
+        },
+        {
+          "name": "Which Bias is the Best Bias to be Biased By?",
+          "location": "Pacific A & B",
+          "speaker": "Bill Jack",
+          "description": ""
+        }
+      ],
+      "8": [
+        {
+          "name": "Vendor Booths",
+          "location": "Lobby",
+          "speaker": null
+        }
+      ],
+      "9": [
+        {
+          "name": "Taking the World for Jesus: How the Bible Transformed the World",
+          "location": "Pacific Hall",
+          "speaker": "Kevin Swanson",
+          "description": ""
+        }
+      ],
+      "10": [
+        {
+          "name": "Free Pizza Party",
+          "location": "Pacific Hall",
+          "speaker": null,
+          "description": "All are welcome!"
+        }
+      ]
+    }
+  }
+}
