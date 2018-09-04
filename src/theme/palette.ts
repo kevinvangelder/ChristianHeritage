@@ -5,6 +5,7 @@ export const palette = {
   orange: "#FBA928",
   orangeDarker: "#EB9918",
   darkGrey: "#333333",
+  mediumGrey: "#636466",
   lightGrey: "#939AA4",
   lighterGrey: "#CDD4DA",
   angry: "#dd3333",
@@ -14,4 +15,5 @@ export const palette = {
   endeavour: "#0061AE",
   endeavour40: "#0061AE40",
   shipCove: "#778AB8",
+  matisse: "#215AA8",
 }

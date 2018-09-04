@@ -20,7 +20,8 @@ const IMAGE: ImageStyle = {
   resizeMode: "contain",
   maxWidth: "100%",
   maxHeight: "150%",
-  marginBottom: spacing[5],
+  marginBottom: -spacing[8],
+  marginTop: -spacing[8] - spacing[5],
 }
 
 export class VenueScreen extends React.Component<VenueScreenProps, {}> {

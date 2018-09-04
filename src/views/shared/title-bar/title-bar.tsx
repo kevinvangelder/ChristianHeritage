@@ -3,7 +3,7 @@ import { View, Image, SafeAreaView } from "react-native"
 import { Text } from "../../shared/text"
 import { NavButton } from "../../shared/nav-button"
 const backgroundImage = require("./header_bg_blue.jpg")
-const logo = require("./christian_heritage_logo.png")
+// const logo = require("./christian_heritage_logo.png")
 
 export const TitleBar = props => {
   const { title, back, onPress } = props
