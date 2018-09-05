@@ -9,7 +9,6 @@ export const RootNavigator = StackNavigator(
   {
     tabs: TabNavigator(
       {
-        info: { screen: InfoScreen },
         schedule: StackNavigator(
           {
             scheduleOverview: { screen: ScheduleScreen },
@@ -21,10 +20,13 @@ export const RootNavigator = StackNavigator(
           },
         ),
         venue: { screen: VenueScreen },
+        info: { screen: InfoScreen },
       },
       {
+        initialRouteName: "info",
         tabBarPosition: "bottom",
         tabBarComponent: TabBar,
+        order: ["info", "schedule", "venue"],
       },
     ),
   },
