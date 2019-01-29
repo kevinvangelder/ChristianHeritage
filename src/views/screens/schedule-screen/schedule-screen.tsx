@@ -7,7 +7,7 @@ import { TitleBar } from "../../shared/title-bar"
 import { Text } from "../../shared/text"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
-const data = require("../../../models/fall-2018.json")
+const data = require("../../../models/marriage-retreat-2019.json")
 const moment = require("moment")
 
 export interface ScheduleScreenProps extends NavigationScreenProps<{}> {}
@@ -25,8 +25,20 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
 
   constructor(props) {
     super(props)
+    let selectedDay = null
+    switch (moment().day()) {
+      case 4:
+        selectedDay = "thursday"
+        break
+      case 5:
+        selectedDay = "friday"
+        break
+      default:
+        selectedDay = "saturday"
+        break
+    }
     this.state = {
-      selectedDay: moment().day() === 6 ? "saturday" : "friday",
+      selectedDay,
     }
   }
 
@@ -76,8 +88,24 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
           style={{ flexDirection: "row", borderTopWidth: 1, borderTopColor: palette.lightGrey }}
         >
           <TouchableOpacity
+            onPress={() => this.setState({ selectedDay: "thursday" })}
+            style={[NAV_ITEM, selectedDay === "thursday" && { backgroundColor: palette.shipCove }]}
+          >
+            <Text
+              text="Thursday"
+              style={{
+                textAlign: "center",
+                color: selectedDay === "thursday" ? palette.white : palette.darkGrey,
+              }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => this.setState({ selectedDay: "friday" })}
-            style={[NAV_ITEM, selectedDay === "friday" && { backgroundColor: palette.shipCove }]}
+            style={[
+              NAV_ITEM,
+              { borderLeftWidth: 1, borderLeftColor: palette.lightGrey },
+              selectedDay === "friday" && { backgroundColor: palette.shipCove },
+            ]}
           >
             <Text
               text="Friday"

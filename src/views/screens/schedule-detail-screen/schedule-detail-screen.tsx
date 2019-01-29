@@ -45,6 +45,7 @@ const DESCRIPTION: TextStyle = {
 const IMAGE: ImageStyle = {
   width: 120,
   resizeMode: "contain",
+  maxHeight: 200,
 }
 
 const ACTIVITY: ViewStyle = {
@@ -58,14 +59,6 @@ const INVISIBLE: ViewStyle = {
   width: 0,
 }
 
-// const IMAGES = {
-//   "Ken Ham": "https://www.christianheritageonline.org/wp-content/uploads/2016/12/Ham_Ken_lg.png",
-//   "Dr. Steve Scheibner":
-//     "https://www.christianheritageonline.org/wp-content/uploads/2016/12/Scheibner_SM.png",
-//   "Dr. Carlton McLeod":
-//     "https://www.christianheritageonline.org/wp-content/uploads/2016/12/McLoed_Carlton_sm.png",
-// }
-
 const IMAGES = {
   "Kevin Swanson": require("./Kevin_Swanson.png"),
   "Steve Walker": require("./Steve_Walker.png"),
@@ -75,6 +68,7 @@ const IMAGES = {
   "Dwight Cover": require("./Dwight_Cover.png"),
   "Mark Ward": require("./Mark_Ward.png"),
   "Wendy Walker": require("./Wendy_Walker.png"),
+  "Dwight & Sherrill Cover": require("./Dwight_and_Sherrill_Cover.jpg"),
 }
 const BIOS = {
   "Kevin Swanson":
@@ -93,6 +87,8 @@ const BIOS = {
     "Mark Ward, PhD, is a writer and editor at Faithlife, makers of Logos Bible Software, in Bellingham, WA. His wife and three homeschooled children live in Mount Vernon, WA. Mark is the author of Biblical Worldview: Creation, Fall, Redemption and Authorized: The Use and Misuse of the King James Bible.",
   "Wendy Walker":
     "Wendy Walker is helpmeet to Steve, mother of six, grandmother to eight, and an adoring daughter of the King. She loves discipling women and teaching them about the importance of living as women of the Word and serving Jesus faithfully. Wendy delights in exploring Creation, cooking, reading, and training up the next generation.",
+  "Dwight & Sherrill Cover":
+    "As one fruit of a godly upbringing, Dwight Cover sensed God’s call to pastoral ministry at age fourteen. He prepared for that at Biola University (B.A.) and Dallas Theological Seminary (Th.M.). After five years as an Associate Pastor in Alaska, he became Senior Pastor of Grace Fellowship in Grandview, Washington, where he served for twenty-one years. In 2009, Dwight started Household of Faith in Grandview, where he currently serves as Teaching Pastor. Dwight has also spoken at collegiate retreats, men’s conferences, Christian Heritage conferences, and Generations conferences. Thirty-five years of pastoral ministry have only served to deepen Dwight’s passion to study the Word of God, to practice it, and to equip another generation of believers to advance the gospel for the glory of God. \n\nEarly in Dwight and Sherrill Cover’s marriage and ministry (1986), God gave them a passion for a godly marriage and family as a fruit of and a fruit-bearing-tool of the gospel. With God’s blessing, they have been discipling and home-educating their eight children and grandchildren to trust Christ and advance His kingdom. Now thirty-two years into their marriage, Dwight and Sherrill continue trusting God to help them not only grow old together but also better reflect the covenant-love of Christ in purifying His Bride, the Church. An undying love involves much dying; but Dwight and Sherrill are thankful for the life of greater oneness that comes from learning to die to self for Christ’s sake, for each other’s sake, and for the sake of future generations.",
 }
 
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {

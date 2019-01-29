@@ -64,7 +64,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
             />
           </View>
           <Image
-            source={require("./bible-conference-logo.jpg")}
+            source={require("./leavenworth.jpg")}
             style={{ alignSelf: "center", resizeMode: "center", maxWidth: "100%", maxHeight: 280 }}
           />
           <View
