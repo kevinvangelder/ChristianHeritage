@@ -1556,9 +1556,10 @@ exports[`Storyshots FormRow Assembled 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#778AB8",
                     "fontFamily": "Avenir",
                     "fontSize": 13,
+                    "lineHeight": 22,
                   }
                 }
               >
@@ -1606,9 +1607,10 @@ exports[`Storyshots FormRow Assembled 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#333333",
                     "fontFamily": "Avenir",
-                    "fontSize": 9,
+                    "fontSize": 12,
+                    "lineHeight": 14,
                   }
                 }
               >
@@ -4053,7 +4055,7 @@ exports[`Storyshots Text Style Presets 1`] = `
                 Object {
                   "color": "#1d1d1d",
                   "fontFamily": "Avenir",
-                  "fontSize": 24,
+                  "fontSize": 20,
                   "fontWeight": "600",
                 }
               }
@@ -4194,9 +4196,10 @@ exports[`Storyshots TextField Labelling 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#778AB8",
                     "fontFamily": "Avenir",
                     "fontSize": 13,
+                    "lineHeight": 22,
                   }
                 }
               >
@@ -4322,9 +4325,10 @@ exports[`Storyshots TextField Labelling 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#778AB8",
                     "fontFamily": "Avenir",
                     "fontSize": 13,
+                    "lineHeight": 22,
                   }
                 }
               >
@@ -4484,9 +4488,10 @@ exports[`Storyshots TextField Style Overrides 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#778AB8",
                     "fontFamily": "Avenir",
                     "fontSize": 13,
+                    "lineHeight": 22,
                   }
                 }
               >
@@ -4524,9 +4529,10 @@ exports[`Storyshots TextField Style Overrides 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#778AB8",
                     "fontFamily": "Avenir",
                     "fontSize": 13,
+                    "lineHeight": 22,
                   }
                 }
               >
@@ -4652,9 +4658,10 @@ exports[`Storyshots TextField Style Overrides 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#939AA4",
+                    "color": "#778AB8",
                     "fontFamily": "Avenir",
                     "fontSize": 13,
+                    "lineHeight": 22,
                   }
                 }
               >
@@ -4688,9 +4695,10 @@ exports[`Storyshots TextField Style Overrides 1`] = `
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#939AA4",
+                  "color": "#333333",
                   "fontFamily": "Avenir",
-                  "fontSize": 9,
+                  "fontSize": 12,
+                  "lineHeight": 14,
                 }
               }
             >

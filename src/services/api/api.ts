@@ -1,7 +1,10 @@
 import { ApisauceInstance, create, ApiResponse } from "apisauce"
 import { getGeneralApiProblem } from "./api-problem"
-import { ApiConfig, DEFAULT_API_CONFIG } from "./api-config"
+import { ApiConfig, DEFAULT_API_CONFIG } from "./api.config"
 import * as Types from "./api.types"
+
+const ORG_ID = 136
+const CONF_ID = 0
 
 /**
  * Manages all requests to the API.
@@ -38,18 +41,18 @@ export class Api {
     this.apisauce = create({
       baseURL: this.config.url,
       timeout: this.config.timeout,
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-      },
+      headers: {},
     })
   }
 
   /**
    * Gets a list of repos.
    */
-  async getRepo(repo: string): Promise<Types.GetRepoResult> {
+  async getRecordings(): Promise<Types.GetRecordingsResult> {
     // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`/repos/${repo}`)
+    const response: ApiResponse<any> = await this.apisauce.get(
+      `?method=getRecordings&oid=${ORG_ID}&returnformat=json&cid=${CONF_ID}`,
+    )
 
     // the typical ways to die when calling an api
     if (!response.ok) {
@@ -59,12 +62,7 @@ export class Api {
 
     // transform the data into the format we are expecting
     try {
-      const resultRepo: Types.Repo = {
-        id: response.data.id,
-        name: response.data.name,
-        owner: response.data.owner.login,
-      }
-      return { kind: "ok", repo: resultRepo }
+      return { kind: "ok", recordings: response.data.data }
     } catch {
       return { kind: "bad-data" }
     }

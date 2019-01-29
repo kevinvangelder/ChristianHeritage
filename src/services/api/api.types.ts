@@ -1,9 +1,6 @@
 import { GeneralApiProblem } from "./api-problem"
+import { RecordingSnapshot } from "../../models/recording"
 
-export interface Repo {
-  id: number
-  name: string
-  owner: string
-}
-
-export type GetRepoResult = { kind: "ok"; repo: Repo } | GeneralApiProblem
+export type GetRecordingsResult =
+  | { kind: "ok"; recordings: RecordingSnapshot[] }
+  | GeneralApiProblem
