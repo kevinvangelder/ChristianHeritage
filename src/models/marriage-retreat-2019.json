@@ -1,0 +1,198 @@
+{
+  "thursday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Session #1",
+        "startTime": "7:00PM",
+        "endTime": "9:00PM",
+        "duration": 120
+      }
+    ],
+    "activities": {
+      "0": [
+        {
+          "name":
+            "“Before God and These Witnesses”: The Beginning and End of Marriage, and Why Ours Matters",
+          "speaker": "Dwight & Sherrill Cover",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "friday": {
+    "timeSlots": [
+      {
+        "id": 1,
+        "name": "Breakfast Buffet",
+        "startTime": "7:30AM",
+        "endTime": "9:30AM",
+        "duration": 120
+      },
+      {
+        "id": 2,
+        "name": "Session #2",
+        "startTime": "9:30AM",
+        "endTime": "10:30AM",
+        "duration": 60
+      },
+      {
+        "id": 3,
+        "name": "Break",
+        "startTime": "10:30AM",
+        "endTime": "11:00AM",
+        "duration": 30
+      },
+      {
+        "id": 4,
+        "name": "Session #3",
+        "startTime": "11:00AM",
+        "endTime": "12:00PM",
+        "duration": 60
+      },
+      {
+        "id": 5,
+        "name": "Lunch",
+        "startTime": "12:00PM",
+        "endTime": "2:30PM",
+        "duration": 150
+      },
+      {
+        "id": 6,
+        "name": "Session #4",
+        "startTime": "2:30PM",
+        "endTime": "3:30PM",
+        "duration": 60
+      },
+      {
+        "id": 7,
+        "name": "Break",
+        "startTime": "3:30PM",
+        "endTime": "4:00PM",
+        "duration": 30
+      },
+      {
+        "id": 8,
+        "name": "Session #5",
+        "startTime": "4:00PM",
+        "endTime": "5:00PM",
+        "duration": 60
+      },
+      {
+        "id": 9,
+        "name": "Dinner",
+        "startTime": "5:00PM",
+        "endTime": "6:00PM",
+        "duration": 60
+      }
+    ],
+    "activities": {
+      "1": [
+        {
+          "name": "Breakfast Buffet",
+          "description":
+            "Enjoy a delicious chef-prepared breakfast buffet, with omelets available by personal order."
+        }
+      ],
+      "2": [
+        {
+          "name": "“To Love and to Cherish”: Pursuing God’s Blessing in Our Marriage",
+          "speaker": "Dwight & Sherrill Cover",
+          "description": ""
+        }
+      ],
+      "3": [
+        {
+          "name": "Break",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "“For Better, For Worse”: Growing Through Hard Times in Our Marriage",
+          "speaker": "Dwight & Sherrill Cover",
+          "description": ""
+        }
+      ],
+      "5": [
+        {
+          "name": "Lunch",
+          "description": "There are a variety of restaurants in town within walking distance"
+        }
+      ],
+      "6": [
+        {
+          "name": "“To Have and to Hold”: Cultivating Intimacy in Our Marriage",
+          "speaker": "Dwight & Sherrill Cover",
+          "description": ""
+        }
+      ],
+      "7": [
+        {
+          "name": "Break",
+          "description": ""
+        }
+      ],
+      "8": [
+        {
+          "name": "Q&A:  Men with Dwight and Women with Sherrill",
+          "speaker": "Dwight & Sherrill Cover",
+          "description": ""
+        }
+      ],
+      "9": [
+        {
+          "name": "Dinner",
+          "description": "Enjoy the evening with Fun, Food, and Fellowship"
+        }
+      ]
+    }
+  },
+  "saturday": {
+    "timeSlots": [
+      {
+        "id": 10,
+        "name": "Breakfast Buffet",
+        "startTime": "7:30AM",
+        "endTime": "9:30AM",
+        "duration": 120
+      },
+      {
+        "id": 11,
+        "name": "Session #6",
+        "startTime": "9:30AM",
+        "endTime": "10:30AM",
+        "duration": 60
+      },
+      {
+        "id": 12,
+        "name": "Retreat Concludes",
+        "startTime": "11:00AM",
+        "endTime": "11:00AM",
+        "duration": 0
+      }
+    ],
+    "activities": {
+      "10": [
+        {
+          "name": "Breakfast Buffet",
+          "description":
+            "Enjoy a delicious chef-prepared breakfast buffet, with omelets available by personal order."
+        }
+      ],
+      "11": [
+        {
+          "name": "“From This Day Forward”: Taking the Next Steps in Our Marriage",
+          "speaker": "Dwight & Sherrill Cover",
+          "description": ""
+        }
+      ],
+      "12": [
+        {
+          "name": "Retreat Concludes",
+          "description": ""
+        }
+      ]
+    }
+  }
+}

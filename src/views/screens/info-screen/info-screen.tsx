@@ -19,7 +19,7 @@ import { color } from "../../../theme"
 export interface InfoScreenProps extends NavigationScreenProps<{}> {}
 
 const ROOT: ViewStyle = {
-  width: "100%",
+  flex: 1,
   paddingHorizontal: spacing[4],
   paddingBottom: spacing[3],
 }
@@ -32,6 +32,12 @@ const LINK: TextStyle = {
   textDecorationLine: "underline",
   fontWeight: "bold",
   paddingHorizontal: spacing[2],
+}
+const PARAGRAPH: TextStyle = {
+  marginBottom: spacing[3],
+}
+const ITALICS: TextStyle = {
+  fontStyle: "italic",
 }
 
 const FACEBOOK_URL = "https://www.facebook.com/christianheritagehomeeducators"
@@ -67,6 +73,30 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
             source={require("./leavenworth.jpg")}
             style={{ alignSelf: "center", resizeMode: "center", maxWidth: "100%", maxHeight: 280 }}
           />
+          <Text style={{ ...PARAGRAPH, ...ITALICS }}>
+            Hebrews 13:4 Let marriage be held in honor among all..
+          </Text>
+          <Text style={PARAGRAPH}>
+            These days marriage is certainly not held in honor among many! All around us we see the
+            devastation, pain and heartbreak of broken marriage vows. We see the systematic attempts
+            to dismantle the sanctity of marriage and the redefining of it. The enemy knows how
+            foundational this institution is and has been working to destroy what God has
+            established as Holy.
+          </Text>
+          <Text style={PARAGRAPH}>
+            Here at Christian Heritage, we understand that the unity between a husband and wife is
+            foundational to the stability of the family. Therefore, we are committed to providing
+            services and events like this to help strengthen and equip you to bring glory to our
+            heavenly father through your family.
+          </Text>
+          <Text style={PARAGRAPH}>
+            We sincerely hope this retreat will be an encouragement to you and your spouse and that
+            you will grow in your commitment and devotion to the Lord and in turn Love, Respect and
+            Cherish each other more deeply.{" "}
+          </Text>
+          <Text style={PARAGRAPH}>To God’s Glory!</Text>
+          <Text>Your servant in Christ,</Text>
+          <Text style={PARAGRAPH}>P. Luke Peterson</Text>
           <View
             style={{
               paddingTop: spacing[6],
@@ -87,7 +117,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
                 <TouchableOpacity onPress={() => Linking.openURL(IGNITE_URL)}>
                   <Image
                     source={require("./ignite.png")}
-                    style={{ width: 60, height: 32, marginHorizontal: spacing[2] }}
+                    style={{ width: 60, height: 32, marginHorizontal: spacing[2], maxHeight: 32 }}
                   />
                 </TouchableOpacity>
               </View>
