@@ -41,7 +41,7 @@ const ITALICS: TextStyle = {
 }
 
 const FACEBOOK_URL = "https://www.facebook.com/christianheritagehomeeducators"
-const WEBSITE_URL = "https://www.christianheritageonline.org/"
+const WEBSITE_URL = "https://www.christianheritagewa.org/"
 const IGNITE_URL = "https://infinite.red/ignite"
 
 export class InfoScreen extends React.Component<InfoScreenProps, {}> {
@@ -52,7 +52,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
         <ScrollView style={ROOT} contentContainerStyle={{ width: "100%" }}>
           <Image
             source={require("./CH-logo-wide.jpg")}
-            style={{ alignSelf: "center", resizeMode: "center", maxWidth: "100%", maxHeight: 90 }}
+            style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 90 }}
           />
           <View style={[CENTER, { flexDirection: "row", justifyContent: "center", paddingTop: 0 }]}>
             <Text
@@ -71,7 +71,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
           </View>
           <Image
             source={require("./leavenworth.jpg")}
-            style={{ alignSelf: "center", resizeMode: "center", maxWidth: "100%", maxHeight: 280 }}
+            style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 280 }}
           />
           <Text style={{ ...PARAGRAPH, ...ITALICS }}>
             Hebrews 13:4 Let marriage be held in honor among all..
