@@ -16,7 +16,8 @@
     "postinstall": "solidarity",
     "precommit": "lint-staged",
     "prepare": "patch-package",
-    "storybook": "storybook start -p 9001 --skip-packager"
+    "storybook": "storybook start -p 9001 --skip-packager",
+    "build:ios": "react-native run-ios --configuration Release"
   },
   "dependencies": {
     "apisauce": "^0.14.3",
