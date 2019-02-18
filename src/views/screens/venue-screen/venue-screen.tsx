@@ -1,14 +1,5 @@
 import * as React from "react"
-import {
-  Image,
-  View,
-  ImageStyle,
-  TextStyle,
-  ViewStyle,
-  ScrollView,
-  TouchableOpacity,
-  Linking,
-} from "react-native"
+import { Image, View, ImageStyle, TextStyle, ViewStyle, ScrollView } from "react-native"
 import { Text } from "../../shared/text"
 import { NavigationScreenProps } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -29,9 +20,9 @@ const IMAGE: ImageStyle = {
   flex: 1,
   resizeMode: "contain",
   maxWidth: "100%",
-  maxHeight: "150%",
-  marginBottom: -spacing[8],
-  marginTop: -spacing[8] - spacing[5],
+  maxHeight: "180%",
+  // marginBottom: -spacing[8],
+  // marginTop: -spacing[8] - spacing[5],
 }
 const GRID_ROW: ViewStyle = {
   flexDirection: "row",
@@ -65,49 +56,16 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
       <Screen preset="fixed" style={ROOT}>
         <TitleBar title="Venue" />
         <ScrollView
-          style={{ width: "100%", maxWidth: "100%", padding: spacing[2] }}
+          style={{ flex: 1, padding: spacing[2] }}
           contentContainerStyle={{ maxWidth: "100%" }}
         >
-          <Image source={require("./leavenworth.png")} style={LOGO} />
-          <View style={GRID_ROW}>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/shopping/")}
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-shopping.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Shopping</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/dining/")}
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-dining.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Dining</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={GRID_ROW}>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/attractions/")}
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-activities.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Attractions</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/recreation/")}
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-recreation.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Recreation</Text>
-            </TouchableOpacity>
-          </View>
           {/* <Image source={require("./ocean-shores.png")} style={IMAGE} /> */}
-          {/* <Text preset="header" text="First Floor" style={TEXT} />
+          <Text preset="header" text="First Floor" style={TEXT} />
           <Image source={require("./floor-1.png")} style={IMAGE} />
           <Text preset="header" text="Second Floor" style={TEXT} />
           <Image source={require("./floor-2.png")} style={IMAGE} />
           <Text preset="header" text="Third Floor" style={TEXT} />
-          <Image source={require("./floor-3.png")} style={IMAGE} /> */}
+          <Image source={require("./floor-3.png")} style={IMAGE} />
         </ScrollView>
       </Screen>
     )

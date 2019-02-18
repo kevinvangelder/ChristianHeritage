@@ -70,7 +70,7 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
             />
           </View>
           <Image
-            source={require("./leavenworth.jpg")}
+            source={require("./spring-2019.png")}
             style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 280 }}
           />
           <Text style={{ ...PARAGRAPH, ...ITALICS }}>
@@ -83,20 +83,6 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
             foundational this institution is and has been working to destroy what God has
             established as Holy.
           </Text>
-          <Text style={PARAGRAPH}>
-            Here at Christian Heritage, we understand that the unity between a husband and wife is
-            foundational to the stability of the family. Therefore, we are committed to providing
-            services and events like this to help strengthen and equip you to bring glory to our
-            heavenly father through your family.
-          </Text>
-          <Text style={PARAGRAPH}>
-            We sincerely hope this retreat will be an encouragement to you and your spouse and that
-            you will grow in your commitment and devotion to the Lord and in turn Love, Respect and
-            Cherish each other more deeply.{" "}
-          </Text>
-          <Text style={PARAGRAPH}>To God’s Glory!</Text>
-          <Text>Your servant in Christ,</Text>
-          <Text style={PARAGRAPH}>P. Luke Peterson</Text>
           <View
             style={{
               paddingTop: spacing[6],

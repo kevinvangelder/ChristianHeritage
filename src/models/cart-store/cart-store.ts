@@ -1,12 +1,24 @@
-import { types } from "mobx-state-tree"
+import { types, clone } from "mobx-state-tree"
 import { CartModel } from "../cart"
+import { withRootStore } from "../extensions"
 
 /**
  * An CartStore model.
  */
-export const CartStoreModel = types.model("CartStore").props({
-  currentCart: types.optional(types.array(CartModel), []),
-})
+export const CartStoreModel = types
+  .model("CartStore")
+  .props({
+    currentCart: types.optional(CartModel, {}),
+  })
+  .extend(withRootStore)
+  .actions(self => ({
+    addToCart: RECID => {
+      const recording = self.rootStore.recordingStore.findRecording(RECID)
+      if (recording) {
+        self.currentCart.addItem(clone(recording))
+      }
+    },
+  }))
 
 /**
  * The CartStore instance.

@@ -14,7 +14,9 @@ const BASE_VIEW: ViewStyle = {
 }
 
 const BASE_TEXT: TextStyle = {
-  paddingHorizontal: spacing[3],
+  paddingHorizontal: spacing[2],
+  fontSize: 15,
+  fontWeight: "bold",
 }
 
 /**
@@ -26,11 +28,11 @@ export const viewPresets = {
   /**
    * A smaller piece of secondard information.
    */
-  primary: { ...BASE_VIEW, backgroundColor: color.palette.orange } as ViewStyle,
+  primary: { ...BASE_VIEW, backgroundColor: color.palette.bahamaBlue } as ViewStyle,
 }
 
 export const textPresets = {
-  primary: { ...BASE_TEXT, fontSize: 9, color: color.palette.white } as TextStyle,
+  primary: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
 }
 
 /**

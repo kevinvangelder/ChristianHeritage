@@ -9,7 +9,7 @@ export const RecordingModel = types.model("Recording").props({
   PRICE: types.number,
   ORG: types.string,
   RECID: types.string,
-  RID: types.string,
+  RID: types.number,
   AVAILABLE: types.boolean,
   TOPICS: types.frozen,
   DESCRIPTION: types.string,

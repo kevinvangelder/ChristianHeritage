@@ -8,7 +8,6 @@ import { BackButtonHandler } from "../navigation/back-button-handler"
 import { contains } from "ramda"
 import { DEFAULT_NAVIGATION_CONFIG } from "../navigation/navigation-config"
 import { SafeAreaView } from "react-navigation"
-import { palette } from "../theme/palette"
 
 interface RootComponentState {
   rootStore?: RootStore
@@ -26,6 +25,7 @@ export class RootComponent extends React.Component<{}, RootComponentState> {
     this.setState({
       rootStore: await setupRootStore(),
     })
+    this.state.rootStore.recordingStore.fetchRecordings()
   }
 
   /**
@@ -56,7 +56,10 @@ export class RootComponent extends React.Component<{}, RootComponentState> {
     // otherwise, we're ready to render the app
 
     // --- am: begin list of stores ---
-    const otherStores = {}
+    const otherStores = {
+      cartStore: rootStore.cartStore,
+      recordingStore: rootStore.recordingStore,
+    }
     // --- am: end list of stores ---
 
     return (

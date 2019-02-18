@@ -2,6 +2,7 @@ import { ApisauceInstance, create, ApiResponse } from "apisauce"
 import { getGeneralApiProblem } from "./api-problem"
 import { ApiConfig, DEFAULT_API_CONFIG } from "./api.config"
 import * as Types from "./api.types"
+import { transformRecordingSnapshots } from "./api.transform"
 
 const ORG_ID = 136
 const CONF_ID = 0
@@ -62,7 +63,7 @@ export class Api {
 
     // transform the data into the format we are expecting
     try {
-      return { kind: "ok", recordings: response.data.data }
+      return { kind: "ok", recordings: transformRecordingSnapshots(response.data.data) }
     } catch {
       return { kind: "bad-data" }
     }

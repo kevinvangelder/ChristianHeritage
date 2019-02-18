@@ -7,7 +7,7 @@ import { TitleBar } from "../../shared/title-bar"
 import { Text } from "../../shared/text"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
-const data = require("../../../models/marriage-retreat-2019.json")
+const data = require("../../../models/spring-2019.json")
 const moment = require("moment")
 
 export interface ScheduleScreenProps extends NavigationScreenProps<{}> {}
