@@ -16,6 +16,7 @@ import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
 import { Button } from "../../shared/button"
+import { inject, observer } from "mobx-react"
 
 export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {}
 
@@ -140,6 +141,8 @@ const BIOS = {
     "Neil was Minister of Music in several churches and served as arranger, accompanist, and Director of Music of an international Bible-teaching ministry. Neil is President and Executive Director of Christian Heritage Home Educators of Washington and instructs and directs the annual Christian Heritage Chorale. He and his wife, Mary, are on the Christian Heritage Board.",
 }
 
+@inject("cartStore")
+@observer
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {
   static navigationOptions = ({ navigation }) => ({
     headerTitle: TitleBar,
@@ -147,6 +150,14 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
 
   openBio(speakerName, bio) {
     Alert.alert(speakerName, bio)
+  }
+
+  addToCart(RECID) {
+    this.props.cartStore.addToCart(RECID)
+  }
+
+  removeFromCart(RECID) {
+    this.props.cartStore.removeFromCart(RECID)
   }
 
   render() {
@@ -196,7 +207,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
           </TouchableOpacity>
         </View>
-        {activity.RECID && <Button text="Add to Cart" />}
+        {activity.RECID && this.renderCartButton(activity)}
       </ScrollView>
     )
   }
@@ -245,8 +256,16 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
           </TouchableOpacity>
         </View>
-        {activity.RECID && <Button text="Add to Cart" />}
+        {activity.RECID && this.renderCartButton(activity)}
       </View>
     )
+  }
+
+  renderCartButton = activity => {
+    if (this.props.cartStore.currentCart.itemIds.includes(activity.RECID)) {
+      return <Button text="Remove from Cart" onPress={() => this.removeFromCart(activity.RECID)} />
+    } else {
+      return <Button text="Add to Cart" onPress={() => this.addToCart(activity.RECID)} />
+    }
   }
 }

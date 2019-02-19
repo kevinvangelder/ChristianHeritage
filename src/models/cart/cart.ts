@@ -26,6 +26,14 @@ export const CartModel = types
     addItem: (item: RecordingModel) => {
       self.setItems(self.items.concat(item))
     },
+    removeItem: (item: RecordingModel) => {
+      self.items.remove(item)
+    },
+  }))
+  .views(self => ({
+    get itemIds() {
+      return self.items.map(i => i.RECID)
+    },
   }))
 
 type CartType = typeof CartModel.Type
