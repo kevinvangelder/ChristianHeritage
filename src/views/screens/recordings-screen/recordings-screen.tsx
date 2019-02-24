@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/spacing"
@@ -27,7 +27,11 @@ export class RecordingsScreen extends React.Component<RecordingsScreenProps, {}>
   render() {
     return (
       <Screen preset="fixed">
-        <TitleBar title="Recordings" />
+        <TitleBar
+          title="Recordings"
+          back
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+        />
         <ScrollView style={ROOT} contentContainerStyle={{ width: "100%" }} />
       </Screen>
     )

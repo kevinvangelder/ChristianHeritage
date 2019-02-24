@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Image, View, ImageStyle, TextStyle, ViewStyle, ScrollView } from "react-native"
 import { Text } from "../../shared/text"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/"
@@ -54,7 +54,11 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
   render() {
     return (
       <Screen preset="fixed" style={ROOT}>
-        <TitleBar title="Venue" />
+        <TitleBar
+          title="Venue"
+          back
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+        />
         <ScrollView
           style={{ flex: 1, padding: spacing[2] }}
           contentContainerStyle={{ maxWidth: "100%" }}

@@ -29,10 +29,12 @@ export const viewPresets = {
    * A smaller piece of secondard information.
    */
   primary: { ...BASE_VIEW, backgroundColor: color.palette.bahamaBlue } as ViewStyle,
+  delete: { ...BASE_VIEW, backgroundColor: color.palette.angry } as ViewStyle,
 }
 
 export const textPresets = {
   primary: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
+  delete: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
 }
 
 /**

@@ -32,6 +32,7 @@ export class TimeSlot extends React.Component<TimeSlotProps, {}> {
             flexDirection: "column",
             justifyContent: "space-between",
             padding: 5,
+            paddingRight: 10,
             height,
             minHeight: 60,
           }}

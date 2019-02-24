@@ -17,6 +17,9 @@ export const withCustomActions = (getRootStore: GetRootStore) => {
             console.tron.log("resetting navigation store")
             getRootStore().navigationStore.reset()
             break
+          case "goBack":
+            getRootStore().navigationStore.goBack()
+            break
         }
       },
     }

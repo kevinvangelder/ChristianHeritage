@@ -1,6 +1,6 @@
 import * as React from "react"
 import { FlatList, View, TouchableOpacity, ViewStyle } from "react-native"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TimeSlot } from "./time-slot"
 import { TitleBar } from "../../shared/title-bar"
@@ -19,10 +19,6 @@ const NAV_ITEM: ViewStyle = {
 }
 
 export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selectedDay: string }> {
-  // static navigationOptions = {
-  //   headerTitle: TitleBar,
-  // }
-
   constructor(props) {
     super(props)
     let selectedDay = null
@@ -76,7 +72,11 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
     return (
       <Screen preset="fixed">
         {/* {this.renderCurrentTimeIndicator} */}
-        <TitleBar title="Schedule" />
+        <TitleBar
+          title="Schedule"
+          back
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+        />
         <FlatList
           data={dayTimeSlots}
           extraData={this.state}

@@ -10,15 +10,18 @@ import {
   Alert,
 } from "react-native"
 import { Text } from "../../shared/text"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
 import { Button } from "../../shared/button"
 import { inject, observer } from "mobx-react"
+import { CartStore } from "../../../models/cart-store"
 
-export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {}
+export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {
+  cartStore: CartStore
+}
 
 const ROOT: ViewStyle = {
   flex: 1,
@@ -144,10 +147,6 @@ const BIOS = {
 @inject("cartStore")
 @observer
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {
-  static navigationOptions = ({ navigation }) => ({
-    headerTitle: TitleBar,
-  })
-
   openBio(speakerName, bio) {
     Alert.alert(speakerName, bio)
   }
@@ -165,7 +164,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
       <Screen preset="fixed">
         <TitleBar
           back
-          onPress={this.props.navigation.popToTop}
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
           title={this.props.navigation.state.params.title}
         />
         {this.renderContent()}
@@ -263,7 +262,13 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
 
   renderCartButton = activity => {
     if (this.props.cartStore.currentCart.itemIds.includes(activity.RECID)) {
-      return <Button text="Remove from Cart" onPress={() => this.removeFromCart(activity.RECID)} />
+      return (
+        <Button
+          text="Remove from Cart"
+          preset="delete"
+          onPress={() => this.removeFromCart(activity.RECID)}
+        />
+      )
     } else {
       return <Button text="Add to Cart" onPress={() => this.addToCart(activity.RECID)} />
     }

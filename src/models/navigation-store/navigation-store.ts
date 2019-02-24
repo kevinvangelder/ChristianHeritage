@@ -58,6 +58,11 @@ export const NavigationStoreModel = NavigationEvents.named("NavigationStore")
       return findCurrentRoute(self.state)
     },
   }))
+  .actions(self => ({
+    goBack() {
+      self.dispatch(NavigationActions.back())
+    },
+  }))
   /**
    * When we are assigned a new snapshot.
    */

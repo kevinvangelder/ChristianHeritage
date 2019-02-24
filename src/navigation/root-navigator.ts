@@ -8,6 +8,7 @@ import { TabBar } from "../views/shared/tab-bar"
 
 export const RootNavigator = StackNavigator(
   {
+    welcome: { screen: InfoScreen },
     tabs: TabNavigator(
       {
         schedule: StackNavigator(
@@ -21,14 +22,14 @@ export const RootNavigator = StackNavigator(
           },
         ),
         venue: { screen: VenueScreen },
-        info: { screen: InfoScreen },
         recordings: { screen: RecordingsScreen },
       },
       {
-        initialRouteName: "info",
+        initialRouteName: "schedule",
         tabBarPosition: "bottom",
         tabBarComponent: TabBar,
-        order: ["info", "schedule", "venue", "recordings"],
+        order: ["schedule", "venue", "recordings"],
+        backBehavior: "none",
       },
     ),
   },
@@ -42,6 +43,6 @@ export const RootNavigator = StackNavigator(
         paddingTop: 0,
       },
     },
-    initialRouteName: "tabs",
+    initialRouteName: "welcome",
   },
 )
