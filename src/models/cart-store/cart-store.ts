@@ -1,5 +1,5 @@
 import { types, clone } from "mobx-state-tree"
-import { CartModel } from "../cart"
+import { CartSnapshot, Cart, CartModel } from "../cart"
 import { withRootStore } from "../extensions"
 import { RecordingModel } from "../recording"
 
@@ -13,6 +13,9 @@ export const CartStoreModel = types
   })
   .extend(withRootStore)
   .actions(self => ({
+    setCurrentCart: (value: CartSnapshot | Cart) => {
+      self.currentCart = value as CartModel
+    },
     findCartItem: async (RECID): Promise<RecordingModel | boolean> => {
       const recording = self.currentCart.items.find(r => r.RECID === RECID)
       if (recording) return recording

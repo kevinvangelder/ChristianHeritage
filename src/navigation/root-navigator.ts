@@ -3,12 +3,14 @@ import { ScheduleScreen } from "../views/screens/schedule-screen"
 import { ScheduleDetailScreen } from "../views/screens/schedule-detail-screen"
 import { VenueScreen } from "../views/screens/venue-screen"
 import { InfoScreen } from "../views/screens/info-screen"
+import { AuthenticationScreen } from "../views/screens/authentication-screen"
 import { RecordingsScreen } from "../views/screens/recordings-screen"
 import { TabBar } from "../views/shared/tab-bar"
 
 export const RootNavigator = StackNavigator(
   {
     welcome: { screen: InfoScreen },
+    authentication: { screen: AuthenticationScreen },
     tabs: TabNavigator(
       {
         schedule: StackNavigator(

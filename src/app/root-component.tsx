@@ -59,6 +59,7 @@ export class RootComponent extends React.Component<{}, RootComponentState> {
     const otherStores = {
       cartStore: rootStore.cartStore,
       recordingStore: rootStore.recordingStore,
+      userStore: rootStore.userStore,
     }
     // --- am: end list of stores ---
 
