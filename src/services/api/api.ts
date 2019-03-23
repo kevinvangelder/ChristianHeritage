@@ -5,7 +5,7 @@ import * as Types from "./api.types"
 import { transformRecordingSnapshots } from "./api.transform"
 
 const ORG_ID = 136
-const CONF_ID = 0
+const CONF_ID = 74
 
 /**
  * Manages all requests to the API.
@@ -21,6 +21,8 @@ export class Api {
    */
   config: ApiConfig
 
+  onTokenExpired?: () => Promise<boolean>
+
   /**
    * Creates the api.
    *
@@ -28,6 +30,8 @@ export class Api {
    */
   constructor(config: ApiConfig = DEFAULT_API_CONFIG) {
     this.config = config
+
+    this.onTokenExpired = () => new Promise(resolve => resolve(true))
   }
 
   /**
@@ -44,6 +48,11 @@ export class Api {
       timeout: this.config.timeout,
       headers: {},
     })
+    this.apisauce.addMonitor(response => {
+      const { ERROR } = response.data
+      if (ERROR && ERROR === "Customer Token not valid or expired. Please authenticate.")
+        this.onTokenExpired()
+    })
   }
 
   /**
@@ -51,9 +60,16 @@ export class Api {
    */
   async getRecordings(): Promise<Types.GetRecordingsResult> {
     // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(
-      `get.cfc?method=getRecordings&oid=${ORG_ID}&returnformat=json&cid=${CONF_ID}`,
-    )
+    const body = new FormData()
+    body.append("method", "getRecordings")
+    body.append("oid", ORG_ID)
+    body.append("returnformat", "json")
+    body.append("cid", CONF_ID)
+    body.append("limit", 100)
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post(`get.cfc`, body)
 
     // the typical ways to die when calling an api
     if (!response.ok) {
@@ -64,15 +80,20 @@ export class Api {
     // transform the data into the format we are expecting
     try {
       return { kind: "ok", recordings: transformRecordingSnapshots(response.data.data) }
-    } catch {
+    } catch (expecting) {
       return { kind: "bad-data" }
     }
   }
 
   async checkEmail(email): Promise<Types.CheckEmailResult> {
-    const response: ApiResponse<any> = await this.apisauce.get(
-      `cart.cfc?method=checkEmail&email=${email}&returnformat=json`,
-    )
+    const body = new FormData()
+    body.append("method", "checkEmail")
+    body.append("email", email)
+    body.append("returnformat", "json")
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post(`cart.cfc`, body)
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
       if (problem) return problem
@@ -80,7 +101,7 @@ export class Api {
 
     try {
       return { kind: "ok", emailExists: response.data || false }
-    } catch {
+    } catch (e) {
       return { kind: "bad-data" }
     }
   }
@@ -96,26 +117,25 @@ export class Api {
     city,
     state,
     zip,
-    cart = {},
+    cart,
   ): Promise<Types.SignUpResult> {
-    const joinSegments = items => {
-      Object.keys(items).map(k => {
-        if (items[k].length === 0) return
-        return `&${k}=${JSON.stringify(items[k])}`
-      })
-    }
-    const response: ApiResponse<any> = await this.apisauce.post(
-      `cart.cfc?method=createUser&email=${email}&password=${password}&phone=${phone}${joinSegments({
-        firstName,
-        lastName,
-        address1,
-        address2,
-        city,
-        state,
-        zip,
-        cart,
-      })}`,
-    )
+    const body = new FormData()
+    body.append("method", "createUser")
+    body.append("returnformat", "json")
+    body.append("email", email)
+    body.append("password", password)
+    body.append("phone", phone)
+    body.append("firstName", firstName)
+    body.append("lastName", lastName)
+    body.append("address1", address1), body.append("address2", address2)
+    body.append("city", city)
+    body.append("state", state)
+    body.append("zip", zip)
+    body.append("cart", cart.items.map(i => i.RID).join(","))
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post(`cart.cfc`, body)
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
       if (problem) return problem
@@ -124,20 +144,27 @@ export class Api {
     try {
       return {
         kind: "ok",
-        token: response.data.token,
+        token: response.data.cToken,
         cart: response.data.cart,
-        purchaseHistory: response.data.purchasedRecordings,
+        purchaseHistory: response.data.recordings,
+        error: response.data.ERROR,
       }
-    } catch {
+    } catch (e) {
       return { kind: "bad-data" }
     }
   }
 
-  async signIn(email, password, cart = {}): Promise<Types.SignInResult> {
-    const response: ApiResponse<any> = await this.apisauce.post(
-      `cart.cfc?method=authenticate&email=${email}&password=${password}${cart &&
-        `&cart=${JSON.stringify(cart)}`}`,
-    )
+  async signIn(email, password, cart): Promise<Types.SignInResult> {
+    const body = new FormData()
+    body.append("method", "authenticate")
+    body.append("returnformat", "json")
+    body.append("email", email)
+    body.append("password", password)
+    body.append("cart", cart.items.map(i => i.RID).join(","))
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post("cart.cfc", body)
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
       if (problem) return problem
@@ -146,11 +173,96 @@ export class Api {
     try {
       return {
         kind: "ok",
-        token: response.data.token,
+        token: response.data.cToken,
         cart: response.data.cart,
-        purchaseHistory: response.data.purchasedRecordings,
+        purchaseHistory: response.data.recordings,
+        error: response.data.ERROR,
       }
-    } catch {
+    } catch (e) {
+      return { kind: "bad-data" }
+    }
+  }
+
+  async reathenticate(email, token, cart): Promise<Types.ReauthenticateResult> {
+    const body = new FormData()
+    body.append("method", "authenticate")
+    body.append("returnformat", "json")
+    body.append("email", email)
+    body.append("cToken", token)
+    body.append("cart", cart.items.map(i => i.RID).join(","))
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post("cart.cfc", body)
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    try {
+      return {
+        kind: "ok",
+        token: response.data.cToken,
+        cart: response.data.cart,
+        purchaseHistory: response.data.recordings,
+        error: response.data.ERROR,
+      }
+    } catch (e) {
+      return { kind: "bad-data" }
+    }
+  }
+
+  async checkCart(cart, token): Promise<Types.CheckCartResult> {
+    const body = new FormData()
+    body.append("method", "checkCart")
+    body.append("returnformat", "json")
+    body.append("cart", cart.items.map(i => i.RID).join(","))
+    body.append("ctoken", token)
+    body.append("coupons", "")
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post(`cart.cfc`, body)
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    try {
+      return {
+        kind: "ok",
+        cart: response.data.cart,
+        error: response.data.ERROR,
+      }
+    } catch (e) {
+      return { kind: "bad-data" }
+    }
+  }
+
+  async removeFromCart(items, token): Promise<Types.RemoveFromCartResult> {
+    const body = new FormData()
+    body.append("method", "removeFromCart")
+    body.append("returnformat", "json")
+    body.append("ctoken", token)
+    body.append("items", items.map(i => i.RID).join(","))
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post("cart.cfc", body)
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    try {
+      return {
+        kind: "ok",
+        cart: response.data.cart,
+        error: response.data.ERROR,
+      }
+    } catch (e) {
       return { kind: "bad-data" }
     }
   }

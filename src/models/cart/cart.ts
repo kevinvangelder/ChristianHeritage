@@ -23,16 +23,27 @@ export const CartModel = types
     },
   }))
   .actions(self => ({
-    addItem: (item: RecordingModel) => {
+    addItem: (item: RecordingSnapshot | Recording) => {
       self.setItems(self.items.concat(item))
     },
-    removeItem: (item: RecordingModel) => {
+    removeItem: (item: RecordingSnapshot | Recording) => {
       self.items.remove(item)
     },
   }))
   .views(self => ({
     get itemIds() {
       return self.items.map(i => i.RECID)
+    },
+    get itemCount() {
+      return self.items.length
+    },
+    get isEmpty() {
+      return self.items.length === 0
+    },
+    get localSubtotal() {
+      let subtotal = 0
+      self.items.map(i => (subtotal += i.PRICE))
+      return subtotal
     },
   }))
 

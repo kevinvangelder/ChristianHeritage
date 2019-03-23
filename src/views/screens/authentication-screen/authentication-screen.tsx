@@ -18,10 +18,6 @@ import { Button } from "../../shared/button"
 import { inject, observer } from "mobx-react"
 import { UserStore } from "../../../models/user-store"
 
-export interface AuthenticationScreenProps extends NavigationScreenProps<{}> {
-  userStore: UserStore
-}
-
 const ROOT: ViewStyle = {
   flexGrow: 1,
 }
@@ -44,7 +40,25 @@ const HEADER: TextStyle = {
   fontWeight: "bold",
   textAlign: "center",
   marginTop: spacing[5],
+  marginBottom: spacing[2],
 }
+const BOLD: TextStyle = {
+  fontWeight: "bold",
+}
+const ROW: ViewStyle = {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+}
+const ERROR: TextStyle = {
+  color: color.error,
+  marginLeft: spacing[1],
+}
+
+export interface AuthenticationScreenProps extends NavigationScreenProps<{}> {
+  userStore: UserStore
+}
+
 @inject("userStore")
 @observer
 export class AuthenticationScreen extends React.Component<AuthenticationScreenProps, {}> {
@@ -52,14 +66,39 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
     await this.props.userStore.checkEmail()
   }
   signIn = async () => {
-    await this.props.userStore.signIn
+    const { next } = this.props.navigation.state.params
+    const result = await this.props.userStore.signIn()
+    if (result) {
+      this.props.navigation.push(next ? next : "tabs")
+    }
   }
   signUp = async () => {
-    await this.props.userStore.signUp
+    const { userStore, navigation } = this.props
+    if (userStore.validateSignUp()) {
+      const { next } = navigation.state.params
+      const result = await userStore.signUp
+      if (result) {
+        navigation.push(next ? next : "tabs")
+      }
+    }
+  }
+
+  changeEmail = () => {
+    this.props.userStore.resetEmailExists()
+  }
+
+  next = () => {
+    const { next } = this.props.navigation.state.params
+    if (next === "cart") {
+      this.props.navigation.dispatch(NavigationActions.back())
+    } else {
+      this.props.navigation.push(next ? next : "tabs")
+    }
   }
 
   render() {
     const { emailExists } = this.props.userStore.currentUser
+    const checkingOut = this.props.navigation.state.params.next === "checkout"
     return (
       <View style={ROOT}>
         <TitleBar
@@ -82,9 +121,11 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             {emailExists === null && this.renderEmailInput()}
             {emailExists && this.renderPasswordInput()}
             {emailExists === false && this.renderSignUp()}
-            <Text onPress={() => this.props.navigation.push("tabs")} style={LINK}>
-              Skip
-            </Text>
+            {!checkingOut && (
+              <Text onPress={this.next} style={LINK}>
+                Skip
+              </Text>
+            )}
           </View>
         </Screen>
       </View>
@@ -103,10 +144,17 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
   }
 
   renderPasswordInput = () => {
-    const { password, setPassword } = this.props.userStore.currentUser
+    const { email, password, setPassword } = this.props.userStore.currentUser
     return (
       <View>
         <Text style={HEADER}>Sign In</Text>
+        <View style={ROW}>
+          <Text>
+            <Text style={BOLD}>Email: </Text>
+            {email}
+          </Text>
+          <Button onPress={this.changeEmail} text="Edit" preset="primarySmall" />
+        </View>
         <TextInput
           placeholder="Password"
           value={password}
@@ -120,36 +168,77 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
 
   renderSignUp = () => {
     const {
+      email,
       password,
       setPassword,
+      passwordError,
+      firstName,
+      setFirstName,
+      firstNameError,
+      lastName,
+      setLastName,
+      lastNameError,
       phone,
       setPhone,
+      phoneError,
       address1,
       setAddress1,
+      address1Error,
       address2,
       setAddress2,
+      address2Error,
       city,
       setCity,
+      cityError,
       state,
       setState,
+      stateError,
       zip,
       setZip,
+      zipError,
     } = this.props.userStore.currentUser
     return (
       <View>
         <Text style={HEADER}>Sign Up</Text>
+        <View style={ROW}>
+          <Text>
+            <Text style={BOLD}>Email: </Text>
+            {email}
+          </Text>
+          <Button onPress={this.changeEmail} text="Edit" preset="primarySmall" />
+        </View>
         <TextInput
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-        <TextInput placeholder="Phone" value={phone} onChangeText={setPhone} />
+        {passwordError !== null &&
+          passwordError.length > 0 && <Text style={ERROR}>{passwordError}</Text>}
+        <TextInput placeholder="First Name" value={firstName} onChangeText={setFirstName} />
+        {firstNameError !== null &&
+          firstNameError.length > 0 && <Text style={ERROR}>{firstNameError}</Text>}
+        <TextInput placeholder="Last Name" value={lastName} onChangeText={setLastName} />
+        {lastNameError !== null &&
+          lastNameError.length > 0 && <Text style={ERROR}>{lastNameError}</Text>}
+        <TextInput
+          placeholder="Phone (for account recovery purposes only)"
+          value={phone}
+          onChangeText={setPhone}
+        />
+        {phoneError !== null && phoneError.length > 0 && <Text style={ERROR}>{phoneError}</Text>}
         <TextInput placeholder="Address Line 1" value={address1} onChangeText={setAddress1} />
+        {address1Error !== null &&
+          address1Error.length > 0 && <Text style={ERROR}>{address1Error}</Text>}
         <TextInput placeholder="Address Line 2" value={address2} onChangeText={setAddress2} />
+        {address2Error !== null &&
+          address2Error.length > 0 && <Text style={ERROR}>{address2Error}</Text>}
         <TextInput placeholder="City" value={city} onChangeText={setCity} />
+        {cityError !== null && cityError.length > 0 && <Text style={ERROR}>{cityError}</Text>}
         <TextInput placeholder="State" value={state} onChangeText={setState} />
+        {stateError !== null && stateError.length > 0 && <Text style={ERROR}>{stateError}</Text>}
         <TextInput placeholder="Zip" value={zip} onChangeText={setZip} />
+        {zipError !== null && zipError.length > 0 && <Text style={ERROR}>{zipError}</Text>}
         <Button onPress={this.signUp} text="Next" />
       </View>
     )

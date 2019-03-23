@@ -58,8 +58,8 @@ export const Tab = ({
     case "info":
       text = "Info"
       break
-    case "recordings":
-      text = "Recordings"
+    case "cart":
+      text = "Cart"
       break
   }
 

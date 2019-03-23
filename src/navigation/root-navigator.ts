@@ -4,7 +4,7 @@ import { ScheduleDetailScreen } from "../views/screens/schedule-detail-screen"
 import { VenueScreen } from "../views/screens/venue-screen"
 import { InfoScreen } from "../views/screens/info-screen"
 import { AuthenticationScreen } from "../views/screens/authentication-screen"
-import { RecordingsScreen } from "../views/screens/recordings-screen"
+import { CartScreen } from "../views/screens/cart-screen"
 import { TabBar } from "../views/shared/tab-bar"
 
 export const RootNavigator = StackNavigator(
@@ -24,13 +24,22 @@ export const RootNavigator = StackNavigator(
           },
         ),
         venue: { screen: VenueScreen },
-        recordings: { screen: RecordingsScreen },
+        cart: StackNavigator(
+          {
+            cart: { screen: CartScreen },
+            authentication: { screen: AuthenticationScreen },
+          },
+          {
+            headerMode: "none",
+            navigationOptions: { gesturesEnabled: true },
+          },
+        ),
       },
       {
         initialRouteName: "schedule",
         tabBarPosition: "bottom",
         tabBarComponent: TabBar,
-        order: ["schedule", "venue", "recordings"],
+        order: ["schedule", "venue", "cart"],
         backBehavior: "none",
       },
     ),

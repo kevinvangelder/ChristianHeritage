@@ -1,3 +1,5 @@
 rootProject.name = 'ChristianHeritage'
+include ':react-native-authorize-net-acceptsdk'
+project(':react-native-authorize-net-acceptsdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-authorize-net-acceptsdk/android')
 
 include ':app'

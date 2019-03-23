@@ -23,14 +23,14 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
     super(props)
     let selectedDay = null
     switch (moment().day()) {
-      case 4:
-        selectedDay = "thursday"
+      case 6:
+        selectedDay = "saturday"
         break
       case 5:
         selectedDay = "friday"
         break
       default:
-        selectedDay = "saturday"
+        selectedDay = "thursday"
         break
     }
     this.state = {

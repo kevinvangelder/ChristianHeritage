@@ -105,7 +105,10 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
             </View>
           </View>
         </View>
-        <Button onPress={() => this.props.navigation.push("authentication")} text="Continue" />
+        <Button
+          onPress={() => this.props.navigation.push("authentication", { next: "tabs" })}
+          text="Continue"
+        />
       </Screen>
     )
   }
