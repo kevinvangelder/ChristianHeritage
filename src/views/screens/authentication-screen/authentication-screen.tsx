@@ -100,13 +100,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
     const { emailExists } = this.props.userStore.currentUser
     const checkingOut = this.props.navigation.state.params.next === "checkout"
     return (
-      <View style={ROOT}>
+      <Screen preset="scrollStack" style={ROOT}>
         <TitleBar
           title="Alliance Recordings"
           back
           onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
         />
-        <Screen preset="scrollStack" style={ROOT}>
+        <ScrollView style={ROOT} keyboardShouldPersistTaps="handled">
           <View style={CONTENT}>
             <Text>
               Session recordings are now available for purchase through the app and website via
@@ -127,8 +127,8 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
               </Text>
             )}
           </View>
-        </Screen>
-      </View>
+        </ScrollView>
+      </Screen>
     )
   }
 

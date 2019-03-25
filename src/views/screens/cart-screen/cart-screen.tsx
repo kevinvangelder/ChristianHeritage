@@ -1,20 +1,10 @@
 import * as React from "react"
-import {
-  View,
-  ViewStyle,
-  TextStyle,
-  Image,
-  Linking,
-  TouchableOpacity,
-  ScrollView,
-  Alert,
-} from "react-native"
+import { View, ViewStyle, TextStyle, ScrollView, Alert } from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../shared/title-bar"
 import { Text } from "../../shared/text"
 import { spacing } from "../../../theme/spacing"
-import { palette } from "../../../theme/palette"
 import { color } from "../../../theme"
 import { inject, observer } from "mobx-react"
 import { UserStore } from "../../../models/user-store"
@@ -119,8 +109,7 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
           {this.renderCart()}
           <Text style={DISCLAIMER}>
             Purchased recordings can be downloaded through the Alliance Recordings website (check
-            your emailed receipt for a direct link). Physical CDs can be ordered through the
-            Christian Hertiage website but will not be available for pickup at the conference.
+            your emailed receipt for a direct link).
           </Text>
         </ScrollView>
       </Screen>
@@ -160,8 +149,8 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
         <View style={ITEM_DETAILS}>
           <Text style={ITEM_TITLE} numberOfLines={0}>
             {item.TITLE}
-            &nbsp;- <Text style={ITEM_SPEAKER}>{speakerNames(item)}</Text>
           </Text>
+          <Text style={ITEM_SPEAKER}>{speakerNames(item)}</Text>
         </View>
         <Text style={ITEM_PRICE}>${item.PRICE}.00</Text>
         <Text onPress={() => this.removeItem(item)} style={REMOVE}>

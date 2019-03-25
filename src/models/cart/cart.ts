@@ -8,6 +8,7 @@ export const CartModel = types
   .model("Cart")
   .props({
     items: types.optional(types.array(RecordingModel), []),
+    token: types.optional(types.string, ""),
   })
   .actions(self => ({
     setItems: (value: Recording | RecordingSnapshot) => {
@@ -20,6 +21,9 @@ export const CartModel = types
       } else {
         self.items = value as any
       }
+    },
+    setToken: (value: string) => {
+      self.token = value
     },
   }))
   .actions(self => ({

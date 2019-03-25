@@ -6,6 +6,8 @@ import { InfoScreen } from "../views/screens/info-screen"
 import { AuthenticationScreen } from "../views/screens/authentication-screen"
 import { CartScreen } from "../views/screens/cart-screen"
 import { TabBar } from "../views/shared/tab-bar"
+import { CheckoutScreen } from "../views/screens/checkout-screen"
+import { FinalizeOrderScreen } from "../views/screens/finalize-order-screen"
 
 export const RootNavigator = StackNavigator(
   {
@@ -28,6 +30,8 @@ export const RootNavigator = StackNavigator(
           {
             cart: { screen: CartScreen },
             authentication: { screen: AuthenticationScreen },
+            checkout: { screen: CheckoutScreen },
+            finalizeOrder: { screen: FinalizeOrderScreen },
           },
           {
             headerMode: "none",
