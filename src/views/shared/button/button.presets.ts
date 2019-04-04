@@ -36,12 +36,21 @@ export const viewPresets = {
     backgroundColor: color.palette.bahamaBlue,
   } as ViewStyle,
   delete: { ...BASE_VIEW, backgroundColor: color.palette.angry } as ViewStyle,
+  deleteSmall: {
+    ...BASE_VIEW,
+    backgroundColor: color.palette.angry,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[1],
+  } as ViewStyle,
+  disabled: { ...BASE_VIEW, backgroundColor: color.palette.mediumGrey } as ViewStyle,
 }
 
 export const textPresets = {
   primary: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
   primarySmall: { ...BASE_TEXT, color: color.palette.white, fontSize: 14 } as TextStyle,
   delete: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
+  deleteSmall: { ...BASE_TEXT, color: color.palette.white, fontSize: 14 } as TextStyle,
+  disabled: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
 }
 
 /**

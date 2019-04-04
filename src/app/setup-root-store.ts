@@ -66,5 +66,5 @@ export async function createEnvironment() {
 }
 
 async function onReady(rootStore: RootStore, env: Environment) {
-  env.api.onTokenExpired = rootStore.userStore.reauthenticate()
+  env.api.onTokenExpired = rootStore.userStore.reauthenticate
 }

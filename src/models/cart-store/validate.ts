@@ -5,25 +5,36 @@ export const cardRules = {
   CARD_NO: {
     presence: { message: "Please enter a valid credit card number" },
     length: {
-      is: 16,
+      minimum: 13,
+      maximum: 16,
     },
   },
   EXPIRATION_MONTH: {
     presence: { message: "Please enter a valid month" },
+    format: {
+      pattern: /^(?:[0][\d])|(?:[1][012])$/g,
+      message: "Please enter a valid month",
+    },
   },
   EXPIRATION_YEAR: {
     presence: { message: "Please enter a valid year" },
+    format: {
+      pattern: /^(?:[2-9][\d])|(?:[1][9])$/g,
+      message: "Please enter a valid year",
+    },
   },
   CVV_NO: {
     presence: { message: "Please enter a valid CVV" },
     length: {
-      is: 3,
+      minimum: 3,
+      maximum: 4,
     },
   },
   ZIP_CODE: {
     presence: { message: "Please enter a valid zip code" },
     length: {
-      is: 5,
+      minimum: 5,
+      maximum: 20,
     },
   },
 }

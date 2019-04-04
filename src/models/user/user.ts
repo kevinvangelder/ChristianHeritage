@@ -26,7 +26,7 @@ export const UserModel = types
     stateError: types.maybe(types.string),
     zip: types.optional(types.string, ""),
     zipError: types.maybe(types.string),
-    token: types.optional(types.string, ""),
+    token: types.maybe(types.string),
     purchaseHistory: types.optional(types.frozen, {}),
   })
   .preProcessSnapshot(snapshot => ({
@@ -103,7 +103,10 @@ export const UserModel = types
   }))
   .views(self => ({
     get isSignedIn() {
-      return self.token
+      return !!self.token
+    },
+    get purchaseHistoryIds() {
+      return self.purchaseHistory ? Object.keys(self.purchaseHistory) : []
     },
   }))
 

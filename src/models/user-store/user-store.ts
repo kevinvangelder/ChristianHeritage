@@ -55,14 +55,15 @@ export const UserStoreModel = types
     },
     signIn: async () => {
       const { email, password } = self.currentUser
-      const { currentCart } = self.rootStore.cartStore
-      const result = await self.environment.api.signIn(email, password, currentCart)
+      const { items } = self.rootStore.cartStore.currentCart
+      const result = await self.environment.api.signIn(email, password, items)
       if (result.kind === "ok") {
         self.currentUser.setPassword("")
         if (result.token) self.currentUser.setToken(result.token)
         console.tron.log(result)
         if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
-        if (result.cart) self.rootStore.cartStore.setCurrentCart(result.cart)
+        if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
+        // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
         if (result.error) {
           Alert.alert("Error", result.error)
           return false
@@ -75,15 +76,19 @@ export const UserStoreModel = types
       if (!self.isTokenRefreshing) {
         self.setIsTokenRefreshing(true)
         const { email, token } = self.currentUser
-        const { currentCart } = self.rootStore.cartStore
-        const result = await self.environment.api.reauthenticate(email, token, currentCart)
-        if (result.kind === "ok") {
-          self.currentUser.setToken(result.token)
-          if (result.purchaseHistory) {
-            self.currentUser.setPurchaseHistory(result.purchaseHistory)
-          }
-          if (result.cart) {
-            self.rootStore.cartStore.setCurrentCart(result.cart)
+        const { items } = self.rootStore.cartStore.currentCart
+        const result = await self.environment.api.reauthenticate(email, token, items)
+        if (result.kind === "ok" && !result.error) {
+          console.tron.log("reauthenticated!")
+          if (result.token) self.currentUser.setToken(result.token)
+          if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
+          if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
+          // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
+        } else {
+          console.tron.log(result.error)
+          if (result.error === "User not found or password incorrect.") {
+            self.currentUser.setToken(null)
+            Alert.alert("Session Expired", "Your Alliance Recordings session has expired.")
           }
         }
         self.setIsTokenRefreshing(false)
@@ -113,20 +118,20 @@ export const UserStoreModel = types
         city,
         state,
         zip,
-        self.rootStore.cartStore.currentCart,
+        self.rootStore.cartStore.currentCart.items,
       )
       if (result.kind === "ok") {
         self.currentUser.setToken(result.token)
-        if (result.purchaseHistory) {
-          self.currentUser.setPurchaseHistory(result.purchaseHistory)
-        }
-        if (result.cart) {
-          self.rootStore.cartStore.setCurrentCart(result.cart)
-        }
+        if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
+        if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
+        // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
       }
     },
     resetEmailExists: () => {
       self.currentUser.setEmailExists(null)
+    },
+    signOut: () => {
+      self.currentUser.setToken(null)
     },
   }))
 

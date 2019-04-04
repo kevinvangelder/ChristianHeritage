@@ -30,16 +30,16 @@ export const RecordingStoreModel = types
     },
   }))
   .actions(self => ({
-    findRecording: async (RECID): Promise<RecordingModel | boolean> => {
-      if (self.recordings) {
-        const recording = self.recordings.find(r => r.RECID === RECID)
-        if (recording) return recording
-      } else {
-        await self.fetchRecordings()
-        const rec = self.recordings.find(r => r.RECID === RECID)
-        if (rec) return rec
-        return false
-      }
+    findRecording: (RID): RecordingModel => {
+      // if (self.recordings) {
+      const recording = self.recordings.find(r => `${r.RID}` === `${RID}`)
+      if (recording) return recording
+      // } else {
+      //   await self.fetchRecordings()
+      //   const rec = self.recordings.find(r => r.RID === RID)
+      //   if (rec) return rec
+      //   return false
+      // }
     },
   }))
 

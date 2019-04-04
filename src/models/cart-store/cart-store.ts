@@ -11,6 +11,7 @@ export const CartStoreModel = types
   .props({
     currentCart: types.optional(CartModel, {}),
     coupons: types.optional(types.array(types.string), []),
+    error: types.maybe(types.string),
   })
   .extend(withRootStore)
   .extend(withEnvironment)
@@ -18,23 +19,36 @@ export const CartStoreModel = types
     setCurrentCart: (value: CartSnapshot | Cart) => {
       self.currentCart = value as CartModel
     },
-    findCartItem: async (RECID): Promise<RecordingSnapshot | boolean> => {
-      const recording = self.currentCart.items.find(r => r.RECID === RECID)
+    findCartItem: async (RID): Promise<RecordingSnapshot | boolean> => {
+      const recording = self.currentCart.items.find(r => r.RID === RID)
       if (recording) return recording
       return false
     },
-    updateCartFromAPI: (cart: CartSnapshot | Cart) => {},
+    setError: (value: string) => {
+      self.error = value
+    },
+  }))
+  .actions(self => ({
+    updateCartFromAPI: async (cart: any) => {
+      const oldCartItems = self.currentCart.items
+      // console.tron.log(oldCartItems)
+      self.currentCart.setItems(null)
+      await Object.keys(cart).map(async k => {
+        const recording = await self.rootStore.recordingStore.findRecording(parseInt(k))
+        self.currentCart.addItem(clone(recording))
+      })
+    },
     updateCouponsFromAPI: (coupons: any) => {},
   }))
   .actions(self => ({
     syncCartAddition: async () => {
-      const { currentCart } = self
+      const { items } = self.currentCart
       const { token } = self.rootStore.userStore.currentUser
       try {
-        const { kind, cart, coupons } = await self.environment.api.checkCart(currentCart, token)
+        const { kind, cart, coupons } = await self.environment.api.checkCart(items, token)
 
         if (kind === "ok" && Object.keys(cart).length > 0) {
-          // self.updateCartFromAPI(cart)
+          self.updateCartFromAPI(cart)
           // self.updateCouponsFromAPI(coupons)
         }
       } catch (e) {
@@ -47,7 +61,7 @@ export const CartStoreModel = types
         const { kind, cart } = await self.environment.api.removeFromCart(items, token)
 
         if (kind === "ok" && Object.keys(cart).length > 0) {
-          // self.updateCartFromAPI(cart)
+          self.updateCartFromAPI(cart)
         }
       } catch (e) {
         console.tron.log(e.message)
@@ -55,25 +69,41 @@ export const CartStoreModel = types
     },
   }))
   .actions(self => ({
-    addToCart: async RECID => {
-      const recording = await self.rootStore.recordingStore.findRecording(RECID)
+    addToCart: RID => {
+      const recording = self.rootStore.recordingStore.findRecording(RID)
       const { isSignedIn } = self.rootStore.userStore.currentUser
       if (recording) {
         self.currentCart.addItem(clone(recording))
         isSignedIn && self.syncCartAddition()
       }
     },
-    removeFromCart: async RECID => {
-      const recording = await self.findCartItem(RECID)
+    removeFromCart: async RID => {
+      const recording = await self.rootStore.recordingStore.findRecording(RID)
+      const cartItem = await self.findCartItem(RID)
       const { isSignedIn } = self.rootStore.userStore.currentUser
-      if (recording) {
-        self.currentCart.removeItem(recording)
-        isSignedIn && self.syncCartRemoval([recording])
-      }
+      cartItem && self.currentCart.removeItem(cartItem)
+      isSignedIn && recording && (await self.syncCartRemoval([recording]))
     },
     checkout: async () => {
       const { currentCart } = self
       const { token } = self.rootStore.userStore.currentUser
+
+      try {
+        const { kind, result } = await self.environment.api.checkout(currentCart.token, token)
+
+        if (kind === "ok" && !result.ERROR) {
+          currentCart.setOrderResult(result)
+          currentCart.resetCard()
+          currentCart.resetItems()
+          return true
+        } else {
+          self.setError(result.ERROR)
+          return false
+        }
+      } catch (e) {
+        console.tron.log(e.message)
+        return false
+      }
     },
   }))
 

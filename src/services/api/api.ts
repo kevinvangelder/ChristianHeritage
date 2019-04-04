@@ -21,7 +21,7 @@ export class Api {
    */
   config: ApiConfig
 
-  onTokenExpired?: () => Promise<boolean>
+  onTokenExpired?: () => Promise<void>
 
   /**
    * Creates the api.
@@ -31,7 +31,7 @@ export class Api {
   constructor(config: ApiConfig = DEFAULT_API_CONFIG) {
     this.config = config
 
-    this.onTokenExpired = () => new Promise(resolve => resolve(true))
+    this.onTokenExpired = () => new Promise(resolve => resolve())
   }
 
   /**
@@ -117,7 +117,7 @@ export class Api {
     city,
     state,
     zip,
-    cart,
+    items,
   ): Promise<Types.SignUpResult> {
     const body = new FormData()
     body.append("method", "createUser")
@@ -131,7 +131,7 @@ export class Api {
     body.append("city", city)
     body.append("state", state)
     body.append("zip", zip)
-    body.append("cart", cart.items.map(i => i.RID).join(","))
+    body.append("cart", items.map(i => i.RID).join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -146,6 +146,7 @@ export class Api {
         kind: "ok",
         token: response.data.cToken,
         cart: response.data.cart,
+        coupons: response.data.coupons,
         purchaseHistory: response.data.recordings,
         error: response.data.ERROR,
       }
@@ -154,13 +155,13 @@ export class Api {
     }
   }
 
-  async signIn(email, password, cart): Promise<Types.SignInResult> {
+  async signIn(email, password, items): Promise<Types.SignInResult> {
     const body = new FormData()
     body.append("method", "authenticate")
     body.append("returnformat", "json")
     body.append("email", email)
     body.append("password", password)
-    body.append("cart", cart.items.map(i => i.RID).join(","))
+    if (items && items.length > 0) body.append("cart", items.map(i => i.RID).join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -175,6 +176,7 @@ export class Api {
         kind: "ok",
         token: response.data.cToken,
         cart: response.data.cart,
+        coupons: response.data.coupons,
         purchaseHistory: response.data.recordings,
         error: response.data.ERROR,
       }
@@ -183,13 +185,13 @@ export class Api {
     }
   }
 
-  async reathenticate(email, token, cart): Promise<Types.ReauthenticateResult> {
+  async reauthenticate(email, token, items): Promise<Types.ReauthenticateResult> {
     const body = new FormData()
     body.append("method", "authenticate")
     body.append("returnformat", "json")
     body.append("email", email)
     body.append("cToken", token)
-    body.append("cart", cart.items.map(i => i.RID).join(","))
+    if (items && items.length > 0) body.append("cart", items.map(i => i.RID).join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -200,23 +202,25 @@ export class Api {
     }
 
     try {
+      const { cToken, cart, coupons, recordings, ERROR } = response.data
       return {
         kind: "ok",
-        token: response.data.cToken,
-        cart: response.data.cart,
-        purchaseHistory: response.data.recordings,
-        error: response.data.ERROR,
+        token: cToken,
+        cart: cart,
+        coupons: coupons,
+        purchaseHistory: recordings,
+        error: ERROR,
       }
     } catch (e) {
       return { kind: "bad-data" }
     }
   }
 
-  async checkCart(cart, token): Promise<Types.CheckCartResult> {
+  async checkCart(items, token): Promise<Types.CheckCartResult> {
     const body = new FormData()
     body.append("method", "checkCart")
     body.append("returnformat", "json")
-    body.append("cart", cart.items.map(i => i.RID).join(","))
+    body.append("cart", items.map(i => i.RID).join(","))
     body.append("ctoken", token)
     body.append("coupons", "")
     this.apisauce.setHeaders({
@@ -261,6 +265,32 @@ export class Api {
         kind: "ok",
         cart: response.data.cart,
         error: response.data.ERROR,
+      }
+    } catch (e) {
+      return { kind: "bad-data" }
+    }
+  }
+
+  async checkout(cardToken, token): Promise<Types.CheckoutResult> {
+    const body = new FormData()
+    body.append("method", "processOrder")
+    body.append("returnformat", "json")
+    body.append("ctoken", token)
+    body.append("atoken", cardToken)
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post("cart.cfc", body)
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    try {
+      return {
+        kind: "ok",
+        result: response.data,
       }
     } catch (e) {
       return { kind: "bad-data" }

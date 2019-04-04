@@ -18,9 +18,13 @@ import { palette } from "../../../theme/palette"
 import { Button } from "../../shared/button"
 import { inject, observer } from "mobx-react"
 import { CartStore } from "../../../models/cart-store"
+import { UserStore } from "../../../models/user-store"
+import { RecordingStore } from "../../../models/recording-store"
 
 export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {
   cartStore: CartStore
+  userStore: UserStore
+  recordingStore: RecordingStore
 }
 
 const ROOT: ViewStyle = {
@@ -144,19 +148,19 @@ const BIOS = {
     "Neil was Minister of Music in several churches and served as arranger, accompanist, and Director of Music of an international Bible-teaching ministry. Neil is President and Executive Director of Christian Heritage Home Educators of Washington and instructs and directs the annual Christian Heritage Chorale. He and his wife, Mary, are on the Christian Heritage Board.",
 }
 
-@inject("cartStore")
+@inject("cartStore", "userStore", "recordingStore")
 @observer
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {
   openBio(speakerName, bio) {
     Alert.alert(speakerName, bio)
   }
 
-  addToCart(RECID) {
-    this.props.cartStore.addToCart(RECID)
+  addToCart(RID) {
+    this.props.cartStore.addToCart(RID)
   }
 
-  removeFromCart(RECID) {
-    this.props.cartStore.removeFromCart(RECID)
+  removeFromCart(RID) {
+    this.props.cartStore.removeFromCart(RID)
   }
 
   render() {
@@ -206,7 +210,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
           </TouchableOpacity>
         </View>
-        {activity.RECID && this.renderCartButton(activity)}
+        {activity.RID && this.renderCartButton(activity)}
       </ScrollView>
     )
   }
@@ -255,22 +259,28 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
           </TouchableOpacity>
         </View>
-        {activity.RECID && this.renderCartButton(activity)}
+        {activity.RID && this.renderCartButton(activity)}
       </View>
     )
   }
 
   renderCartButton = activity => {
-    if (this.props.cartStore.currentCart.itemIds.includes(activity.RECID)) {
+    const { itemIds } = this.props.cartStore.currentCart
+    if (itemIds.includes(activity.RID)) {
       return (
         <Button
           text="Remove from Cart"
           preset="delete"
-          onPress={() => this.removeFromCart(activity.RECID)}
+          onPress={() => this.removeFromCart(activity.RID)}
         />
       )
     } else {
-      return <Button text="Add to Cart" onPress={() => this.addToCart(activity.RECID)} />
+      const { purchaseHistoryIds } = this.props.userStore.currentUser
+      if (purchaseHistoryIds.includes(`${activity.RID}`)) {
+        return <Button text="Already Purchased" preset="disabled" disabled />
+      } else {
+        return <Button text="Add to Cart" onPress={() => this.addToCart(activity.RID)} />
+      }
     }
   }
 }
