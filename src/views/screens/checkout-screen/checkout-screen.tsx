@@ -251,7 +251,7 @@ export class CheckoutScreen extends React.Component<
           onBlur={this.cardNumberBlur}
           onFocus={this.cardNumberFocus}
           maxLength={16}
-          keyboardType="number-pad"
+          keyboardType="numeric"
         />
         {CARD_NO_ERROR && <Text style={ERROR}>{CARD_NO_ERROR}</Text>}
         <View style={ROW}>
@@ -261,7 +261,7 @@ export class CheckoutScreen extends React.Component<
               value={EXPIRATION_MONTH}
               onChangeText={this.setExpirationMonth}
               maxLength={2}
-              keyboardType="number-pad"
+              keyboardType="numeric"
             />
             {EXPIRATION_MONTH_ERROR && <Text style={ERROR}>{EXPIRATION_MONTH_ERROR}</Text>}
           </View>
@@ -271,7 +271,7 @@ export class CheckoutScreen extends React.Component<
               value={EXPIRATION_YEAR}
               onChangeText={this.setExpirationYear}
               maxLength={2}
-              keyboardType="number-pad"
+              keyboardType="numeric"
             />
             {EXPIRATION_YEAR_ERROR && <Text style={ERROR}>{EXPIRATION_YEAR_ERROR}</Text>}
           </View>
@@ -283,7 +283,7 @@ export class CheckoutScreen extends React.Component<
               value={CVV_NO}
               onChangeText={this.setCvv}
               maxLength={3}
-              keyboardType="number-pad"
+              keyboardType="numeric"
             />
             {CVV_NO_ERROR && <Text style={ERROR}>{CVV_NO_ERROR}</Text>}
           </View>
@@ -293,7 +293,7 @@ export class CheckoutScreen extends React.Component<
               value={ZIP_CODE}
               onChangeText={this.setZipCode}
               maxLength={5}
-              keyboardType="number-pad"
+              keyboardType="numeric"
             />
             {ZIP_CODE_ERROR && <Text style={ERROR}>{ZIP_CODE_ERROR}</Text>}
           </View>

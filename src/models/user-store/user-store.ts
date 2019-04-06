@@ -155,7 +155,52 @@ export const UserStoreModel = types
       return false
     },
     resetEmailExists: () => {
-      self.currentUser.setEmailExists(null)
+      const {
+        setEmailExists,
+        setPassword,
+        setConfirm,
+        setFirstName,
+        setLastName,
+        setPhone,
+        setAddress1,
+        setAddress2,
+        setCity,
+        setState,
+        setZip,
+      } = self.currentUser
+      const {
+        setPasswordError,
+        setConfirmError,
+        setFirstNameError,
+        setLastNameError,
+        setPhoneError,
+        setAddress1Error,
+        setAddress2Error,
+        setCityError,
+        setStateError,
+        setZipError,
+      } = self.currentUser
+      setEmailExists(null)
+      setPassword(null)
+      setConfirm(null)
+      setFirstName(null)
+      setLastName(null)
+      setPhone(null)
+      setAddress1(null)
+      setAddress2(null)
+      setCity(null)
+      setState(null)
+      setZip(null)
+      setPasswordError(null)
+      setConfirmError(null)
+      setFirstNameError(null)
+      setLastNameError(null)
+      setPhoneError(null)
+      setAddress1Error(null)
+      setAddress2Error(null)
+      setCityError(null)
+      setStateError(null)
+      setZipError(null)
     },
     signOut: () => {
       self.currentUser.setToken(null)

@@ -290,7 +290,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.address1.focus()
           }}
           returnKeyLabel="Next"
-          keyboardType="number-pad"
+          keyboardType="phone-pad"
         />
         {phoneError !== null && phoneError.length > 0 && <Text style={ERROR}>{phoneError}</Text>}
         <TextInput
@@ -346,7 +346,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           ref={input => (this.zip = input)}
           onSubmitEditing={this.signUp}
           returnKeyLabel="Next"
-          keyboardType="number-pad"
+          keyboardType="numeric"
         />
         {zipError !== null && zipError.length > 0 && <Text style={ERROR}>{zipError}</Text>}
         <Button onPress={this.signUp} text="Next" />
