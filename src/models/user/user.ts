@@ -7,9 +7,12 @@ export const UserModel = types
   .model("User")
   .props({
     email: types.optional(types.string, ""),
+    emailError: types.maybe(types.string),
     emailExists: types.maybe(types.boolean),
     password: types.optional(types.string, ""),
     passwordError: types.maybe(types.string),
+    confirm: types.optional(types.string, ""),
+    confirmError: types.maybe(types.string),
     phone: types.optional(types.string, ""),
     phoneError: types.maybe(types.string),
     firstName: types.optional(types.string, ""),
@@ -37,6 +40,9 @@ export const UserModel = types
     setEmail: (value: string) => {
       self.email = value
     },
+    setEmailError: (value: string) => {
+      self.emailError = value
+    },
     setEmailExists: (value: boolean) => {
       self.emailExists = value
     },
@@ -45,6 +51,12 @@ export const UserModel = types
     },
     setPasswordError: (value: string | null) => {
       self.passwordError = value
+    },
+    setConfirm: (value: string) => {
+      self.confirm = value
+    },
+    setConfirmError: (value: string) => {
+      self.confirmError = value
     },
     setPhone: (value: string) => {
       self.phone = value

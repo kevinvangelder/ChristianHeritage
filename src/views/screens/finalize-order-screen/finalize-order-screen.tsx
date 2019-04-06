@@ -109,7 +109,7 @@ export class FinalizeOrderScreen extends React.Component<
       if (!token) {
         Alert.alert(
           "Error",
-          "Looks like we're missing some data necessary to complete your order. Please try again.",
+          "Looks like your card is missing or invalid. Please go back and enter a valid credit or debit card.",
           [
             {
               text: "Ok",
@@ -122,7 +122,7 @@ export class FinalizeOrderScreen extends React.Component<
       } else if (!isSignedIn) {
         Alert.alert(
           "Error",
-          "Looks like we're missing some data necessary to complete your order. Please try again.",
+          "Looks like you aren't signed in. Please go back and sign in before trying to place an order.",
           [
             {
               text: "Ok",

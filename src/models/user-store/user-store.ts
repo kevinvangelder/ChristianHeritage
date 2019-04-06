@@ -2,7 +2,7 @@ import { Alert } from "react-native"
 import { types } from "mobx-state-tree"
 import { UserModel } from "../user"
 import { withEnvironment, withRootStore } from "../extensions"
-import { validationRules } from "./validate"
+import { validationRules, validateEmail } from "./validate"
 import { validate } from "../../lib/validate"
 
 /**
@@ -20,9 +20,16 @@ export const UserStoreModel = types
     setIsTokenRefreshing: value => {
       self.isTokenRefreshing = value
     },
+    validateEmail: () => {
+      const { setEmailError } = self.currentUser
+      const { email } = validate(validateEmail, self.currentUser)
+      if (email) setEmailError(email[0])
+      return !email
+    },
     validateSignUp: () => {
       const {
         setPasswordError,
+        setConfirmError,
         setPhoneError,
         setFirstNameError,
         setLastNameError,
@@ -31,11 +38,19 @@ export const UserStoreModel = types
         setStateError,
         setZipError,
       } = self.currentUser
-      const { password, phone, firstName, lastName, address1, city, state, zip } = validate(
-        validationRules,
-        self.currentUser,
-      )
+      const {
+        password,
+        confirm,
+        phone,
+        firstName,
+        lastName,
+        address1,
+        city,
+        state,
+        zip,
+      } = validate(validationRules, self.currentUser)
       password ? setPasswordError(password[0]) : setPasswordError(null)
+      confirm ? setConfirmError(confirm[0]) : setConfirmError(null)
       phone ? setPhoneError(phone[0]) : setPhoneError(null)
       firstName ? setFirstNameError(firstName[0]) : setFirstNameError(null)
       lastName ? setLastNameError(lastName[0]) : setLastNameError(null)
@@ -43,7 +58,17 @@ export const UserStoreModel = types
       city ? setCityError(city[0]) : setCityError(null)
       state ? setStateError(state[0]) : setStateError(null)
       zip ? setZipError(zip[0]) : setZipError(null)
-      return !password && !phone && !firstName && !lastName && !address1 && !city && !state && !zip
+      return (
+        !password &&
+        !confirm &&
+        !phone &&
+        !firstName &&
+        !lastName &&
+        !address1 &&
+        !city &&
+        !state &&
+        !zip
+      )
     },
   }))
   .actions(self => ({
@@ -125,7 +150,9 @@ export const UserStoreModel = types
         if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
         if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
         // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
+        if (result.token) return true
       }
+      return false
     },
     resetEmailExists: () => {
       self.currentUser.setEmailExists(null)

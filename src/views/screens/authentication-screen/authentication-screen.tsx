@@ -62,8 +62,19 @@ export interface AuthenticationScreenProps extends NavigationScreenProps<{}> {
 @inject("userStore")
 @observer
 export class AuthenticationScreen extends React.Component<AuthenticationScreenProps, {}> {
+  firstName: any
+  lastName: any
+  phone: any
+  address1: any
+  address2: any
+  city: any
+  state: any
+  zip: any
+
   checkEmail = async () => {
-    await this.props.userStore.checkEmail()
+    if (this.props.userStore.validateEmail()) {
+      await this.props.userStore.checkEmail()
+    }
   }
   signIn = async () => {
     const { next } = this.props.navigation.state.params
@@ -74,9 +85,11 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
   }
   signUp = async () => {
     const { userStore, navigation } = this.props
-    if (userStore.validateSignUp()) {
+    const validation = userStore.validateSignUp()
+    console.tron.log(validation)
+    if (validation) {
       const { next } = navigation.state.params
-      const result = await userStore.signUp
+      const result = await userStore.signUp()
       if (result) {
         navigation.push(next ? next : "tabs")
       }
@@ -100,13 +113,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
     const { emailExists } = this.props.userStore.currentUser
     const checkingOut = this.props.navigation.state.params.next === "checkout"
     return (
-      <Screen preset="scrollStack" style={ROOT}>
+      <Screen preset="fixedStack" style={ROOT}>
         <TitleBar
           title="Alliance Recordings"
           back
           onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
         />
-        <ScrollView style={ROOT} keyboardShouldPersistTaps="handled">
+        <ScrollView style={ROOT} keyboardShouldPersistTaps="always">
           <View style={CONTENT}>
             <Text>
               Session recordings are now available for purchase through the app and website via
@@ -123,7 +136,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             {emailExists === false && this.renderSignUp()}
             {!checkingOut && (
               <Text onPress={this.next} style={LINK}>
-                Skip
+                Skip for now
               </Text>
             )}
           </View>
@@ -133,11 +146,19 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
   }
 
   renderEmailInput = () => {
-    const { email, setEmail } = this.props.userStore.currentUser
+    const { email, setEmail, emailError } = this.props.userStore.currentUser
     return (
       <View>
         <Text style={HEADER}>Enter Email</Text>
-        <TextInput placeholder="Email" value={email} onChangeText={setEmail} />
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          onSubmitEditing={this.checkEmail}
+          returnKeyLabel="Next"
+        />
+        {emailError !== null && emailError.length > 0 && <Text style={ERROR}>{emailError}</Text>}
         <Button onPress={this.checkEmail} text="Next" />
       </View>
     )
@@ -160,6 +181,8 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+          onSubmitEditing={this.signIn}
+          returnKeyLabel="Next"
         />
         <Button onPress={this.signIn} text="Next" />
       </View>
@@ -172,6 +195,9 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
       password,
       setPassword,
       passwordError,
+      confirm,
+      setConfirm,
+      confirmError,
       firstName,
       setFirstName,
       firstNameError,
@@ -212,32 +238,116 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+          onSubmitEditing={() => {
+            this.firstName.focus()
+          }}
+          returnKeyLabel="Next"
         />
         {passwordError !== null &&
           passwordError.length > 0 && <Text style={ERROR}>{passwordError}</Text>}
-        <TextInput placeholder="First Name" value={firstName} onChangeText={setFirstName} />
+        <TextInput
+          placeholder="Confirm Password"
+          value={confirm}
+          onChangeText={setConfirm}
+          secureTextEntry
+          onSubmitEditing={() => {
+            this.firstName.focus()
+          }}
+          returnKeyLabel="Next"
+        />
+        {confirmError !== null &&
+          confirmError.length > 0 && <Text style={ERROR}>{confirmError}</Text>}
+        <TextInput
+          placeholder="First Name"
+          value={firstName}
+          onChangeText={setFirstName}
+          ref={input => (this.firstName = input)}
+          onSubmitEditing={() => {
+            this.lastName.focus()
+          }}
+          returnKeyLabel="Next"
+        />
         {firstNameError !== null &&
           firstNameError.length > 0 && <Text style={ERROR}>{firstNameError}</Text>}
-        <TextInput placeholder="Last Name" value={lastName} onChangeText={setLastName} />
+        <TextInput
+          placeholder="Last Name"
+          value={lastName}
+          onChangeText={setLastName}
+          ref={input => (this.lastName = input)}
+          onSubmitEditing={() => {
+            this.phone.focus()
+          }}
+          returnKeyLabel="Next"
+        />
         {lastNameError !== null &&
           lastNameError.length > 0 && <Text style={ERROR}>{lastNameError}</Text>}
         <TextInput
           placeholder="Phone (for account recovery purposes only)"
           value={phone}
           onChangeText={setPhone}
+          ref={input => (this.phone = input)}
+          onSubmitEditing={() => {
+            this.address1.focus()
+          }}
+          returnKeyLabel="Next"
+          keyboardType="number-pad"
         />
         {phoneError !== null && phoneError.length > 0 && <Text style={ERROR}>{phoneError}</Text>}
-        <TextInput placeholder="Address Line 1" value={address1} onChangeText={setAddress1} />
+        <TextInput
+          placeholder="Address Line 1"
+          value={address1}
+          onChangeText={setAddress1}
+          ref={input => (this.address1 = input)}
+          onSubmitEditing={() => {
+            this.address2.focus()
+          }}
+          returnKeyLabel="Next"
+        />
         {address1Error !== null &&
           address1Error.length > 0 && <Text style={ERROR}>{address1Error}</Text>}
-        <TextInput placeholder="Address Line 2" value={address2} onChangeText={setAddress2} />
+        <TextInput
+          placeholder="Address Line 2"
+          value={address2}
+          onChangeText={setAddress2}
+          ref={input => (this.address2 = input)}
+          onSubmitEditing={() => {
+            this.city.focus()
+          }}
+          returnKeyLabel="Next"
+        />
         {address2Error !== null &&
           address2Error.length > 0 && <Text style={ERROR}>{address2Error}</Text>}
-        <TextInput placeholder="City" value={city} onChangeText={setCity} />
+        <TextInput
+          placeholder="City"
+          value={city}
+          onChangeText={setCity}
+          ref={input => (this.city = input)}
+          onSubmitEditing={() => {
+            this.state.focus()
+          }}
+          returnKeyLabel="Next"
+        />
         {cityError !== null && cityError.length > 0 && <Text style={ERROR}>{cityError}</Text>}
-        <TextInput placeholder="State" value={state} onChangeText={setState} />
+        <TextInput
+          placeholder="State"
+          value={state}
+          onChangeText={setState}
+          ref={input => (this.state = input)}
+          onSubmitEditing={() => {
+            this.zip.focus()
+          }}
+          returnKeyLabel="Next"
+        />
         {stateError !== null && stateError.length > 0 && <Text style={ERROR}>{stateError}</Text>}
-        <TextInput placeholder="Zip" value={zip} onChangeText={setZip} />
+        <TextInput
+          placeholder="Zip"
+          value={zip}
+          onChangeText={setZip}
+          ref={input => (this.zip = input)}
+          onSubmitEditing={this.signUp}
+          returnKeyLabel="Next"
+          keyboardType="number-pad"
+        />
         {zipError !== null && zipError.length > 0 && <Text style={ERROR}>{zipError}</Text>}
         <Button onPress={this.signUp} text="Next" />
       </View>
