@@ -23,7 +23,7 @@ export const UserStoreModel = types
     validateEmail: () => {
       const { setEmailError } = self.currentUser
       const { email } = validate(validateEmail, self.currentUser)
-      if (email) setEmailError(email[0])
+      email ? setEmailError(email[0]) : setEmailError(null)
       return !email
     },
     validateSignUp: () => {

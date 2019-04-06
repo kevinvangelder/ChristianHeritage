@@ -85,9 +85,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
   }
   signUp = async () => {
     const { userStore, navigation } = this.props
-    const validation = userStore.validateSignUp()
-    console.tron.log(validation)
-    if (validation) {
+    if (userStore.validateSignUp()) {
       const { next } = navigation.state.params
       const result = await userStore.signUp()
       if (result) {
