@@ -1,5 +1,12 @@
 import * as React from "react"
-import { View, ViewStyle, TextStyle, ScrollView, Alert } from "react-native"
+import {
+  View,
+  ViewStyle,
+  TextStyle,
+  ScrollView,
+  Alert,
+  TouchableWithoutFeedback,
+} from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../shared/title-bar"
@@ -12,6 +19,7 @@ import { Button } from "../../shared/button"
 import { CartStore } from "../../../models/cart-store"
 import { getSpeakerNames } from "../../../lib/utils"
 import { RecordingStore } from "../../../models/recording-store"
+import { FakeRecordingModel } from "../../../models/recording"
 
 const ROOT: ViewStyle = {
   flex: 1,
@@ -26,6 +34,23 @@ const SECTION: ViewStyle = {
 const HEADING: TextStyle = {
   fontSize: 18,
   fontWeight: "bold",
+}
+const ROW: ViewStyle = {
+  flexDirection: "row",
+  marginTop: spacing[3],
+}
+const CIRCLE: ViewStyle = {
+  width: spacing[7],
+  height: spacing[7],
+  borderRadius: spacing[5],
+  backgroundColor: color.palette.endeavour,
+  justifyContent: "center",
+  alignItems: "center",
+  marginRight: spacing[3],
+}
+const INITIALS: TextStyle = {
+  fontSize: 24,
+  color: color.background,
 }
 const LINK: TextStyle = {
   color: color.palette.bahamaBlue,
@@ -73,6 +98,9 @@ const DISCLAIMER: TextStyle = {
   marginTop: spacing[3],
   fontSize: 12,
 }
+const SET_DETAIL: TextStyle = {
+  fontSize: 12,
+}
 
 export interface CartScreenProps extends NavigationScreenProps<{}> {
   userStore: UserStore
@@ -103,8 +131,24 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
     ])
   }
 
+  removeOtherItem = RID => {
+    console.tron.log(`remove ${RID}`)
+    Alert.alert("Confirm", "Are you sure you wish to remove this item from your cart?", [
+      { text: "No", style: "cancel" },
+      {
+        text: "Yes",
+        onPress: () => {
+          console.tron.log(`removing ${RID}`)
+          this.props.cartStore.removeOtherFromCart(RID)
+        },
+      },
+    ])
+  }
+
   render() {
     const { currentUser: { isSignedIn } } = this.props.userStore
+    const sets = this.props.recordingStore.getSets
+    // const { currentCart: { setIds } } = this.props.cartStore
     return (
       <Screen preset="fixed">
         <TitleBar
@@ -112,13 +156,13 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
           back
           onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
         />
-        <ScrollView style={ROOT} contentContainerStyle={{ width: "100%" }}>
+        <ScrollView
+          style={ROOT}
+          contentContainerStyle={{ width: "100%", paddingVertical: spacing[3] }}
+        >
           {!isSignedIn && this.renderSignIn()}
           {isSignedIn && this.renderSignedIn()}
-          <View style={SECTION}>
-            <Text style={HEADING}>Set Info</Text>
-            <Text style={DISCLAIMER} />
-          </View>
+          {sets && sets.length > 0 && this.renderSets(sets)}
           {this.renderCart()}
           <Text style={DISCLAIMER}>
             Items you have previously purchased will be automatically removed from your cart.
@@ -143,29 +187,85 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
   }
 
   renderSignedIn = () => {
-    const { currentUser: { email }, signOut } = this.props.userStore
+    const { currentUser: { email, initials, firstName, lastName }, signOut } = this.props.userStore
     return (
       <View>
         <Text style={HEADING}>Alliance Recording Account</Text>
-        <Text>
-          Currently signed in: {email} (<Text style={LINK} onPress={signOut}>
-            Sign Out
-          </Text>)
-        </Text>
+        <View style={ROW}>
+          <View style={CIRCLE}>
+            <Text style={INITIALS}>{initials}</Text>
+          </View>
+          <View style={{ flexDirection: "column", justifyContent: "center" }}>
+            <Text>
+              {firstName} {lastName}
+            </Text>
+            <Text>{email}</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "column",
+              alignItems: "flex-end",
+              justifyContent: "center",
+              flex: 1,
+            }}
+          >
+            <Button preset="deleteSmall" onPress={signOut} text="Sign Out" />
+          </View>
+        </View>
+      </View>
+    )
+  }
+
+  renderSets = sets => {
+    if (sets.length === 1 && this.props.cartStore.findCartItem(sets[0].RID)) return null
+    return (
+      <View style={SECTION}>
+        <Text style={HEADING}>Conference Sets</Text>
+        {sets.map(set => this.renderSet(set))}
+        <Text style={DISCLAIMER} />
+      </View>
+    )
+  }
+
+  renderSet = set => {
+    const setInCart = this.props.cartStore.findCartItem(set.RID)
+    if (setInCart) return null
+    const detailString = set.SESSIONS.map(i => i.TITLE).join("\n- ")
+    return (
+      <View key={set.RECID} style={CART_ITEM}>
+        <TouchableWithoutFeedback
+          style={ITEM_DETAILS}
+          onPress={() => Alert.alert("Items in Set", detailString)}
+        >
+          <View>
+            <Text style={ITEM_TITLE}>{set.TITLE}</Text>
+            {/* <Text style={ITEM_SPEAKER}>{set.DESCRIPTION}</Text> */}
+            <Text style={LINK}>See Details</Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <View style={ITEM_PRICE}>
+          <Text>${set.displayPrice}</Text>
+          <Button
+            onPress={() => this.props.cartStore.addToCart(set.RID)}
+            preset="primarySmall"
+            text="Add to Cart"
+          />
+        </View>
       </View>
     )
   }
 
   renderCart = () => {
-    const { currentCart: { isEmpty, items } } = this.props.cartStore
+    const { currentCart: { isEmpty, items, otherItems } } = this.props.cartStore
     return (
       <View style={SECTION}>
         <Text style={HEADING}>Cart</Text>
         {isEmpty && <Text style={EMPTY}>Cart is empty.</Text>}
         {isEmpty && (
-          <Text style={EMPTY}>Add individual sessions from the schedule or add the set above.</Text>
+          <Text style={EMPTY}>Add individual sessions from the schedule or add a set above.</Text>
         )}
         {!isEmpty && items.map(i => this.renderCartItem(i))}
+        {otherItems && otherItems.map(i => this.renderOtherItem(i))}
         {!isEmpty && this.renderSubtotal()}
       </View>
     )
@@ -178,11 +278,32 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
           <Text style={ITEM_TITLE} numberOfLines={0}>
             {item.TITLE}
           </Text>
-          <Text style={ITEM_SPEAKER}>{getSpeakerNames(item)}</Text>
+          {!item.SET && <Text style={ITEM_SPEAKER}>{getSpeakerNames(item)}</Text>}
+          {item.SET && <Text style={ITEM_SPEAKER}>{item.DESCRIPTION}</Text>}
         </View>
         <View style={ITEM_PRICE}>
-          <Text>${item.PRICE}.00</Text>
+          <Text>${item.displayPrice}</Text>
           <Button onPress={() => this.removeItem(item.RID)} preset="deleteSmall" text="Remove" />
+        </View>
+      </View>
+    )
+  }
+
+  renderOtherItem = item => {
+    return (
+      <View key={item.recID} style={CART_ITEM}>
+        <View style={ITEM_DETAILS}>
+          <Text style={ITEM_TITLE} numberOfLines={0}>
+            {item.title}
+          </Text>
+        </View>
+        <View style={ITEM_PRICE}>
+          <Text>${item.displayPrice}</Text>
+          <Button
+            onPress={() => this.removeOtherItem(item.rid)}
+            preset="deleteSmall"
+            text="Remove"
+          />
         </View>
       </View>
     )
@@ -192,7 +313,7 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
     const { currentCart: { localSubtotal } } = this.props.cartStore
     return (
       <View style={TOTAL}>
-        <Text style={SUBTOTAL}>Total: ${localSubtotal}.00</Text>
+        <Text style={SUBTOTAL}>Total: ${localSubtotal}</Text>
         <Button onPress={this.checkout} text="Check Out" />
       </View>
     )

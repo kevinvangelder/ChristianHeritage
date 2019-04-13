@@ -32,9 +32,6 @@ const LINK: TextStyle = {
   color: color.palette.bahamaBlue,
   textDecorationLine: "underline",
   fontWeight: "bold",
-  paddingHorizontal: spacing[2],
-  marginTop: spacing[2],
-  alignSelf: "center",
 }
 const HEADER: TextStyle = {
   fontWeight: "bold",
@@ -47,12 +44,27 @@ const BOLD: TextStyle = {
 }
 const ROW: ViewStyle = {
   flexDirection: "row",
-  justifyContent: "space-between",
   alignItems: "center",
 }
 const ERROR: TextStyle = {
   color: color.error,
   marginLeft: spacing[1],
+}
+const CIRCLE: ViewStyle = {
+  width: spacing[7],
+  height: spacing[7],
+  borderRadius: spacing[5],
+  backgroundColor: color.palette.endeavour,
+  justifyContent: "center",
+  alignItems: "center",
+  marginRight: spacing[3],
+}
+const INITIALS: TextStyle = {
+  fontSize: 24,
+  color: color.background,
+}
+const BUTTON_MARGIN: ViewStyle = {
+  marginVertical: spacing[3],
 }
 
 export interface AuthenticationScreenProps extends NavigationScreenProps<{}> {
@@ -108,7 +120,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
   }
 
   render() {
-    const { emailExists } = this.props.userStore.currentUser
+    const { emailExists, isSignedIn } = this.props.userStore.currentUser
     const checkingOut = this.props.navigation.state.params.next === "checkout"
     return (
       <Screen preset="fixedStack" style={ROOT}>
@@ -129,14 +141,24 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
               Please note, your Alliance Recording account is separate from your Christian Heritage
               account.
             </Text>
-            {emailExists === null && this.renderEmailInput()}
-            {emailExists && this.renderPasswordInput()}
-            {emailExists === false && this.renderSignUp()}
-            {!checkingOut && (
-              <Text onPress={this.next} style={LINK}>
-                Skip for now
-              </Text>
-            )}
+            {emailExists === null && !isSignedIn && this.renderEmailInput()}
+            {emailExists && !isSignedIn && this.renderPasswordInput()}
+            {emailExists === false && !isSignedIn && this.renderSignUp()}
+            {!checkingOut &&
+              !isSignedIn && (
+                <Text
+                  onPress={this.next}
+                  style={{
+                    ...LINK,
+                    alignSelf: "center",
+                    paddingHorizontal: spacing[2],
+                    marginTop: spacing[2],
+                  }}
+                >
+                  Skip for now
+                </Text>
+              )}
+            {isSignedIn && this.renderSignedIn()}
           </View>
         </ScrollView>
       </Screen>
@@ -167,7 +189,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
     return (
       <View>
         <Text style={HEADER}>Sign In</Text>
-        <View style={ROW}>
+        <View style={{ ...ROW, justifyContent: "space-between" }}>
           <Text>
             <Text style={BOLD}>Email: </Text>
             {email}
@@ -224,7 +246,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
     return (
       <View>
         <Text style={HEADER}>Sign Up</Text>
-        <View style={ROW}>
+        <View style={{ ...ROW, justifyContent: "space-between" }}>
           <Text>
             <Text style={BOLD}>Email: </Text>
             {email}
@@ -348,6 +370,37 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
         />
         {zipError !== null && zipError.length > 0 && <Text style={ERROR}>{zipError}</Text>}
         <Button onPress={this.signUp} text="Next" />
+      </View>
+    )
+  }
+
+  renderSignedIn = () => {
+    const { currentUser: { initials, email, firstName, lastName }, signOut } = this.props.userStore
+    return (
+      <View>
+        <Text style={HEADER}>Account</Text>
+        <View style={ROW}>
+          <View style={CIRCLE}>
+            <Text style={INITIALS}>{initials}</Text>
+          </View>
+          <View style={{ flexDirection: "column", justifyContent: "center" }}>
+            <Text>
+              {firstName} {lastName}
+            </Text>
+            <Text>{email}</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "column",
+              alignItems: "flex-end",
+              justifyContent: "center",
+              flex: 1,
+            }}
+          >
+            <Button preset="deleteSmall" onPress={signOut} text="Sign Out" />
+          </View>
+        </View>
+        <Button onPress={this.next} text="Continue" style={BUTTON_MARGIN} />
       </View>
     )
   }

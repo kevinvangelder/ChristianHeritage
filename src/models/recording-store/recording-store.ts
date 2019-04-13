@@ -9,11 +9,15 @@ export const RecordingStoreModel = types
   .model("RecordingStore")
   .props({
     recordings: types.optional(types.array(RecordingModel), []),
+    recordingsUpdated: types.maybe(types.Date),
   })
   .extend(withEnvironment)
   .actions(self => ({
     setRecordings: (value: RecordingSnapshot[] | Recording[]) => {
       self.recordings = value as any
+    },
+    setRecordingsUpdated: (value: Date) => {
+      self.recordingsUpdated = value
     },
   }))
   .actions(self => ({
@@ -23,6 +27,7 @@ export const RecordingStoreModel = types
 
         if (kind === "ok") {
           self.setRecordings(recordings)
+          self.setRecordingsUpdated(new Date())
         }
       } catch (e) {
         console.tron.log(e.message)
@@ -40,6 +45,11 @@ export const RecordingStoreModel = types
       //   if (rec) return rec
       //   return false
       // }
+    },
+  }))
+  .views(self => ({
+    get getSets() {
+      return self.recordings.filter(r => r.SET === true)
     },
   }))
 

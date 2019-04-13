@@ -118,7 +118,12 @@ export const UserModel = types
       return !!self.token
     },
     get purchaseHistoryIds() {
-      return self.purchaseHistory ? Object.keys(self.purchaseHistory) : []
+      return self.purchaseHistory ? Object.keys(self.purchaseHistory).map(i => parseInt(i)) : []
+    },
+    get initials() {
+      if (self.firstName && self.lastName)
+        return `${self.firstName.slice(0, 1)}${self.lastName.slice(0, 1)}`
+      return "CH"
     },
   }))
 

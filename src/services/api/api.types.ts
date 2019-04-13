@@ -10,6 +10,8 @@ export type SignUpResult =
   | {
       kind: "ok"
       token: string
+      firstName: string
+      lastName: string
       cart: CartSnapshot
       coupons: any
       purchaseHistory: any
@@ -20,6 +22,8 @@ export type SignInResult =
   | {
       kind: "ok"
       token: string
+      firstName: string
+      lastName: string
       cart: CartSnapshot
       coupons: any
       purchaseHistory: any
@@ -30,6 +34,8 @@ export type ReauthenticateResult =
   | {
       kind: "ok"
       token: string
+      firstName: string
+      lastName: string
       cart: CartSnapshot
       coupons: any
       purchaseHistory: any

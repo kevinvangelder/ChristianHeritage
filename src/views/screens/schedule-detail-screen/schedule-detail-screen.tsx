@@ -83,6 +83,10 @@ const INVISIBLE: ViewStyle = {
   width: 0,
 }
 
+const DVD_BUTTON: ViewStyle = {
+  marginTop: spacing[3],
+}
+
 const IMAGES = {
   "Dr. Voddie Baucham, Jr.": require("./Voddie_Baucham.png"),
   "Allan Blain": require("./Allan_Blain.png"),
@@ -188,6 +192,9 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   renderKeynote = () => {
     const { timeSlotActivities, item } = this.props.navigation.state.params
     const activity = timeSlotActivities[0]
+    const recording = activity.RID && this.props.recordingStore.findRecording(activity.RID)
+    const dvdRecording =
+      activity.DVD_RID && this.props.recordingStore.findRecording(activity.DVD_RID)
     return (
       <ScrollView style={ROOT}>
         <Text preset="header" text={activity.name} style={TITLE} />
@@ -210,7 +217,8 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
           </TouchableOpacity>
         </View>
-        {activity.RID && this.renderCartButton(activity)}
+        {recording && this.renderCartButton(recording)}
+        {dvdRecording && this.renderDvdButton(dvdRecording)}
       </ScrollView>
     )
   }
@@ -260,26 +268,54 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
           </TouchableOpacity>
         </View>
         {activity.RID && this.renderCartButton(activity)}
+        {activity.DVD_RID && this.renderDvdButton(activity)}
       </View>
     )
   }
 
-  renderCartButton = activity => {
+  renderCartButton = recording => {
     const { itemIds } = this.props.cartStore.currentCart
-    if (itemIds.includes(activity.RID)) {
+    if (itemIds.includes(recording.RID)) {
       return (
         <Button
           text="Remove from Cart"
           preset="delete"
-          onPress={() => this.removeFromCart(activity.RID)}
+          onPress={() => this.removeFromCart(recording.RID)}
         />
       )
     } else {
       const { purchaseHistoryIds } = this.props.userStore.currentUser
-      if (purchaseHistoryIds.includes(`${activity.RID}`)) {
+      if (purchaseHistoryIds.includes(recording.RID)) {
         return <Button text="Already Purchased" preset="disabled" disabled />
       } else {
-        return <Button text="Add to Cart" onPress={() => this.addToCart(activity.RID)} />
+        return <Button text="Add to Cart" onPress={() => this.addToCart(recording.RID)} />
+      }
+    }
+  }
+
+  renderDvdButton = dvdRecording => {
+    const { itemIds } = this.props.cartStore.currentCart
+    if (itemIds.includes(dvdRecording.RID)) {
+      return (
+        <Button
+          text="Remove DVD from Cart"
+          preset="delete"
+          onPress={() => this.removeFromCart(dvdRecording.RID)}
+          style={DVD_BUTTON}
+        />
+      )
+    } else {
+      const { purchaseHistoryIds } = this.props.userStore.currentUser
+      if (purchaseHistoryIds.includes(dvdRecording.RID)) {
+        return <Button text="Already Purchased" preset="disabled" disabled style={DVD_BUTTON} />
+      } else {
+        return (
+          <Button
+            text="Add DVD to Cart"
+            onPress={() => this.addToCart(dvdRecording.RID)}
+            style={DVD_BUTTON}
+          />
+        )
       }
     }
   }

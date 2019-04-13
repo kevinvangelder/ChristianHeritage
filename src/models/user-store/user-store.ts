@@ -85,7 +85,8 @@ export const UserStoreModel = types
       if (result.kind === "ok") {
         self.currentUser.setPassword("")
         if (result.token) self.currentUser.setToken(result.token)
-        console.tron.log(result)
+        if (result.firstName) self.currentUser.setFirstName(result.firstName)
+        if (result.lastName) self.currentUser.setLastName(result.lastName)
         if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
         if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
         // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
@@ -96,6 +97,7 @@ export const UserStoreModel = types
           return true
         }
       }
+      return false
     },
     reauthenticate: async () => {
       if (!self.isTokenRefreshing) {
@@ -106,6 +108,8 @@ export const UserStoreModel = types
         if (result.kind === "ok" && !result.error) {
           console.tron.log("reauthenticated!")
           if (result.token) self.currentUser.setToken(result.token)
+          if (result.firstName) self.currentUser.setFirstName(result.firstName)
+          if (result.lastName) self.currentUser.setLastName(result.lastName)
           if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
           if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
           // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
@@ -146,7 +150,9 @@ export const UserStoreModel = types
         self.rootStore.cartStore.currentCart.items,
       )
       if (result.kind === "ok") {
-        self.currentUser.setToken(result.token)
+        if (result.token) self.currentUser.setToken(result.token)
+        if (result.firstName) self.currentUser.setFirstName(result.firstName)
+        if (result.lastName) self.currentUser.setLastName(result.lastName)
         if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
         if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
         // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)

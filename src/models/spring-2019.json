@@ -117,7 +117,8 @@
           "description":
             "\"What curriculum do you use?\" is an important question. But more important is \"What is your philosophy of education?\" Your curriculum reflects your philosophy of education, and since many homeschool families don’t have one, their curriculum choices tend to be based on convenience, pragmatism, or availability. Explore the Puritan Philosophy of Education from which rose great educational movements and institutions. Find basic tools to develop a philosophy of education for your family and give you direction, goals, and purpose.",
           "RECID": "19-001",
-          "RID": 2655
+          "RID": 2655,
+          "DVD_RID": 2850
         }
       ],
       "2": [
@@ -421,7 +422,8 @@
           "description":
             "Relational wisdom is the ability to discern emotions and interests in yourself and others, interpret them in the light of God’s Word, and use them to manage responses and relationships successfully. In this life-changing message, Ken describes the biblical and neurological basis for relational wisdom and shows how these skills lead to less stressful and more productive homeschool experiences while also preparing children for durable marriages, better job performance, and a more credible witness for Christ.",
           "RECID": "19-002A",
-          "RID": 2838
+          "RID": 2838,
+          "DVD_RID": 2851
         },
         {
           "name": "Relational Wisdom: Preparing for Life",
@@ -456,7 +458,9 @@
           "name": "Mini Concert Performed by Homeschooled Students",
           "location": "Worship Center",
           "speaker": "",
-          "description": ""
+          "description":
+            "- Family Night Performances\n- Christian Heritage Chorale Performance\n- Chiorsters Performance",
+          "DVD_RID": 2856
         },
         {
           "name": "Doing Apologetics in an Anti-Apologetic Age",
@@ -465,7 +469,8 @@
           "description":
             "Can you defend your faith?  Do you even want to?  Or do you think doing so would be unkind, arrogant, or even unchristian?  Voddie exposes the contemporary ideologies that stand opposed to the idea of apologetics and introduces the basics of defending the faith.  He also speaks to contemporary cultural apologetic issues.",
           "RECID": "19-003",
-          "RID": 2729
+          "RID": 2729,
+          "DVD_RID": 2852
         }
       ]
     }
@@ -571,7 +576,8 @@
           "description":
             "Have you heard of the Protestant Work Ethic?  Did you know it is more than just a predisposition to hard work?  There was actually a significant theology of work that undergirded Protestant culture and led to prosperity and freedom we take for granted.  Voddie explores that theology and gives you tools to help you incorporate it into the education of your children.",
           "RECID": "19-004",
-          "RID": 2730
+          "RID": 2730,
+          "DVD_RID": 2853
         }
       ],
       "2": [
@@ -984,13 +990,15 @@
           "description":
             "Modern Christianity is awash with pragmatism and mysticism.  Unfortunately, these ideologies are so common that many Christians are not even aware of the influence in their own lives and families.  Voddie examines these ideologies and shows you how to counter them with biblical thinking and decision making.",
           "RECID": "19-005",
-          "RID": 2767
+          "RID": 2767,
+          "DVD_RID": 2854
         }
       ],
       "10": [
         {
           "name": "End of Conference",
-          "description": "Final opportunity to pick up CDs, DVDs, and MP3s. Doors close at 6:30 PM"
+          "description":
+            "Final opportunity to order recordings at discounted conference pricing. Doors close at 6:30 PM"
         }
       ]
     }

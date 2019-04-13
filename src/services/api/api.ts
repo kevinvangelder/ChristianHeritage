@@ -145,6 +145,8 @@ export class Api {
       return {
         kind: "ok",
         token: response.data.cToken,
+        firstName: response.data.first,
+        lastName: response.data.last,
         cart: response.data.cart,
         coupons: response.data.coupons,
         purchaseHistory: response.data.recordings,
@@ -175,6 +177,8 @@ export class Api {
       return {
         kind: "ok",
         token: response.data.cToken,
+        firstName: response.data.first,
+        lastName: response.data.last,
         cart: response.data.cart,
         coupons: response.data.coupons,
         purchaseHistory: response.data.recordings,
@@ -206,6 +210,8 @@ export class Api {
       return {
         kind: "ok",
         token: cToken,
+        firstName: response.data.first,
+        lastName: response.data.last,
         cart: cart,
         coupons: coupons,
         purchaseHistory: recordings,
@@ -244,12 +250,12 @@ export class Api {
     }
   }
 
-  async removeFromCart(items, token): Promise<Types.RemoveFromCartResult> {
+  async removeFromCart(rid, token): Promise<Types.RemoveFromCartResult> {
     const body = new FormData()
     body.append("method", "removeFromCart")
     body.append("returnformat", "json")
     body.append("ctoken", token)
-    body.append("items", items.map(i => i.RID).join(","))
+    body.append("items", rid)
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })

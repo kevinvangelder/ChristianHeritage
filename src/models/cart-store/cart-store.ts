@@ -1,7 +1,12 @@
 import { types, clone } from "mobx-state-tree"
 import { CartSnapshot, Cart, CartModel } from "../cart"
 import { withRootStore, withEnvironment } from "../extensions"
-import { RecordingSnapshot } from "../recording"
+import {
+  RecordingSnapshot,
+  RecordingModel,
+  FakeRecordingSnapshot,
+  FakeRecordingModel,
+} from "../recording"
 
 /**
  * An CartStore model.
@@ -19,10 +24,15 @@ export const CartStoreModel = types
     setCurrentCart: (value: CartSnapshot | Cart) => {
       self.currentCart = value as CartModel
     },
-    findCartItem: async (RID): Promise<RecordingSnapshot | boolean> => {
+    findCartItem: (RID): RecordingSnapshot => {
       const recording = self.currentCart.items.find(r => r.RID === RID)
       if (recording) return recording
-      return false
+      return null
+    },
+    findOtherItem: (RID): FakeRecordingSnapshot => {
+      const recording = self.currentCart.otherItems.find(r => r.rid === RID)
+      if (recording) return recording
+      return null
     },
     setError: (value: string) => {
       self.error = value
@@ -30,12 +40,23 @@ export const CartStoreModel = types
   }))
   .actions(self => ({
     updateCartFromAPI: async (cart: any) => {
-      const oldCartItems = self.currentCart.items
+      // const oldCartItems = self.currentCart.items
       // console.tron.log(oldCartItems)
       self.currentCart.setItems(null)
+      self.currentCart.setOtherItems(null)
       await Object.keys(cart).map(async k => {
         const recording = await self.rootStore.recordingStore.findRecording(parseInt(k))
-        self.currentCart.addItem(clone(recording))
+        if (recording) {
+          const newCartItem = clone(recording)
+          newCartItem.setPrice(cart[k].price)
+          newCartItem.setCoupon(cart[k].coupon)
+          self.currentCart.addItem(newCartItem)
+        } else {
+          const { set, ...rest } = cart[k]
+          const otherItem = { rid: parseInt(k), set: set === 1, ...rest }
+          // otherItem.price = `${cart[k].price}`
+          self.currentCart.addOtherItem(otherItem)
+        }
       })
     },
     updateCouponsFromAPI: (coupons: any) => {},
@@ -55,10 +76,10 @@ export const CartStoreModel = types
         console.tron.log(e.message)
       }
     },
-    syncCartRemoval: async items => {
+    syncCartRemoval: async ids => {
       const { token } = self.rootStore.userStore.currentUser
       try {
-        const { kind, cart } = await self.environment.api.removeFromCart(items, token)
+        const { kind, cart } = await self.environment.api.removeFromCart(ids, token)
 
         if (kind === "ok" && Object.keys(cart).length > 0) {
           self.updateCartFromAPI(cart)
@@ -79,10 +100,19 @@ export const CartStoreModel = types
     },
     removeFromCart: async RID => {
       const recording = await self.rootStore.recordingStore.findRecording(RID)
-      const cartItem = await self.findCartItem(RID)
+      const cartItem = self.findCartItem(RID)
       const { isSignedIn } = self.rootStore.userStore.currentUser
       cartItem && self.currentCart.removeItem(cartItem)
-      isSignedIn && recording && (await self.syncCartRemoval([recording]))
+      isSignedIn && RID && (await self.syncCartRemoval(RID))
+    },
+    removeOtherFromCart: async RID => {
+      console.tron.log(RID)
+      const cartItem = self.findOtherItem(RID)
+      console.tron.log(cartItem)
+      const { isSignedIn } = self.rootStore.userStore.currentUser
+      console.tron.log(isSignedIn)
+      cartItem && self.currentCart.removeOtherItem(cartItem)
+      isSignedIn && RID && (await self.syncCartRemoval(RID))
     },
     checkout: async () => {
       const { currentCart } = self
