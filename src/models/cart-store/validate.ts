@@ -11,16 +11,16 @@ export const cardRules = {
   },
   EXPIRATION_MONTH: {
     presence: { message: "Please enter a valid month" },
-    format: {
-      pattern: /^(?:[0][\d])|(?:[1][012])$/g,
-      message: "Please enter a valid month",
+    numericality: {
+      greaterThanOrEqualTo: 1,
+      notGreaterThanOrEqualTo: "Please enter a valid month",
     },
   },
   EXPIRATION_YEAR: {
     presence: { message: "Please enter a valid year" },
-    format: {
-      pattern: /^(?:[2-9][\d])|(?:[1][9])$/g,
-      message: "Please enter a valid year",
+    numericality: {
+      greaterThanOrEqualTo: 19,
+      notGreaterThanOrEqualTo: "Please enter a valid year",
     },
   },
   CVV_NO: {

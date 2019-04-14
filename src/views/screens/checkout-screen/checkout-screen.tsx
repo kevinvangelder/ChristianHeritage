@@ -1,5 +1,5 @@
 import * as React from "react"
-import { View, ViewStyle, TextInput, ScrollView, TextStyle, Alert } from "react-native"
+import { View, ViewStyle, TextInput, ScrollView, TextStyle, Alert, Picker } from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../shared/title-bar"
@@ -145,7 +145,6 @@ export class CheckoutScreen extends React.Component<
         CLIENT_KEY,
       }
       RNAuthorizeNet.getTokenWithRequestForCard(card, false, (status, response) => {
-        // console.tron.log({status, response})
         if (status) {
           const { setLastFour, setToken, setExpiration } = this.props.cartStore.currentCart
           setLastFour(CARD_NO.slice(-4))
@@ -256,23 +255,53 @@ export class CheckoutScreen extends React.Component<
         {CARD_NO_ERROR && <Text style={ERROR}>{CARD_NO_ERROR}</Text>}
         <View style={ROW}>
           <View style={COLUMN}>
-            <TextInput
-              placeholder="Exp. Month"
-              value={EXPIRATION_MONTH}
-              onChangeText={this.setExpirationMonth}
-              maxLength={2}
-              keyboardType="numeric"
-            />
+            <View style={ROW}>
+              <Text style={{ alignSelf: "center" }}>Exp. Month:</Text>
+              <Picker
+                selectedValue={EXPIRATION_MONTH}
+                onValueChange={value => this.setExpirationMonth(value)}
+                style={{ flex: 1 }}
+              >
+                <Picker.Item label="Select" value={false} />
+                <Picker.Item label="01" value="01" />
+                <Picker.Item label="02" value="02" />
+                <Picker.Item label="03" value="03" />
+                <Picker.Item label="04" value="04" />
+                <Picker.Item label="05" value="05" />
+                <Picker.Item label="06" value="06" />
+                <Picker.Item label="07" value="07" />
+                <Picker.Item label="08" value="08" />
+                <Picker.Item label="09" value="09" />
+                <Picker.Item label="10" value="10" />
+                <Picker.Item label="11" value="11" />
+                <Picker.Item label="12" value="12" />
+              </Picker>
+            </View>
             {EXPIRATION_MONTH_ERROR && <Text style={ERROR}>{EXPIRATION_MONTH_ERROR}</Text>}
           </View>
           <View style={COLUMN}>
-            <TextInput
-              placeholder="Exp. Year"
-              value={EXPIRATION_YEAR}
-              onChangeText={this.setExpirationYear}
-              maxLength={2}
-              keyboardType="numeric"
-            />
+            <View style={ROW}>
+              <Text style={{ alignSelf: "center" }}>Exp Year:</Text>
+              <Picker
+                selectedValue={EXPIRATION_YEAR}
+                onValueChange={value => this.setExpirationYear(value)}
+                style={{ flex: 1 }}
+              >
+                <Picker.Item label="Select" value={false} />
+                <Picker.Item label="19" value="19" />
+                <Picker.Item label="20" value="20" />
+                <Picker.Item label="21" value="21" />
+                <Picker.Item label="22" value="22" />
+                <Picker.Item label="23" value="23" />
+                <Picker.Item label="24" value="24" />
+                <Picker.Item label="25" value="25" />
+                <Picker.Item label="26" value="26" />
+                <Picker.Item label="27" value="27" />
+                <Picker.Item label="28" value="28" />
+                <Picker.Item label="29" value="29" />
+                <Picker.Item label="30" value="30" />
+              </Picker>
+            </View>
             {EXPIRATION_YEAR_ERROR && <Text style={ERROR}>{EXPIRATION_YEAR_ERROR}</Text>}
           </View>
         </View>

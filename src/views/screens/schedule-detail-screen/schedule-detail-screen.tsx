@@ -288,7 +288,12 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
       if (purchaseHistoryIds.includes(recording.RID)) {
         return <Button text="Already Purchased" preset="disabled" disabled />
       } else {
-        return <Button text="Add to Cart" onPress={() => this.addToCart(recording.RID)} />
+        return (
+          <Button
+            text={`Add to Cart - $${recording.displayPrice}`}
+            onPress={() => this.addToCart(recording.RID)}
+          />
+        )
       }
     }
   }
@@ -311,7 +316,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
       } else {
         return (
           <Button
-            text="Add DVD to Cart"
+            text={`Add DVD to Cart - $${dvdRecording.displayPrice}`}
             onPress={() => this.addToCart(dvdRecording.RID)}
             style={DVD_BUTTON}
           />

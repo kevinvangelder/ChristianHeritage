@@ -99,18 +99,15 @@ export const CartStoreModel = types
       }
     },
     removeFromCart: async RID => {
-      const recording = await self.rootStore.recordingStore.findRecording(RID)
+      // const recording = await self.rootStore.recordingStore.findRecording(RID)
       const cartItem = self.findCartItem(RID)
       const { isSignedIn } = self.rootStore.userStore.currentUser
       cartItem && self.currentCart.removeItem(cartItem)
       isSignedIn && RID && (await self.syncCartRemoval(RID))
     },
     removeOtherFromCart: async RID => {
-      console.tron.log(RID)
       const cartItem = self.findOtherItem(RID)
-      console.tron.log(cartItem)
       const { isSignedIn } = self.rootStore.userStore.currentUser
-      console.tron.log(isSignedIn)
       cartItem && self.currentCart.removeOtherItem(cartItem)
       isSignedIn && RID && (await self.syncCartRemoval(RID))
     },
