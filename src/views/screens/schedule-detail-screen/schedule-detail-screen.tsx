@@ -274,7 +274,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   }
 
   renderCartButton = recording => {
-    const { itemIds } = this.props.cartStore.currentCart
+    const { itemIds, setItemIds } = this.props.cartStore.currentCart
     if (itemIds.includes(recording.RID)) {
       return (
         <Button
@@ -283,6 +283,8 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
           onPress={() => this.removeFromCart(recording.RID)}
         />
       )
+    } else if (setItemIds.includes(recording.RID)) {
+      return <Button text="Included in Set" preset="disabled" disabled />
     } else {
       const { purchaseHistoryIds } = this.props.userStore.currentUser
       if (purchaseHistoryIds.includes(recording.RID)) {
@@ -299,7 +301,7 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   }
 
   renderDvdButton = dvdRecording => {
-    const { itemIds } = this.props.cartStore.currentCart
+    const { itemIds, setItemIds } = this.props.cartStore.currentCart
     if (itemIds.includes(dvdRecording.RID)) {
       return (
         <Button
@@ -309,6 +311,8 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
           style={DVD_BUTTON}
         />
       )
+    } else if (setItemIds.includes(dvdRecording.RID)) {
+      return <Button text="DVD Included in Set" preset="disabled" disabled style={DVD_BUTTON} />
     } else {
       const { purchaseHistoryIds } = this.props.userStore.currentUser
       if (purchaseHistoryIds.includes(dvdRecording.RID)) {
