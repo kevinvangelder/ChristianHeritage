@@ -6,6 +6,7 @@ import {
   ScrollView,
   Alert,
   TouchableWithoutFeedback,
+  TextInput,
 } from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -20,6 +21,8 @@ import { CartStore } from "../../../models/cart-store"
 import { getSpeakerNames } from "../../../lib/utils"
 import { RecordingStore } from "../../../models/recording-store"
 import { FakeRecordingModel } from "../../../models/recording"
+import { validate } from "../../../lib/validate"
+import { couponRules } from "../../../models/cart-store/validate"
 
 const ROOT: ViewStyle = {
   flex: 1,
@@ -88,8 +91,26 @@ const ITEM_SPEAKER: TextStyle = {
 const REMOVE: TextStyle = {
   marginLeft: spacing[2],
 }
+const COUPONS: ViewStyle = {
+  flex: 2,
+}
+const ERROR: TextStyle = {
+  color: color.error,
+  marginLeft: spacing[1],
+  fontSize: 14,
+}
+const COUPON: TextStyle = {
+  borderColor: color.palette.bayoux,
+  borderRadius: 4,
+  backgroundColor: color.palette.bayoux40,
+  borderWidth: 1,
+  padding: spacing[1],
+  marginRight: spacing[1],
+}
 const TOTAL: ViewStyle = {
-  alignSelf: "flex-end",
+  flexDirection: "column",
+  flex: 1,
+  alignItems: "flex-end",
 }
 const SUBTOTAL: TextStyle = {
   marginVertical: spacing[2],
@@ -110,7 +131,21 @@ export interface CartScreenProps extends NavigationScreenProps<{}> {
 
 @inject("userStore", "cartStore", "recordingStore")
 @observer
-export class CartScreen extends React.Component<CartScreenProps, {}> {
+export class CartScreen extends React.Component<
+  CartScreenProps,
+  {
+    coupon: string
+    couponError: string,
+  }
+> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      coupon: "",
+      couponError: null,
+    }
+  }
+
   checkout = () => {
     if (!this.props.userStore.currentUser.isSignedIn) {
       this.props.navigation.push("authentication", { next: "checkout" })
@@ -145,6 +180,28 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
     ])
   }
 
+  setCoupon = coupon => {
+    this.setState({ coupon })
+  }
+
+  addCoupon = () => {
+    const { coupon } = this.state
+    const validationResult = validate(couponRules, { coupon })
+    if (validationResult.coupon) {
+      this.setState({ couponError: validationResult.coupon[0] })
+    } else {
+      if (this.props.cartStore.currentCart.coupons.includes(coupon)) {
+        this.setState({ coupon: null, couponError: "Coupon has already been applied" })
+      } else {
+        if (this.props.cartStore.addCoupon(coupon)) {
+          this.setState({ coupon: null, couponError: null })
+        } else {
+          // this.setState({couponError: this.props.cartStore.currentCart.couponErrors[0]})
+        }
+      }
+    }
+  }
+
   render() {
     const { currentUser: { isSignedIn } } = this.props.userStore
     const sets = this.props.recordingStore.getSets
@@ -159,6 +216,7 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
         <ScrollView
           style={ROOT}
           contentContainerStyle={{ width: "100%", paddingVertical: spacing[3] }}
+          keyboardShouldPersistTaps="handled"
         >
           {!isSignedIn && this.renderSignIn()}
           {isSignedIn && this.renderSignedIn()}
@@ -217,7 +275,8 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
   }
 
   renderSets = sets => {
-    if (sets.length === 1 && this.props.cartStore.findCartItem(sets[0].RID)) return null
+    const { setIds, setItemIds } = this.props.cartStore.currentCart
+    if (setItemIds === setIds) return null
     return (
       <View style={SECTION}>
         <Text style={HEADING}>Conference Sets</Text>
@@ -228,7 +287,8 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
   }
 
   renderSet = set => {
-    const setInCart = this.props.cartStore.findCartItem(set.RID)
+    const { setItemIds } = this.props.cartStore.currentCart
+    const setInCart = setItemIds.includes(set.RID)
     if (setInCart) return null
     const detailString = set.SESSIONS.map(i => i.TITLE).join("\n- ")
     return (
@@ -266,7 +326,10 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
         )}
         {!isEmpty && items.map(i => this.renderCartItem(i))}
         {otherItems && otherItems.map(i => this.renderOtherItem(i))}
-        {!isEmpty && this.renderSubtotal()}
+        <View style={ROW}>
+          {!isEmpty && this.renderCouponSection()}
+          {!isEmpty && this.renderSubtotal()}
+        </View>
       </View>
     )
   }
@@ -280,6 +343,7 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
           </Text>
           {!item.SET && <Text style={ITEM_SPEAKER}>{getSpeakerNames(item)}</Text>}
           {item.SET && <Text style={ITEM_SPEAKER}>{item.DESCRIPTION}</Text>}
+          {!!item.COUPON && <Text>Coupon: {item.COUPON}</Text>}
         </View>
         <View style={ITEM_PRICE}>
           <Text>${item.displayPrice}</Text>
@@ -305,6 +369,23 @@ export class CartScreen extends React.Component<CartScreenProps, {}> {
             text="Remove"
           />
         </View>
+      </View>
+    )
+  }
+
+  renderCouponSection = () => {
+    const { coupon, couponError } = this.state
+    return (
+      <View style={COUPONS}>
+        <View style={ROW}>
+          <View style={{ flex: 1 }}>
+            <TextInput placeholder="Coupon Code" value={coupon} onChangeText={this.setCoupon} />
+          </View>
+          <View>
+            <Button onPress={this.addCoupon} text="Add" preset="primarySmall" />
+          </View>
+        </View>
+        {couponError && <Text style={ERROR}>{couponError}</Text>}
       </View>
     )
   }

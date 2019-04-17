@@ -1,3 +1,4 @@
+import { Alert } from "react-native"
 import { types, clone } from "mobx-state-tree"
 import { CartSnapshot, Cart, CartModel } from "../cart"
 import { withRootStore, withEnvironment } from "../extensions"
@@ -54,23 +55,45 @@ export const CartStoreModel = types
         } else {
           const { set, ...rest } = cart[k]
           const otherItem = { rid: parseInt(k), set: set === 1, ...rest }
-          // otherItem.price = `${cart[k].price}`
           self.currentCart.addOtherItem(otherItem)
         }
       })
     },
-    updateCouponsFromAPI: (coupons: any) => {},
+    updateCouponsFromAPI: (cart: any) => {
+      self.currentCart.setCoupons(null)
+      const coupons = Object.keys(cart)
+        .map(k => cart[k].coupon)
+        .filter(i => i.length > 0)
+      console.tron.log(coupons)
+      self.currentCart.setCoupons(coupons)
+    },
+    updateInvalidCouponsFromAPI: coupons => {
+      Object.keys(coupons.invalid).map(coupon => {
+        if (self.currentCart.coupons.includes(coupon)) {
+          self.currentCart.coupons.remove(coupon)
+        }
+        Alert.alert(
+          "Invalid Coupon",
+          `${coupon} is not a valid coupon code. Coupons are case sensitive.`,
+        )
+      })
+    },
   }))
   .actions(self => ({
-    syncCartAddition: async () => {
+    syncCartAddition: async (newCoupons = []) => {
       const { items } = self.currentCart
       const { token } = self.rootStore.userStore.currentUser
       try {
-        const { kind, cart, coupons } = await self.environment.api.checkCart(items, token)
+        const { kind, cart, coupons } = await self.environment.api.checkCart(
+          items,
+          newCoupons,
+          token,
+        )
 
         if (kind === "ok" && Object.keys(cart).length > 0) {
           self.updateCartFromAPI(cart)
-          // self.updateCouponsFromAPI(coupons)
+          self.updateCouponsFromAPI(cart)
+          self.updateInvalidCouponsFromAPI(coupons)
         }
       } catch (e) {
         console.tron.log(e.message)
@@ -83,6 +106,7 @@ export const CartStoreModel = types
 
         if (kind === "ok" && Object.keys(cart).length > 0) {
           self.updateCartFromAPI(cart)
+          self.updateCouponsFromAPI(cart)
         }
       } catch (e) {
         console.tron.log(e.message)
@@ -99,7 +123,6 @@ export const CartStoreModel = types
       }
     },
     removeFromCart: async RID => {
-      // const recording = await self.rootStore.recordingStore.findRecording(RID)
       const cartItem = self.findCartItem(RID)
       const { isSignedIn } = self.rootStore.userStore.currentUser
       cartItem && self.currentCart.removeItem(cartItem)
@@ -131,6 +154,10 @@ export const CartStoreModel = types
         console.tron.log(e.message)
         return false
       }
+    },
+    addCoupon: async coupon => {
+      // self.currentCart.setCoupons(self.currentCart.coupons.concat(coupon))
+      await self.syncCartAddition(self.currentCart.coupons.concat(coupon))
     },
   }))
 

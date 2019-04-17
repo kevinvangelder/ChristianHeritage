@@ -118,6 +118,7 @@ export class Api {
     state,
     zip,
     items,
+    coupons,
   ): Promise<Types.SignUpResult> {
     const body = new FormData()
     body.append("method", "createUser")
@@ -131,7 +132,8 @@ export class Api {
     body.append("city", city)
     body.append("state", state)
     body.append("zip", zip)
-    body.append("cart", items.map(i => i.RID).join(","))
+    if (items && items.length > 0) body.append("cart", items.map(i => i.RID).join(","))
+    if (coupons && coupons.length > 0) body.append("coupons", coupons.join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -157,13 +159,14 @@ export class Api {
     }
   }
 
-  async signIn(email, password, items): Promise<Types.SignInResult> {
+  async signIn(email, password, items, coupons): Promise<Types.SignInResult> {
     const body = new FormData()
     body.append("method", "authenticate")
     body.append("returnformat", "json")
     body.append("email", email)
     body.append("password", password)
     if (items && items.length > 0) body.append("cart", items.map(i => i.RID).join(","))
+    if (coupons && coupons.length > 0) body.append("coupons", coupons.join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -189,13 +192,14 @@ export class Api {
     }
   }
 
-  async reauthenticate(email, token, items): Promise<Types.ReauthenticateResult> {
+  async reauthenticate(email, token, items, coupons): Promise<Types.ReauthenticateResult> {
     const body = new FormData()
     body.append("method", "authenticate")
     body.append("returnformat", "json")
     body.append("email", email)
     body.append("cToken", token)
     if (items && items.length > 0) body.append("cart", items.map(i => i.RID).join(","))
+    if (coupons && coupons.length > 0) body.append("coupons", coupons.join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -222,13 +226,13 @@ export class Api {
     }
   }
 
-  async checkCart(items, token): Promise<Types.CheckCartResult> {
+  async checkCart(items, coupons, token): Promise<Types.CheckCartResult> {
     const body = new FormData()
     body.append("method", "checkCart")
     body.append("returnformat", "json")
     body.append("cart", items.map(i => i.RID).join(","))
     body.append("ctoken", token)
-    body.append("coupons", "")
+    body.append("coupons", coupons.join(","))
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
@@ -244,6 +248,7 @@ export class Api {
         kind: "ok",
         cart: response.data.cart,
         error: response.data.ERROR,
+        coupons: response.data.coupons,
       }
     } catch (e) {
       return { kind: "bad-data" }
@@ -277,12 +282,14 @@ export class Api {
     }
   }
 
-  async checkout(cardToken, token): Promise<Types.CheckoutResult> {
+  async checkout(cardToken, coupons, token): Promise<Types.CheckoutResult> {
     const body = new FormData()
     body.append("method", "processOrder")
     body.append("returnformat", "json")
     body.append("ctoken", token)
     body.append("atoken", cardToken)
+    body.append("coupons", coupons)
+    body.append("test", "1")
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })

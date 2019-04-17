@@ -20,6 +20,8 @@ export const CartModel = types
     lastFour: types.maybe(types.string),
     expiration: types.maybe(types.string),
     orderResult: types.optional(types.frozen, {}),
+    coupons: types.optional(types.array(types.string), []),
+    couponErrors: types.optional(types.array(types.string), []),
   })
   .actions(self => ({
     setItems: (value: Recording[] | RecordingSnapshot[]) => {
@@ -55,6 +57,28 @@ export const CartModel = types
     },
     setOrderResult: (value: any) => {
       self.orderResult = value
+    },
+    setCoupons: (value: string[]) => {
+      if (self.coupons) {
+        if (value) {
+          self.coupons.replace(value as any)
+        } else {
+          self.coupons.clear()
+        }
+      } else {
+        self.coupons = value as any
+      }
+    },
+    setCouponErrors: (value: string[]) => {
+      if (self.couponErrors) {
+        if (value) {
+          self.couponErrors.replace(value as any)
+        } else {
+          self.couponErrors.clear()
+        }
+      } else {
+        self.couponErrors = value as any
+      }
     },
   }))
   .actions(self => ({

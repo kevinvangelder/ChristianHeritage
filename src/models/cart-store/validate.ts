@@ -38,3 +38,12 @@ export const cardRules = {
     },
   },
 }
+
+export const couponRules = {
+  coupon: {
+    presence: { message: "Enter a valid coupon", allowEmpty: false },
+    length: {
+      maximum: 25,
+    },
+  },
+}

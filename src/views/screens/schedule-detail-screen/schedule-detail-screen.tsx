@@ -233,6 +233,9 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   }
 
   renderActivity = activity => {
+    const recording = activity.RID && this.props.recordingStore.findRecording(activity.RID)
+    const dvdRecording =
+      activity.DVD_RID && this.props.recordingStore.findRecording(activity.DVD_RID)
     return (
       <View style={ACTIVITY} key={activity.name}>
         <Text preset="subheader" text={activity.name} style={TITLE} />
@@ -267,8 +270,8 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
           </TouchableOpacity>
         </View>
-        {activity.RID && this.renderCartButton(activity)}
-        {activity.DVD_RID && this.renderDvdButton(activity)}
+        {recording && this.renderCartButton(recording)}
+        {dvdRecording && this.renderDvdButton(dvdRecording)}
       </View>
     )
   }

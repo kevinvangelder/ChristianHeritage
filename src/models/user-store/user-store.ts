@@ -80,8 +80,8 @@ export const UserStoreModel = types
     },
     signIn: async () => {
       const { email, password } = self.currentUser
-      const { items } = self.rootStore.cartStore.currentCart
-      const result = await self.environment.api.signIn(email, password, items)
+      const { items, coupons } = self.rootStore.cartStore.currentCart
+      const result = await self.environment.api.signIn(email, password, items, coupons)
       if (result.kind === "ok") {
         self.currentUser.setPassword("")
         if (result.token) self.currentUser.setToken(result.token)
@@ -89,7 +89,8 @@ export const UserStoreModel = types
         if (result.lastName) self.currentUser.setLastName(result.lastName)
         if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
         if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
-        // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
+        if (result.cart) self.rootStore.cartStore.updateCouponsFromAPI(result.cart)
+        // if (result.coupons) self.rootStore.cartStore.updateInvalidCouponsFromAPI(result.cart)
         if (result.error) {
           Alert.alert("Error", result.error)
           return false
@@ -103,8 +104,8 @@ export const UserStoreModel = types
       if (!self.isTokenRefreshing) {
         self.setIsTokenRefreshing(true)
         const { email, token } = self.currentUser
-        const { items } = self.rootStore.cartStore.currentCart
-        const result = await self.environment.api.reauthenticate(email, token, items)
+        const { items, coupons } = self.rootStore.cartStore.currentCart
+        const result = await self.environment.api.reauthenticate(email, token, items, coupons)
         if (result.kind === "ok" && !result.error) {
           console.tron.log("reauthenticated!")
           if (result.token) self.currentUser.setToken(result.token)
@@ -112,7 +113,8 @@ export const UserStoreModel = types
           if (result.lastName) self.currentUser.setLastName(result.lastName)
           if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
           if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
-          // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
+          if (result.cart) self.rootStore.cartStore.updateCouponsFromAPI(result.cart)
+          // if (result.coupons) self.rootStore.cartStore.updateInvalidCouponsFromAPI(result.cart)
         } else {
           console.tron.log(result.error)
           if (result.error === "User not found or password incorrect.") {
@@ -136,6 +138,7 @@ export const UserStoreModel = types
         state,
         zip,
       } = self.currentUser
+      const { items, coupons } = self.rootStore.cartStore.currentCart
       const result = await self.environment.api.signUp(
         email,
         password,
@@ -147,7 +150,8 @@ export const UserStoreModel = types
         city,
         state,
         zip,
-        self.rootStore.cartStore.currentCart.items,
+        items,
+        coupons,
       )
       if (result.kind === "ok") {
         if (result.token) self.currentUser.setToken(result.token)
@@ -155,7 +159,8 @@ export const UserStoreModel = types
         if (result.lastName) self.currentUser.setLastName(result.lastName)
         if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
         if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
-        // if (result.coupons) self.rootStore.cartStore.updateCouponsFromAPI(result.coupons)
+        if (result.cart) self.rootStore.cartStore.updateCouponsFromAPI(result.cart)
+        // if (result.coupons) self.rootStore.cartStore.updateInvalidCouponsFromAPI(result.cart)
         if (result.token) return true
       }
       return false
@@ -210,6 +215,7 @@ export const UserStoreModel = types
     },
     signOut: () => {
       self.currentUser.setToken(null)
+      this.resetEmailExists()
     },
   }))
 
