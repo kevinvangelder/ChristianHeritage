@@ -155,8 +155,8 @@ const BIOS = {
 @inject("cartStore", "userStore", "recordingStore")
 @observer
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {
-  openBio(speakerName, bio) {
-    Alert.alert(speakerName, bio)
+  openBio(speakerName, bio, image) {
+    this.props.navigation.push("speakerDetail", { speaker: { name: speakerName, bio, image } })
   }
 
   addToCart(RID) {
@@ -204,14 +204,18 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
               preset="subheader"
               text={activity.speaker}
               style={SPEAKER}
-              onPress={() => this.openBio(activity.speaker, BIOS[activity.speaker])}
+              onPress={() =>
+                this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+              }
             />
             <Text preset="fieldLabel" text={`${item.startTime} - ${item.endTime}`} style={TIME} />
             <Text preset="default" text={activity.description} style={DESCRIPTION} />
             {/* <Text preset="default" text={BIOS[activity.speaker]} style={DESCRIPTION} /> */}
           </View>
           <TouchableOpacity
-            onPress={() => this.openBio(activity.speaker, BIOS[activity.speaker])}
+            onPress={() =>
+              this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+            }
             style={IMAGE_WRAPPER}
           >
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />
@@ -246,7 +250,9 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
                 preset="default"
                 text={activity.speaker}
                 style={SPEAKER}
-                onPress={() => this.openBio(activity.speaker, BIOS[activity.speaker])}
+                onPress={() =>
+                  this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+                }
               />
             ) : (
               <View style={INVISIBLE} />
@@ -264,7 +270,9 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             {/* <Text preset="secondary" text={BIOS[activity.speaker]} style={DESCRIPTION} /> */}
           </View>
           <TouchableOpacity
-            onPress={() => this.openBio(activity.speaker, BIOS[activity.speaker])}
+            onPress={() =>
+              this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+            }
             style={IMAGE_WRAPPER}
           >
             <Image source={IMAGES[activity.speaker]} style={IMAGE} />

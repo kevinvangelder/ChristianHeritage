@@ -1,10 +1,12 @@
 import { StackNavigator, TabNavigator } from "react-navigation"
 import { ScheduleScreen } from "../views/screens/schedule-screen"
 import { ScheduleDetailScreen } from "../views/screens/schedule-detail-screen"
+import { SpeakerDetailScreen } from "../views/screens/speaker-detail-screen"
 import { VenueScreen } from "../views/screens/venue-screen"
 import { InfoScreen } from "../views/screens/info-screen"
 import { AuthenticationScreen } from "../views/screens/authentication-screen"
 import { CartScreen } from "../views/screens/cart-screen"
+import { SetDetailScreen } from "../views/screens/set-detail-screen"
 import { TabBar } from "../views/shared/tab-bar"
 import { CheckoutScreen } from "../views/screens/checkout-screen"
 import { FinalizeOrderScreen } from "../views/screens/finalize-order-screen"
@@ -19,6 +21,7 @@ export const RootNavigator = StackNavigator(
           {
             scheduleOverview: { screen: ScheduleScreen },
             scheduleDetail: { screen: ScheduleDetailScreen },
+            speakerDetail: { screen: SpeakerDetailScreen },
           },
           {
             headerMode: "none",
@@ -29,6 +32,7 @@ export const RootNavigator = StackNavigator(
         cart: StackNavigator(
           {
             cart: { screen: CartScreen },
+            setDetail: { screen: SetDetailScreen },
             authentication: { screen: AuthenticationScreen },
             checkout: { screen: CheckoutScreen },
             finalizeOrder: { screen: FinalizeOrderScreen },

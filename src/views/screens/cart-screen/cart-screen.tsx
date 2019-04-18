@@ -20,7 +20,6 @@ import { Button } from "../../shared/button"
 import { CartStore } from "../../../models/cart-store"
 import { getSpeakerNames } from "../../../lib/utils"
 import { RecordingStore } from "../../../models/recording-store"
-import { FakeRecordingModel } from "../../../models/recording"
 import { validate } from "../../../lib/validate"
 import { couponRules } from "../../../models/cart-store/validate"
 
@@ -88,9 +87,6 @@ const ITEM_SPEAKER: TextStyle = {
   fontStyle: "italic",
   fontWeight: "normal",
 }
-const REMOVE: TextStyle = {
-  marginLeft: spacing[2],
-}
 const COUPONS: ViewStyle = {
   flex: 2,
 }
@@ -98,14 +94,6 @@ const ERROR: TextStyle = {
   color: color.error,
   marginLeft: spacing[1],
   fontSize: 14,
-}
-const COUPON: TextStyle = {
-  borderColor: color.palette.bayoux,
-  borderRadius: 4,
-  backgroundColor: color.palette.bayoux40,
-  borderWidth: 1,
-  padding: spacing[1],
-  marginRight: spacing[1],
 }
 const TOTAL: ViewStyle = {
   flexDirection: "column",
@@ -117,9 +105,6 @@ const SUBTOTAL: TextStyle = {
 }
 const DISCLAIMER: TextStyle = {
   marginTop: spacing[3],
-  fontSize: 12,
-}
-const SET_DETAIL: TextStyle = {
   fontSize: 12,
 }
 
@@ -167,7 +152,6 @@ export class CartScreen extends React.Component<
   }
 
   removeOtherItem = RID => {
-    console.tron.log(`remove ${RID}`)
     Alert.alert("Confirm", "Are you sure you wish to remove this item from your cart?", [
       { text: "No", style: "cancel" },
       {
@@ -205,7 +189,6 @@ export class CartScreen extends React.Component<
   render() {
     const { currentUser: { isSignedIn } } = this.props.userStore
     const sets = this.props.recordingStore.getSets
-    // const { currentCart: { setIds } } = this.props.cartStore
     return (
       <Screen preset="fixed">
         <TitleBar
@@ -235,7 +218,9 @@ export class CartScreen extends React.Component<
     return (
       <View>
         <Text style={HEADING}>Alliance Recording Account</Text>
-        <Text>Sign in to sync your cart to your account or complete your order.</Text>
+        <Text style={{ marginBottom: spacing[2] }}>
+          Sign in to sync your cart to your account or complete your order.
+        </Text>
         <Button
           onPress={() => this.props.navigation.push("authentication", { next: "cart" })}
           text="Sign In"
@@ -281,7 +266,6 @@ export class CartScreen extends React.Component<
       <View style={SECTION}>
         <Text style={HEADING}>Conference Sets</Text>
         {sets.map(set => this.renderSet(set))}
-        <Text style={DISCLAIMER} />
       </View>
     )
   }
@@ -290,16 +274,14 @@ export class CartScreen extends React.Component<
     const { setIds } = this.props.cartStore.currentCart
     const setInCart = setIds.includes(set.RID)
     if (setInCart) return null
-    const detailString = set.SESSIONS.map(i => i.TITLE).join("\n- ")
     return (
       <View key={set.RECID} style={CART_ITEM}>
         <TouchableWithoutFeedback
           style={ITEM_DETAILS}
-          onPress={() => Alert.alert("Items in Set", detailString)}
+          onPress={() => this.props.navigation.push("setDetail", { set })}
         >
           <View>
             <Text style={ITEM_TITLE}>{set.TITLE}</Text>
-            {/* <Text style={ITEM_SPEAKER}>{set.DESCRIPTION}</Text> */}
             <Text style={LINK}>See Details</Text>
           </View>
         </TouchableWithoutFeedback>
@@ -335,6 +317,7 @@ export class CartScreen extends React.Component<
   }
 
   renderCartItem = item => {
+    const recording = item.SET && this.props.recordingStore.findRecording(item.RID)
     return (
       <View key={item.RECID} style={CART_ITEM}>
         <View style={ITEM_DETAILS}>
@@ -342,7 +325,14 @@ export class CartScreen extends React.Component<
             {item.TITLE}
           </Text>
           {!item.SET && <Text style={ITEM_SPEAKER}>{getSpeakerNames(item)}</Text>}
-          {item.SET && <Text style={ITEM_SPEAKER}>{item.DESCRIPTION}</Text>}
+          {item.SET && (
+            <Text
+              style={LINK}
+              onPress={() => this.props.navigation.push("setDetail", { set: recording })}
+            >
+              See Details
+            </Text>
+          )}
           {!!item.COUPON && <Text>Coupon: {item.COUPON}</Text>}
         </View>
         <View style={ITEM_PRICE}>
