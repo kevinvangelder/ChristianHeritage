@@ -113,7 +113,7 @@ export const CartModel = types
     get setIds() {
       return self.items ? self.items.map(i => i.SET && i.RID) : []
     },
-    get setItemIds() {
+    get setSessionIds() {
       const arrays = self.items
         ? self.items.map(i => i.SET && i.SESSIONS && i.SESSIONS.map(s => s.RID))
         : []

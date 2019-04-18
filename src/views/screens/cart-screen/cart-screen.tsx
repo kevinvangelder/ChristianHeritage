@@ -287,8 +287,8 @@ export class CartScreen extends React.Component<
   }
 
   renderSet = set => {
-    const { setItemIds } = this.props.cartStore.currentCart
-    const setInCart = setItemIds.includes(set.RID)
+    const { setIds } = this.props.cartStore.currentCart
+    const setInCart = setIds.includes(set.RID)
     if (setInCart) return null
     const detailString = set.SESSIONS.map(i => i.TITLE).join("\n- ")
     return (

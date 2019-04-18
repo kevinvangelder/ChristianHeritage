@@ -22,7 +22,7 @@ export interface InfoScreenProps extends NavigationScreenProps<{}> {}
 const ROOT: ViewStyle = {
   flexGrow: 1,
   paddingHorizontal: spacing[4],
-  paddingBottom: spacing[3],
+  paddingBottom: spacing[2],
 }
 const CENTER: ViewStyle = {
   alignItems: "center",
@@ -73,12 +73,17 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
           style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 280 }}
         />
         <Text style={{ ...PARAGRAPH, ...ITALICS }}>
-          Hebrews 13:4 Let marriage be held in honor among all..
+          Teaching purposefully, living righteously, to Build a Godly Legacy (Titus 2:12)
         </Text>
         <Text style={PARAGRAPH}>
-          These days marriage is certainly not held in honor among many! All around us we see the
-          devastation, pain and heartbreak of broken marriage vows...
+          Welcome to the 14th annual Christian Heritage Family Discipleship and Homeschooling
+          Conference! We are so excited you are here with us and pray you are encouraged and blessed
+          by what you learn and experience. The focus this year is on teaching purposefully, living
+          righteously, to build a godly legacy. (Titus 2:12) We hope you will be transformed by the
+          Word of God taught by the many wonderful speakers and leaders here with us! May God richly
+          bless you and your family these next few days!
         </Text>
+        <Text>~ The Christian Heritage Board</Text>
         <View
           style={{
             paddingTop: spacing[6],

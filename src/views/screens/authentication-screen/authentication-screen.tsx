@@ -20,6 +20,7 @@ import { UserStore } from "../../../models/user-store"
 
 const ROOT: ViewStyle = {
   flexGrow: 1,
+  paddingBottom: spacing[2],
 }
 const CONTENT: ViewStyle = {
   padding: spacing[2],

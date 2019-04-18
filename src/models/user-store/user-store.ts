@@ -213,9 +213,11 @@ export const UserStoreModel = types
       setStateError(null)
       setZipError(null)
     },
+  }))
+  .actions(self => ({
     signOut: () => {
       self.currentUser.setToken(null)
-      this.resetEmailExists()
+      self.resetEmailExists()
     },
   }))
 
