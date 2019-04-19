@@ -7,6 +7,7 @@ import {
   Alert,
   TouchableWithoutFeedback,
   TextInput,
+  TouchableOpacity,
 } from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -236,15 +237,17 @@ export class CartScreen extends React.Component<
       <View>
         <Text style={HEADING}>Alliance Recording Account</Text>
         <View style={ROW}>
-          <View style={CIRCLE}>
-            <Text style={INITIALS}>{initials}</Text>
-          </View>
-          <View style={{ flexDirection: "column", justifyContent: "center" }}>
-            <Text>
-              {firstName} {lastName}
-            </Text>
-            <Text>{email}</Text>
-          </View>
+          <TouchableOpacity onPress={() => this.props.navigation.push("updateUser")} style={ROW}>
+            <View style={CIRCLE}>
+              <Text style={INITIALS}>{initials}</Text>
+            </View>
+            <View style={{ flexDirection: "column", justifyContent: "center" }}>
+              <Text>
+                {firstName} {lastName}
+              </Text>
+              <Text>{email}</Text>
+            </View>
+          </TouchableOpacity>
           <View
             style={{
               flexDirection: "column",

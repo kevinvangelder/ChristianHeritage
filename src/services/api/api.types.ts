@@ -12,6 +12,12 @@ export type SignUpResult =
       token: string
       firstName: string
       lastName: string
+      phone: string
+      address1: string
+      address2: string
+      city: string
+      state: string
+      zip: string
       cart: CartSnapshot
       coupons: any
       purchaseHistory: any
@@ -24,6 +30,12 @@ export type SignInResult =
       token: string
       firstName: string
       lastName: string
+      phone: string
+      address1: string
+      address2: string
+      city: string
+      state: string
+      zip: string
       cart: CartSnapshot
       coupons: any
       purchaseHistory: any
@@ -36,12 +48,19 @@ export type ReauthenticateResult =
       token: string
       firstName: string
       lastName: string
+      phone: string
+      address1: string
+      address2: string
+      city: string
+      state: string
+      zip: string
       cart: CartSnapshot
       coupons: any
       purchaseHistory: any
       error: string | null,
     }
   | GeneralApiProblem
+export type UpdateUserResult = { kind: "ok"; success: string; error: string } | GeneralApiProblem
 export type CheckCartResult =
   | { kind: "ok"; cart: CartSnapshot; coupons: any; error: string }
   | GeneralApiProblem

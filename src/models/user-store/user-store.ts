@@ -4,6 +4,7 @@ import { UserModel } from "../user"
 import { withEnvironment, withRootStore } from "../extensions"
 import { validationRules, validateEmail } from "./validate"
 import { validate } from "../../lib/validate"
+import { setGenericPassword } from "react-native-keychain"
 
 /**
  * An UserStore model.
@@ -70,6 +71,29 @@ export const UserStoreModel = types
         !zip
       )
     },
+    validateUpdateUser: () => {
+      const {
+        setPhoneError,
+        setFirstNameError,
+        setLastNameError,
+        setAddress1Error,
+        setCityError,
+        setStateError,
+        setZipError,
+      } = self.currentUser
+      const { phone, firstName, lastName, address1, city, state, zip } = validate(
+        validationRules,
+        self.currentUser,
+      )
+      phone ? setPhoneError(phone[0]) : setPhoneError(null)
+      firstName ? setFirstNameError(firstName[0]) : setFirstNameError(null)
+      lastName ? setLastNameError(lastName[0]) : setLastNameError(null)
+      address1 ? setAddress1Error(address1[0]) : setAddress1Error(null)
+      city ? setCityError(city[0]) : setCityError(null)
+      state ? setStateError(state[0]) : setStateError(null)
+      zip ? setZipError(zip[0]) : setZipError(null)
+      return !phone && !firstName && !lastName && !address1 && !city && !state && !zip
+    },
   }))
   .actions(self => ({
     checkEmail: async () => {
@@ -79,18 +103,42 @@ export const UserStoreModel = types
       }
     },
     signIn: async () => {
-      const { email, password } = self.currentUser
-      const { items, coupons } = self.rootStore.cartStore.currentCart
+      const {
+        email,
+        password,
+        setPassword,
+        setToken,
+        setFirstName,
+        setLastName,
+        setPhone,
+        setPurchaseHistory,
+        setAddress1,
+        setAddress2,
+        setCity,
+        setZip,
+        setState,
+      } = self.currentUser
+      const {
+        currentCart: { items, coupons },
+        updateCartFromAPI,
+        updateCouponsFromAPI,
+      } = self.rootStore.cartStore
       const result = await self.environment.api.signIn(email, password, items, coupons)
       if (result.kind === "ok") {
-        self.currentUser.setPassword("")
-        if (result.token) self.currentUser.setToken(result.token)
-        if (result.firstName) self.currentUser.setFirstName(result.firstName)
-        if (result.lastName) self.currentUser.setLastName(result.lastName)
-        if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
-        if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
-        if (result.cart) self.rootStore.cartStore.updateCouponsFromAPI(result.cart)
-        // if (result.coupons) self.rootStore.cartStore.updateInvalidCouponsFromAPI(result.cart)
+        setPassword("")
+        if (result.token) setToken(result.token)
+        if (result.firstName) setFirstName(result.firstName)
+        if (result.lastName) setLastName(result.lastName)
+        if (result.phone) setPhone(`${result.phone}`)
+        if (result.address1) setAddress1(result.address1)
+        if (result.address2) setAddress2(result.address2)
+        if (result.city) setCity(result.city)
+        if (result.state) setState(result.state)
+        if (result.zip) setZip(`${result.zip}`)
+        if (result.purchaseHistory) setPurchaseHistory(result.purchaseHistory)
+        if (result.cart) updateCartFromAPI(result.cart)
+        if (result.cart) updateCouponsFromAPI(result.cart)
+        // if (result.coupons) updateInvalidCouponsFromAPI(result.cart)
         if (result.error) {
           Alert.alert("Error", result.error)
           return false
@@ -103,18 +151,40 @@ export const UserStoreModel = types
     reauthenticate: async () => {
       if (!self.isTokenRefreshing) {
         self.setIsTokenRefreshing(true)
-        const { email, token } = self.currentUser
-        const { items, coupons } = self.rootStore.cartStore.currentCart
+        const {
+          email,
+          token,
+          setToken,
+          setFirstName,
+          setLastName,
+          setPhone,
+          setPurchaseHistory,
+          setAddress1,
+          setAddress2,
+          setCity,
+          setZip,
+          setState,
+        } = self.currentUser
+        const {
+          currentCart: { items, coupons },
+          updateCartFromAPI,
+          updateCouponsFromAPI,
+        } = self.rootStore.cartStore
         const result = await self.environment.api.reauthenticate(email, token, items, coupons)
         if (result.kind === "ok" && !result.error) {
-          console.tron.log("reauthenticated!")
-          if (result.token) self.currentUser.setToken(result.token)
-          if (result.firstName) self.currentUser.setFirstName(result.firstName)
-          if (result.lastName) self.currentUser.setLastName(result.lastName)
-          if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
-          if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
-          if (result.cart) self.rootStore.cartStore.updateCouponsFromAPI(result.cart)
-          // if (result.coupons) self.rootStore.cartStore.updateInvalidCouponsFromAPI(result.cart)
+          if (result.token) setToken(result.token)
+          if (result.firstName) setFirstName(result.firstName)
+          if (result.lastName) setLastName(result.lastName)
+          if (result.phone) setPhone(`${result.phone}`)
+          if (result.address1) setAddress1(result.address1)
+          if (result.address2) setAddress2(result.address2)
+          if (result.city) setCity(result.city)
+          if (result.state) setState(result.state)
+          if (result.zip) setZip(`${result.zip}`)
+          if (result.purchaseHistory) setPurchaseHistory(result.purchaseHistory)
+          if (result.cart) updateCartFromAPI(result.cart)
+          if (result.cart) updateCouponsFromAPI(result.cart)
+          // if (result.coupons) updateInvalidCouponsFromAPI(result.cart)
         } else {
           console.tron.log(result.error)
           if (result.error === "User not found or password incorrect.") {
@@ -138,7 +208,24 @@ export const UserStoreModel = types
         state,
         zip,
       } = self.currentUser
-      const { items, coupons } = self.rootStore.cartStore.currentCart
+      const {
+        setPassword,
+        setToken,
+        setFirstName,
+        setLastName,
+        setPhone,
+        setPurchaseHistory,
+        setAddress1,
+        setAddress2,
+        setCity,
+        setZip,
+        setState,
+      } = self.currentUser
+      const {
+        currentCart: { items, coupons },
+        updateCartFromAPI,
+        updateCouponsFromAPI,
+      } = self.rootStore.cartStore
       const result = await self.environment.api.signUp(
         email,
         password,
@@ -154,16 +241,61 @@ export const UserStoreModel = types
         coupons,
       )
       if (result.kind === "ok") {
-        if (result.token) self.currentUser.setToken(result.token)
-        if (result.firstName) self.currentUser.setFirstName(result.firstName)
-        if (result.lastName) self.currentUser.setLastName(result.lastName)
-        if (result.purchaseHistory) self.currentUser.setPurchaseHistory(result.purchaseHistory)
-        if (result.cart) self.rootStore.cartStore.updateCartFromAPI(result.cart)
-        if (result.cart) self.rootStore.cartStore.updateCouponsFromAPI(result.cart)
+        setPassword("")
+        if (result.token) setToken(result.token)
+        if (result.firstName) setFirstName(result.firstName)
+        if (result.lastName) setLastName(result.lastName)
+        if (result.phone) setPhone(`${result.phone}`)
+        if (result.address1) setAddress1(result.address1)
+        if (result.address2) setAddress2(result.address2)
+        if (result.city) setCity(result.city)
+        if (result.state) setState(result.state)
+        if (result.zip) setZip(`${result.zip}`)
+        if (result.purchaseHistory) setPurchaseHistory(result.purchaseHistory)
+        if (result.cart) updateCartFromAPI(result.cart)
+        if (result.cart) updateCouponsFromAPI(result.cart)
         // if (result.coupons) self.rootStore.cartStore.updateInvalidCouponsFromAPI(result.cart)
         if (result.token) return true
       }
       return false
+    },
+    updateUser: async () => {
+      const { currentCart: { items, coupons } } = self.rootStore.cartStore
+      const {
+        email,
+        password,
+        phone,
+        firstName,
+        lastName,
+        address1,
+        address2,
+        city,
+        state,
+        zip,
+        setPassword,
+        setPasswordError,
+      } = self.currentUser
+      const result = await self.environment.api.updateUser(
+        email,
+        password,
+        phone,
+        firstName,
+        lastName,
+        address1,
+        address2,
+        city,
+        state,
+        zip,
+        items,
+        coupons,
+      )
+      if (result.kind === "ok" && result.success) {
+        setPassword("")
+        return true
+      } else {
+        result.error && setPasswordError(result.error)
+        return false
+      }
     },
     resetEmailExists: () => {
       const {

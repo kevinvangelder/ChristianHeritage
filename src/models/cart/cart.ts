@@ -131,6 +131,9 @@ export const CartModel = types
       self.otherItems.map(i => (subtotal += i.price))
       return subtotal.toFixed(2)
     },
+    get containsDVD() {
+      return self.items.filter(i => i.TITLE.includes("DVD")).length > 0
+    },
   }))
 
 type CartType = typeof CartModel.Type

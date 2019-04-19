@@ -11,6 +11,7 @@ import { SetDetailScreen } from "../views/screens/set-detail-screen"
 import { TabBar } from "../views/shared/tab-bar"
 import { CheckoutScreen } from "../views/screens/checkout-screen"
 import { FinalizeOrderScreen } from "../views/screens/finalize-order-screen"
+import { UpdateUserScreen } from "../views/screens/update-user-screen"
 
 export const RootNavigator = StackNavigator(
   {
@@ -38,6 +39,7 @@ export const RootNavigator = StackNavigator(
             authentication: { screen: AuthenticationScreen },
             checkout: { screen: CheckoutScreen },
             finalizeOrder: { screen: FinalizeOrderScreen },
+            updateUser: { screen: UpdateUserScreen },
           },
           {
             headerMode: "none",

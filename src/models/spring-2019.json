@@ -445,6 +445,12 @@
             "K.C Deez BBQ - Front Driveway \nLa Riviera Maya - Front Driveway \nCH Healthy Eats & Treats - Fellowship Park"
         },
         {
+          "name": "Chess Simul Demonstration",
+          "speaker": "Elliott Neff",
+          "location": "Gym",
+          "description": "4:45-6:15"
+        },
+        {
           "name": "Silent Auction",
           "location": "Second Floor Hallway",
           "speaker": null

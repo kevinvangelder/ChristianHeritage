@@ -83,6 +83,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
   city: any
   state: any
   zip: any
+  scrollview: any
 
   checkEmail = async () => {
     if (this.props.userStore.validateEmail()) {
@@ -112,6 +113,8 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           this.props.navigation.push(next ? next : "tabs")
         }
       }
+    } else {
+      this.scrollview.scrollTo({ x: 0, y: 0, animated: true })
     }
   }
 
@@ -138,7 +141,11 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           back
           onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
         />
-        <ScrollView style={ROOT} keyboardShouldPersistTaps="always">
+        <ScrollView
+          style={ROOT}
+          keyboardShouldPersistTaps="handled"
+          ref={scrollview => (this.scrollview = scrollview)}
+        >
           <View style={CONTENT}>
             <Text>
               Session recordings are now available for purchase through the app and website via

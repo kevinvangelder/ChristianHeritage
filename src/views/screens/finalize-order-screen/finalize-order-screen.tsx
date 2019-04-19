@@ -179,9 +179,10 @@ export class FinalizeOrderScreen extends React.Component<
   }
 
   renderCart = () => {
-    const { currentCart: { isEmpty, items } } = this.props.cartStore
+    const { currentCart: { isEmpty, items, containsDVD } } = this.props.cartStore
     return (
       <View style={CART}>
+        {containsDVD && this.renderDVDWarning()}
         <Text style={HEADING}>Review Cart</Text>
         {!isEmpty && items.map(i => this.renderCartItem(i))}
         {!isEmpty && this.renderSubtotal()}
@@ -190,6 +191,23 @@ export class FinalizeOrderScreen extends React.Component<
           purchased. If any sessions have not yet been uploaded, you will receive additional emails
           when each one is uploaded.
         </Text>
+      </View>
+    )
+  }
+
+  renderDVDWarning = () => {
+    const { address1, address2, city, state, zip } = this.props.userStore.currentUser
+    return (
+      <View>
+        <Text style={HEADING}>Verify Shipping Address</Text>
+        <Text>{`DVDs will be shipped to the following address:\n${address1}${
+          address2.length > 0 ? `\n${address2}` : ""
+        }\n${city}, ${state} ${zip}`}</Text>
+        <Button
+          preset="primary"
+          onPress={() => this.props.navigation.push("updateUser")}
+          text="Update"
+        />
       </View>
     )
   }

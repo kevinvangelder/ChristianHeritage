@@ -13,7 +13,7 @@ export class TimeSlot extends React.Component<TimeSlotProps, {}> {
         ? `${(timeSlotActivities[0] || {}).speaker}: ${(timeSlotActivities[0] || {}).name}`
         : null
     const summary =
-      timeSlotActivities.length <= 3
+      timeSlotActivities.length <= 4
         ? timeSlotActivities.map(activity => activity.name).join(", ")
         : `${timeSlotActivities.length} Workshops`
     const height = timeSlot.duration / 15 * 20 // 20 pixels tall per 15 minutes

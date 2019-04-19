@@ -128,7 +128,8 @@ export class Api {
     body.append("phone", phone)
     body.append("firstName", firstName)
     body.append("lastName", lastName)
-    body.append("address1", address1), body.append("address2", address2)
+    body.append("address1", address1)
+    address2.length > 0 && body.append("address2", address2)
     body.append("city", city)
     body.append("state", state)
     body.append("zip", zip)
@@ -149,6 +150,12 @@ export class Api {
         token: response.data.cToken,
         firstName: response.data.first,
         lastName: response.data.last,
+        phone: response.data.phone,
+        address1: response.data.address1,
+        address2: response.data.address2,
+        city: response.data.city,
+        state: response.data.state,
+        zip: response.data.zip,
         cart: response.data.cart,
         coupons: response.data.coupons,
         purchaseHistory: response.data.recordings,
@@ -182,6 +189,12 @@ export class Api {
         token: response.data.cToken,
         firstName: response.data.first,
         lastName: response.data.last,
+        phone: response.data.phone,
+        address1: response.data.address1,
+        address2: response.data.address2,
+        city: response.data.city,
+        state: response.data.state,
+        zip: response.data.zip,
         cart: response.data.cart,
         coupons: response.data.coupons,
         purchaseHistory: response.data.recordings,
@@ -216,10 +229,65 @@ export class Api {
         token: cToken,
         firstName: response.data.first,
         lastName: response.data.last,
+        phone: response.data.phone,
+        address1: response.data.address1,
+        address2: response.data.address2,
+        city: response.data.city,
+        state: response.data.state,
+        zip: response.data.zip,
         cart: cart,
         coupons: coupons,
         purchaseHistory: recordings,
         error: ERROR,
+      }
+    } catch (e) {
+      return { kind: "bad-data" }
+    }
+  }
+
+  async updateUser(
+    email,
+    password,
+    phone,
+    firstName,
+    lastName,
+    address1,
+    address2,
+    city,
+    state,
+    zip,
+    items,
+    coupons,
+  ): Promise<Types.UpdateUserResult> {
+    const body = new FormData()
+    body.append("method", "updateUser")
+    body.append("returnformat", "json")
+    body.append("email", email)
+    body.append("password", password)
+    body.append("phone", phone)
+    body.append("firstName", firstName)
+    body.append("lastName", lastName)
+    body.append("address1", address1)
+    address2.length > 0 && body.append("address2", address2)
+    body.append("city", city)
+    body.append("state", state)
+    body.append("zip", zip)
+    if (items && items.length > 0) body.append("cart", items.map(i => i.RID).join(","))
+    if (coupons && coupons.length > 0) body.append("coupons", coupons.join(","))
+    this.apisauce.setHeaders({
+      "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
+    })
+    const response: ApiResponse<any> = await this.apisauce.post(`cart.cfc`, body)
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response)
+      if (problem) return problem
+    }
+
+    try {
+      return {
+        kind: "ok",
+        success: response.data.SUCCESS,
+        error: response.data.ERROR,
       }
     } catch (e) {
       return { kind: "bad-data" }
@@ -289,7 +357,7 @@ export class Api {
     body.append("ctoken", token)
     body.append("atoken", cardToken)
     body.append("coupons", coupons.join(","))
-    body.append("test", "1")
+    // body.append("test", "1")
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
     })
