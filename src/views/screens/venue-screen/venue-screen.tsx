@@ -17,7 +17,7 @@ const TEXT: TextStyle = {
   textAlign: "center",
 }
 const IMAGE: ImageStyle = {
-  flex: 1,
+  flex: 2,
   resizeMode: "contain",
   maxWidth: "100%",
   maxHeight: "180%",
@@ -69,7 +69,12 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
           <Text preset="header" text="Second Floor" style={TEXT} />
           <Image source={require("./floor-2.png")} style={IMAGE} />
           <Text preset="header" text="Third Floor" style={TEXT} />
-          <Image source={require("./floor-3.png")} style={IMAGE} />
+          <Image
+            source={require("./floor-3.png")}
+            style={{ ...IMAGE, flex: 1, marginVertical: -spacing[8] * 3 }}
+          />
+          <Text preset="header" text="Vendors" style={TEXT} />
+          <Image source={require("./vendor-map.png")} style={IMAGE} />
         </ScrollView>
       </Screen>
     )

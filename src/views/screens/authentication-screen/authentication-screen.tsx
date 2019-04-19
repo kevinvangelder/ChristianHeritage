@@ -93,7 +93,11 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
     const { next } = this.props.navigation.state.params
     const result = await this.props.userStore.signIn()
     if (result) {
-      this.props.navigation.push(next ? next : "tabs")
+      if (next === "cart") {
+        this.props.navigation.dispatch(NavigationActions.back())
+      } else {
+        this.props.navigation.push(next ? next : "tabs")
+      }
     }
   }
   signUp = async () => {
@@ -102,7 +106,11 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
       const { next } = navigation.state.params
       const result = await userStore.signUp()
       if (result) {
-        navigation.push(next ? next : "tabs")
+        if (next === "cart") {
+          this.props.navigation.dispatch(NavigationActions.back())
+        } else {
+          this.props.navigation.push(next ? next : "tabs")
+        }
       }
     }
   }

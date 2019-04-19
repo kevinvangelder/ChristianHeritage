@@ -139,7 +139,11 @@ export const CartStoreModel = types
       const { token } = self.rootStore.userStore.currentUser
 
       try {
-        const { kind, result } = await self.environment.api.checkout(currentCart.token, token)
+        const { kind, result } = await self.environment.api.checkout(
+          currentCart.token,
+          currentCart.coupons,
+          token,
+        )
 
         if (kind === "ok" && !result.ERROR) {
           currentCart.setOrderResult(result)

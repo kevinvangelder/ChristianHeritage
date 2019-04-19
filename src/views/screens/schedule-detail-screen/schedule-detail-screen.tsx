@@ -20,44 +20,42 @@ import { inject, observer } from "mobx-react"
 import { CartStore } from "../../../models/cart-store"
 import { UserStore } from "../../../models/user-store"
 import { RecordingStore } from "../../../models/recording-store"
+import { color } from "../../../theme"
 
 export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {
   cartStore: CartStore
   userStore: UserStore
   recordingStore: RecordingStore
 }
-
 const ROOT: ViewStyle = {
   flex: 1,
   paddingHorizontal: spacing[4],
   paddingVertical: spacing[3],
   width: "100%",
 }
-
 const TITLE: TextStyle = {
   marginBottom: spacing[3],
 }
-
 const KEYNOTE_WRAPPER: TextStyle = {
   flexDirection: "row",
 }
-
 const KEYNOTE_CONTENT: TextStyle = {
   flexDirection: "column",
   flex: 2,
   paddingRight: spacing[1],
 }
-
 const SPEAKER: TextStyle = {
   marginBottom: spacing[1],
 }
-
 const TIME: TextStyle = {
   marginBottom: spacing[2],
 }
-
 const DESCRIPTION: TextStyle = {
   marginBottom: spacing[2],
+}
+const LINK: TextStyle = {
+  color: color.palette.bahamaBlue,
+  textDecorationLine: "underline",
 }
 const IMAGE_WRAPPER: ViewStyle = {
   flexDirection: "column",
@@ -266,6 +264,11 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
               <Text preset="secondary" text={activity.description} style={DESCRIPTION} />
             ) : (
               <View style={INVISIBLE} />
+            )}
+            {activity.name === "Concessions" && (
+              <Text onPress={() => this.props.navigation.push("concessionsDetail")} style={LINK}>
+                See Menus
+              </Text>
             )}
             {/* <Text preset="secondary" text={BIOS[activity.speaker]} style={DESCRIPTION} /> */}
           </View>

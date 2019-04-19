@@ -74,6 +74,7 @@ const CART_ITEM: ViewStyle = {
 const ITEM_DETAILS: ViewStyle = {
   flexDirection: "column",
   flex: 1,
+  alignItems: "flex-start",
 }
 const ITEM_PRICE: ViewStyle = {
   alignItems: "flex-end",
@@ -276,15 +277,12 @@ export class CartScreen extends React.Component<
     if (setInCart) return null
     return (
       <View key={set.RECID} style={CART_ITEM}>
-        <TouchableWithoutFeedback
-          style={ITEM_DETAILS}
-          onPress={() => this.props.navigation.push("setDetail", { set })}
-        >
-          <View>
-            <Text style={ITEM_TITLE}>{set.TITLE}</Text>
-            <Text style={LINK}>See Details</Text>
-          </View>
-        </TouchableWithoutFeedback>
+        <View style={ITEM_DETAILS}>
+          <Text style={ITEM_TITLE}>{set.TITLE}</Text>
+          <Text style={LINK} onPress={() => this.props.navigation.push("setDetail", { set })}>
+            See Details
+          </Text>
+        </View>
         <View style={ITEM_PRICE}>
           <Text>${set.displayPrice}</Text>
           <Button

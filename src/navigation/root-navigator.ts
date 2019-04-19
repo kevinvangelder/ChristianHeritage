@@ -2,6 +2,7 @@ import { StackNavigator, TabNavigator } from "react-navigation"
 import { ScheduleScreen } from "../views/screens/schedule-screen"
 import { ScheduleDetailScreen } from "../views/screens/schedule-detail-screen"
 import { SpeakerDetailScreen } from "../views/screens/speaker-detail-screen"
+import { ConcessionsDetailScreen } from "../views/screens/concessions-detail-screen"
 import { VenueScreen } from "../views/screens/venue-screen"
 import { InfoScreen } from "../views/screens/info-screen"
 import { AuthenticationScreen } from "../views/screens/authentication-screen"
@@ -22,6 +23,7 @@ export const RootNavigator = StackNavigator(
             scheduleOverview: { screen: ScheduleScreen },
             scheduleDetail: { screen: ScheduleDetailScreen },
             speakerDetail: { screen: SpeakerDetailScreen },
+            concessionsDetail: { screen: ConcessionsDetailScreen },
           },
           {
             headerMode: "none",

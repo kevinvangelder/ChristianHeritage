@@ -288,7 +288,7 @@ export class Api {
     body.append("returnformat", "json")
     body.append("ctoken", token)
     body.append("atoken", cardToken)
-    body.append("coupons", coupons)
+    body.append("coupons", coupons.join(","))
     body.append("test", "1")
     this.apisauce.setHeaders({
       "Content-Type": `multipart/form-data; boundary=${body.boundary}`,
