@@ -71,14 +71,24 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
           <Image source={require("./leavenworth.png")} style={LOGO} />
           <View style={GRID_ROW}>
             <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/shopping/")}
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/shopping/",
+                  title: "Shopping",
+                })
+              }
               style={GRID}
             >
               <Image source={require("./leavenworth-shopping.png")} style={GRID_IMAGE} />
               <Text style={{ ...TEXT, ...LINK }}>Shopping</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/dining/")}
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/dining/",
+                  title: "Dining",
+                })
+              }
               style={GRID}
             >
               <Image source={require("./leavenworth-dining.png")} style={GRID_IMAGE} />
@@ -87,14 +97,24 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
           </View>
           <View style={GRID_ROW}>
             <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/attractions/")}
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/attractions/",
+                  title: "Attractions",
+                })
+              }
               style={GRID}
             >
               <Image source={require("./leavenworth-activities.png")} style={GRID_IMAGE} />
               <Text style={{ ...TEXT, ...LINK }}>Attractions</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => Linking.openURL("https://leavenworth.org/recreation/")}
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/recreation/",
+                  title: "Recreation",
+                })
+              }
               style={GRID}
             >
               <Image source={require("./leavenworth-recreation.png")} style={GRID_IMAGE} />

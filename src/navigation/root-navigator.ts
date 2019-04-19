@@ -4,6 +4,7 @@ import { ScheduleDetailScreen } from "../views/screens/schedule-detail-screen"
 import { VenueScreen } from "../views/screens/venue-screen"
 import { InfoScreen } from "../views/screens/info-screen"
 import { TabBar } from "../views/shared/tab-bar"
+import { WebViewScreen } from "../views/screens/webview-screen"
 
 export const RootNavigator = StackNavigator(
   {
@@ -19,7 +20,16 @@ export const RootNavigator = StackNavigator(
             navigationOptions: { gesturesEnabled: true },
           },
         ),
-        venue: { screen: VenueScreen },
+        venue: StackNavigator(
+          {
+            venue: { screen: VenueScreen },
+            webview: { screen: WebViewScreen },
+          },
+          {
+            headerMode: "none",
+            navigationOptions: { gesturesEnabled: true },
+          },
+        ),
         info: { screen: InfoScreen },
       },
       {
