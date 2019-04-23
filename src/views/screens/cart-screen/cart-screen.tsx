@@ -5,9 +5,9 @@ import {
   TextStyle,
   ScrollView,
   Alert,
-  TouchableWithoutFeedback,
   TextInput,
   TouchableOpacity,
+  Platform,
 } from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -28,6 +28,7 @@ const ROOT: ViewStyle = {
   flex: 1,
   paddingHorizontal: spacing[4],
   paddingBottom: spacing[3],
+  width: "100%",
 }
 
 const SECTION: ViewStyle = {
@@ -91,6 +92,14 @@ const ITEM_SPEAKER: TextStyle = {
 }
 const COUPONS: ViewStyle = {
   flex: 2,
+  marginRight: spacing[4],
+}
+const INPUT: ViewStyle = {
+  marginVertical: spacing[2],
+  paddingBottom: spacing[1],
+  borderBottomColor: color.line,
+  borderBottomWidth: 1,
+  marginRight: spacing[3],
 }
 const ERROR: TextStyle = {
   color: color.error,
@@ -370,7 +379,13 @@ export class CartScreen extends React.Component<
       <View style={COUPONS}>
         <View style={ROW}>
           <View style={{ flex: 1 }}>
-            <TextInput placeholder="Coupon Code" value={coupon} onChangeText={this.setCoupon} />
+            <TextInput
+              placeholder="Coupon Code"
+              placeholderTextColor={color.palette.mediumGrey}
+              value={coupon}
+              onChangeText={this.setCoupon}
+              style={Platform.OS === "ios" ? INPUT : {}}
+            />
           </View>
           <View>
             <Button onPress={this.addCoupon} text="Add" preset="primarySmall" />

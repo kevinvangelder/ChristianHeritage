@@ -349,6 +349,7 @@ export const UserStoreModel = types
   .actions(self => ({
     signOut: () => {
       self.currentUser.setToken(null)
+      self.rootStore.cartStore.currentCart.setToken(null)
       self.resetEmailExists()
     },
   }))

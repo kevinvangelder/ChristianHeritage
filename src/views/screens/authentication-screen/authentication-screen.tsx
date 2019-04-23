@@ -2,12 +2,11 @@ import * as React from "react"
 import {
   View,
   ViewStyle,
-  Image,
-  Linking,
   TextStyle,
-  TouchableOpacity,
   ScrollView,
   TextInput,
+  Platform,
+  KeyboardAvoidingView,
 } from "react-native"
 import { Text } from "../../shared/text"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
@@ -46,6 +45,12 @@ const BOLD: TextStyle = {
 const ROW: ViewStyle = {
   flexDirection: "row",
   alignItems: "center",
+}
+const INPUT: ViewStyle = {
+  marginVertical: spacing[2],
+  paddingBottom: spacing[1],
+  borderBottomColor: color.line,
+  borderBottomWidth: 1,
 }
 const ERROR: TextStyle = {
   color: color.error,
@@ -146,7 +151,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           keyboardShouldPersistTaps="handled"
           ref={scrollview => (this.scrollview = scrollview)}
         >
-          <View style={CONTENT}>
+          <KeyboardAvoidingView contentContainerStyle={CONTENT} behavior="position">
             <Text>
               Session recordings are now available for purchase through the app and website via
               Alliance Recordings. For the best experience, we recommend you log in or sign up so
@@ -175,7 +180,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
                 </Text>
               )}
             {isSignedIn && this.renderSignedIn()}
-          </View>
+          </KeyboardAvoidingView>
         </ScrollView>
       </Screen>
     )
@@ -183,27 +188,31 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
 
   renderEmailInput = () => {
     const { email, setEmail, emailError } = this.props.userStore.currentUser
+    const isIos = Platform.OS === "ios"
     return (
-      <View>
+      <KeyboardAvoidingView behavior="height">
         <Text style={HEADER}>Enter Email</Text>
         <TextInput
           placeholder="Email"
+          placeholderTextColor={color.palette.mediumGrey}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
           onSubmitEditing={this.checkEmail}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {emailError !== null && emailError.length > 0 && <Text style={ERROR}>{emailError}</Text>}
         <Button onPress={this.checkEmail} text="Next" />
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 
   renderPasswordInput = () => {
     const { email, password, setPassword } = this.props.userStore.currentUser
+    const isIos = Platform.OS === "ios"
     return (
-      <View>
+      <KeyboardAvoidingView behavior="height">
         <Text style={HEADER}>Sign In</Text>
         <View style={{ ...ROW, justifyContent: "space-between" }}>
           <Text>
@@ -214,18 +223,21 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
         </View>
         <TextInput
           placeholder="Password"
+          placeholderTextColor={color.palette.mediumGrey}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
           onSubmitEditing={this.signIn}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         <Button onPress={this.signIn} text="Next" />
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 
   renderSignUp = () => {
+    const isIos = Platform.OS === "ios"
     const {
       email,
       password,
@@ -271,6 +283,7 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
         </View>
         <TextInput
           placeholder="Password"
+          placeholderTextColor={color.palette.mediumGrey}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -278,11 +291,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.firstName.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {passwordError !== null &&
           passwordError.length > 0 && <Text style={ERROR}>{passwordError}</Text>}
         <TextInput
           placeholder="Confirm Password"
+          placeholderTextColor={color.palette.mediumGrey}
           value={confirm}
           onChangeText={setConfirm}
           secureTextEntry
@@ -290,11 +305,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.firstName.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {confirmError !== null &&
           confirmError.length > 0 && <Text style={ERROR}>{confirmError}</Text>}
         <TextInput
           placeholder="First Name"
+          placeholderTextColor={color.palette.mediumGrey}
           value={firstName}
           onChangeText={setFirstName}
           ref={input => (this.firstName = input)}
@@ -302,11 +319,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.lastName.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {firstNameError !== null &&
           firstNameError.length > 0 && <Text style={ERROR}>{firstNameError}</Text>}
         <TextInput
           placeholder="Last Name"
+          placeholderTextColor={color.palette.mediumGrey}
           value={lastName}
           onChangeText={setLastName}
           ref={input => (this.lastName = input)}
@@ -314,11 +333,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.phone.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {lastNameError !== null &&
           lastNameError.length > 0 && <Text style={ERROR}>{lastNameError}</Text>}
         <TextInput
           placeholder="Phone (for account recovery purposes only)"
+          placeholderTextColor={color.palette.mediumGrey}
           value={phone}
           onChangeText={setPhone}
           ref={input => (this.phone = input)}
@@ -327,10 +348,12 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
           }}
           returnKeyLabel="Next"
           keyboardType="phone-pad"
+          style={isIos ? INPUT : {}}
         />
         {phoneError !== null && phoneError.length > 0 && <Text style={ERROR}>{phoneError}</Text>}
         <TextInput
           placeholder="Address Line 1"
+          placeholderTextColor={color.palette.mediumGrey}
           value={address1}
           onChangeText={setAddress1}
           ref={input => (this.address1 = input)}
@@ -338,11 +361,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.address2.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {address1Error !== null &&
           address1Error.length > 0 && <Text style={ERROR}>{address1Error}</Text>}
         <TextInput
           placeholder="Address Line 2"
+          placeholderTextColor={color.palette.mediumGrey}
           value={address2}
           onChangeText={setAddress2}
           ref={input => (this.address2 = input)}
@@ -350,11 +375,13 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.city.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {address2Error !== null &&
           address2Error.length > 0 && <Text style={ERROR}>{address2Error}</Text>}
         <TextInput
           placeholder="City"
+          placeholderTextColor={color.palette.mediumGrey}
           value={city}
           onChangeText={setCity}
           ref={input => (this.city = input)}
@@ -362,10 +389,12 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.state.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {cityError !== null && cityError.length > 0 && <Text style={ERROR}>{cityError}</Text>}
         <TextInput
           placeholder="State"
+          placeholderTextColor={color.palette.mediumGrey}
           value={state}
           onChangeText={setState}
           ref={input => (this.state = input)}
@@ -373,16 +402,19 @@ export class AuthenticationScreen extends React.Component<AuthenticationScreenPr
             this.zip.focus()
           }}
           returnKeyLabel="Next"
+          style={isIos ? INPUT : {}}
         />
         {stateError !== null && stateError.length > 0 && <Text style={ERROR}>{stateError}</Text>}
         <TextInput
           placeholder="Zip"
+          placeholderTextColor={color.palette.mediumGrey}
           value={zip}
           onChangeText={setZip}
           ref={input => (this.zip = input)}
           onSubmitEditing={this.signUp}
           returnKeyLabel="Next"
           keyboardType="numeric"
+          style={isIos ? INPUT : {}}
         />
         {zipError !== null && zipError.length > 0 && <Text style={ERROR}>{zipError}</Text>}
         <Button onPress={this.signUp} text="Next" />
