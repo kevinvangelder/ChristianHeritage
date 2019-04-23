@@ -7,7 +7,7 @@ import {
   TextStyle,
   Alert,
   Picker,
-  Platform,
+  NativeModules,
 } from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -152,20 +152,17 @@ export class CheckoutScreen extends React.Component<
         LOGIN_ID,
         CLIENT_KEY,
       }
-      if (Platform.OS === "ios") {
-        const RNAuthorizeNet = require("react-native-authorize-net-acceptsdk")
-        RNAuthorizeNet.getTokenWithRequestForCard(card, false, (status, response) => {
-          if (status) {
-            const { setLastFour, setToken, setExpiration } = this.props.cartStore.currentCart
-            setLastFour(CARD_NO.slice(-4))
-            setExpiration(`${EXPIRATION_MONTH}/20${EXPIRATION_YEAR}`)
-            setToken(response.DATA_VALUE)
-            this.props.navigation.push("finalizeOrder")
-          } else {
-            Alert.alert("Error", "Error validating card. Please check your entries and try again.")
-          }
-        })
-      }
+      NativeModules.RNAuthorizeNet.getTokenWithRequestForCard(card, false, (status, response) => {
+        if (status) {
+          const { setLastFour, setToken, setExpiration } = this.props.cartStore.currentCart
+          setLastFour(CARD_NO.slice(-4))
+          setExpiration(`${EXPIRATION_MONTH}/20${EXPIRATION_YEAR}`)
+          setToken(response.DATA_VALUE)
+          this.props.navigation.push("finalizeOrder")
+        } else {
+          Alert.alert("Error", "Error validating card. Please check your entries and try again.")
+        }
+      })
     } else {
       const {
         ACCOUNT_HOLDER_NAME,

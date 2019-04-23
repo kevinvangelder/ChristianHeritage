@@ -201,12 +201,12 @@ export class FinalizeOrderScreen extends React.Component<
       <View>
         <Text style={HEADING}>Verify Shipping Address</Text>
         <Text>{`DVDs will be shipped to the following address:\n${address1}${
-          address2.length > 0 ? `\n${address2}` : ""
+          address2 && address2.length > 0 ? `\n${address2}` : ""
         }\n${city}, ${state} ${zip}`}</Text>
         <Button
           preset="primary"
           onPress={() => this.props.navigation.push("updateUser")}
-          text="Update"
+          text="Update Address"
         />
       </View>
     )
@@ -221,7 +221,7 @@ export class FinalizeOrderScreen extends React.Component<
           </Text>
           <Text style={ITEM_SPEAKER}>{getSpeakerNames(item)}</Text>
         </View>
-        <Text style={ITEM_PRICE}>${item.PRICE}.00</Text>
+        <Text style={ITEM_PRICE}>${item.displayPrice}</Text>
       </View>
     )
   }
@@ -230,7 +230,7 @@ export class FinalizeOrderScreen extends React.Component<
     const { currentCart: { localSubtotal } } = this.props.cartStore
     return (
       <View style={TOTAL}>
-        <Text style={SUBTOTAL}>Subtotal: ${localSubtotal}.00</Text>
+        <Text style={SUBTOTAL}>Subtotal: ${localSubtotal}</Text>
         <Button onPress={this.checkout} text="Place Order" />
       </View>
     )

@@ -29,14 +29,14 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Christian Heritage Home Educators of Washington.app"
+               BuildableName = "ChristianHeritage.app"
                BlueprintName = "ChristianHeritage"
                ReferencedContainer = "container:ChristianHeritage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
@@ -48,6 +48,20 @@
                ReferencedContainer = "container:ChristianHeritage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D351EFBB51A062EDFA9F1CE4D6285EC1"
+               BuildableName = "Pods_ChristianHeritage.framework"
+               BlueprintName = "Pods-ChristianHeritage"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -56,22 +70,12 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ChristianHeritageTests.xctest"
-               BlueprintName = "ChristianHeritageTests"
-               ReferencedContainer = "container:ChristianHeritage.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Christian Heritage Home Educators of Washington.app"
+            BuildableName = "ChristianHeritage.app"
             BlueprintName = "ChristianHeritage"
             ReferencedContainer = "container:ChristianHeritage.xcodeproj">
          </BuildableReference>
@@ -94,7 +98,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Christian Heritage Home Educators of Washington.app"
+            BuildableName = "ChristianHeritage.app"
             BlueprintName = "ChristianHeritage"
             ReferencedContainer = "container:ChristianHeritage.xcodeproj">
          </BuildableReference>
@@ -113,7 +117,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Christian Heritage Home Educators of Washington.app"
+            BuildableName = "ChristianHeritage.app"
             BlueprintName = "ChristianHeritage"
             ReferencedContainer = "container:ChristianHeritage.xcodeproj">
          </BuildableReference>
