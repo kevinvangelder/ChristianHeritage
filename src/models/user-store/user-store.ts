@@ -210,6 +210,7 @@ export const UserStoreModel = types
       } = self.currentUser
       const {
         setPassword,
+        setConfirm,
         setToken,
         setFirstName,
         setLastName,
@@ -242,6 +243,7 @@ export const UserStoreModel = types
       )
       if (result.kind === "ok") {
         setPassword("")
+        setConfirm("")
         if (result.token) setToken(result.token)
         if (result.firstName) setFirstName(result.firstName)
         if (result.lastName) setLastName(result.lastName)
@@ -330,7 +332,7 @@ export const UserStoreModel = types
       setLastName(null)
       setPhone(null)
       setAddress1(null)
-      setAddress2(null)
+      setAddress2("")
       setCity(null)
       setState(null)
       setZip(null)

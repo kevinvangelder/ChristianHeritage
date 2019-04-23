@@ -391,7 +391,6 @@
 		94EE6C04292D0A3FC4F8A762 /* Pods-ChristianHeritage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChristianHeritage.debug.xcconfig"; path = "Target Support Files/Pods-ChristianHeritage/Pods-ChristianHeritage.debug.xcconfig"; sourceTree = "<group>"; };
 		A93ED81EF193439D9ABFE601 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCAsyncStorage.xcodeproj; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		B0621C0B226E7120002460D0 /* AcceptSDK */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = AcceptSDK; path = ../../../../Downloads/AcceptSDK; sourceTree = "<group>"; };
 		B07B51BC226E99FC00B10977 /* ChristianHeritage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChristianHeritage-Bridging-Header.h"; sourceTree = "<group>"; };
 		B07B51C9226E9F1500B10977 /* RNAuthorizeNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNAuthorizeNet.m; sourceTree = "<group>"; };
 		B07B51CB226E9F4300B10977 /* RNAuthorizeNetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNAuthorizeNetTest.swift; sourceTree = "<group>"; };
@@ -586,7 +585,6 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B0621C0B226E7120002460D0 /* AcceptSDK */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -1472,7 +1470,6 @@
 				EXECUTABLE_PREFIX = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"../node_modules/react-native-authorize-net-acceptsdk/ios/**",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -1486,8 +1483,9 @@
 					"$(SRCROOT)/../node_modules/react-native-authorize-net-acceptsdk/ios/**",
 				);
 				INFOPLIST_FILE = ChristianHeritage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /Applications/Xcode.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1497,6 +1495,7 @@
 				PRODUCT_NAME = ChristianHeritage;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ChristianHeritage-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -1520,7 +1519,6 @@
 				EXECUTABLE_PREFIX = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"../node_modules/react-native-authorize-net-acceptsdk/ios/**",
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -1534,6 +1532,7 @@
 					"$(SRCROOT)/../node_modules/react-native-authorize-net-acceptsdk/ios/**",
 				);
 				INFOPLIST_FILE = ChristianHeritage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks /Applications/Xcode.app/Contents//Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1544,6 +1543,7 @@
 				PRODUCT_NAME = ChristianHeritage;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "ChristianHeritage-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";

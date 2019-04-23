@@ -21,7 +21,7 @@ export const UserModel = types
     lastNameError: types.maybe(types.string),
     address1: types.maybe(types.string),
     address1Error: types.maybe(types.string),
-    address2: types.maybe(types.string),
+    address2: types.optional(types.string, ""),
     address2Error: types.maybe(types.string),
     city: types.maybe(types.string),
     cityError: types.maybe(types.string),
