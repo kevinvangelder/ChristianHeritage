@@ -14,12 +14,12 @@ import { cardRules } from "../../../models/cart-store/validate"
 import RNAuthorizeNet from "react-native-authorize-net-acceptsdk"
 
 // Sandbox
-const LOGIN_ID = "76m2skPQr"
-const CLIENT_KEY = "7f4FUD6SRR8Dw634qYpJaSh65WVUNaJvmhjh8wcCxDF69EhUcg5pyffPJ2jV6293"
+// const LOGIN_ID = "76m2skPQr"
+// const CLIENT_KEY = "7f4FUD6SRR8Dw634qYpJaSh65WVUNaJvmhjh8wcCxDF69EhUcg5pyffPJ2jV6293"
 
 // Live
-// const LOGIN_ID = "98g2AB6aE7"
-// const CLIENT_KEY = "2seKtumJAGK8fuH6qpBgS2k9DkK45aqa5TtnJ94Wg6H9AkXHeHJ28g7sHH9w5B8F"
+const LOGIN_ID = "98g2AB6aE7"
+const CLIENT_KEY = "2seKtumJAGK8fuH6qpBgS2k9DkK45aqa5TtnJ94Wg6H9AkXHeHJ28g7sHH9w5B8F"
 
 const CONTAINER: ViewStyle = {
   padding: spacing[2],
@@ -144,7 +144,7 @@ export class CheckoutScreen extends React.Component<
         LOGIN_ID,
         CLIENT_KEY,
       }
-      RNAuthorizeNet.getTokenWithRequestForCard(card, false, (status, response) => {
+      RNAuthorizeNet.getTokenWithRequestForCard(card, true, (status, response) => {
         if (status) {
           const { setLastFour, setToken, setExpiration } = this.props.cartStore.currentCart
           setLastFour(CARD_NO.slice(-4))

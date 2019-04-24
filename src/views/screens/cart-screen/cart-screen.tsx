@@ -28,6 +28,7 @@ const ROOT: ViewStyle = {
   flex: 1,
   paddingHorizontal: spacing[4],
   paddingBottom: spacing[3],
+  width: "100%",
 }
 
 const SECTION: ViewStyle = {

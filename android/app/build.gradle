@@ -101,7 +101,7 @@ android {
         applicationId "com.christianheritage"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 17
+        versionCode 18
         versionName "1.5.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
