@@ -1,0 +1,1036 @@
+{
+  "thursday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Vendor Hall & Silent Auction",
+        "startTime": "6:00PM",
+        "endTime": "9:00PM",
+        "duration": 180
+      }
+    ],
+    "activities": {
+      "0": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway"
+        }
+      ]
+    }
+  },
+  "friday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Registration",
+        "startTime": "8:00AM",
+        "endTime": "9:00AM",
+        "duration": 60
+      },
+      {
+        "id": 1,
+        "name": "Keynote",
+        "startTime": "9:00AM",
+        "endTime": "10:30AM",
+        "duration": 90
+      },
+      {
+        "id": 2,
+        "name": "Break",
+        "startTime": "10:30AM",
+        "endTime": "11:15AM",
+        "duration": 45
+      },
+      {
+        "id": 3,
+        "name": "Workshop A",
+        "startTime": "11:15AM",
+        "endTime": "12:15PM",
+        "duration": 60
+      },
+      {
+        "id": 4,
+        "name": "Lunch",
+        "startTime": "12:15PM",
+        "endTime": "1:45PM",
+        "duration": 90
+      },
+      {
+        "id": 5,
+        "name": "Workshop B",
+        "startTime": "1:45PM",
+        "endTime": "2:45PM",
+        "duration": 60
+      },
+      {
+        "id": 6,
+        "name": "Break",
+        "startTime": "2:45PM",
+        "endTime": "3:30PM",
+        "duration": 45
+      },
+      {
+        "id": 7,
+        "name": "Split Keynote",
+        "startTime": "3:30PM",
+        "endTime": "4:30PM",
+        "duration": 60
+      },
+      {
+        "id": 8,
+        "name": "Dinner",
+        "startTime": "4:30PM",
+        "endTime": "6:30PM",
+        "duration": 120
+      },
+      {
+        "id": 9,
+        "name": "Family Night -FREE- Invite Your Friends!",
+        "startTime": "6:30PM",
+        "endTime": "8:30PM",
+        "duration": 120
+      }
+    ],
+    "activities": {
+      "0": [
+        {
+          "name": "Registration",
+          "location": "Registration Table",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
+      "1": [
+        {
+          "name": "The Puritan Philosophy of Education",
+          "location": "Worship Center",
+          "speaker": "Dr. Voddie Baucham, Jr.",
+          "description":
+            "\"What curriculum do you use?\" is an important question. But more important is \"What is your philosophy of education?\" Your curriculum reflects your philosophy of education, and since many homeschool families don’t have one, their curriculum choices tend to be based on convenience, pragmatism, or availability. Explore the Puritan Philosophy of Education from which rose great educational movements and institutions. Find basic tools to develop a philosophy of education for your family and give you direction, goals, and purpose.",
+          "RECID": "19-001",
+          "RID": 2655,
+          "DVD_RID": 2850
+        }
+      ],
+      "2": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null,
+          "description": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null,
+          "description": null
+        },
+        {
+          "name": "Concessions",
+          "location": null,
+          "speaker": null,
+          "description":
+            "K.C Deez BBQ - Front Driveway \nLa Riviera Maya - Front Driveway \nCH Healthy Eats & Treats - Fellowship Park"
+        }
+      ],
+      "3": [
+        {
+          "name": "Building a Strong Family Legacy – The Art of Intentionality",
+          "location": "Worship Center",
+          "speaker": "David McAlvany",
+          "description":
+            "David helps you establish your most desired legacy objectives. What do you dream for your family? What does your family look like ten generations from now? Every significant endeavor begins with the planning stage. We know life does not always work out as planned, but creating an amazing legacy is not the result of random chance. There is design, and prayer, and recalibration all along the way.",
+          "RECID": "19-101",
+          "RID": 2656
+        },
+        {
+          "name": "Resolving Everyday Conflict",
+          "location": "Gym",
+          "speaker": "Ken Sande",
+          "description":
+            "Enjoy a more peaceful and productive classroom by learning how to teach your children to resolve conflict constructively. They will learn to discern the heart desires (idols) that fuel conflict, sincerely confess their wrongs, graciously confront others, and practice meaningful forgiveness.",
+          "RECID": "19-102",
+          "RID": 2657
+        },
+        {
+          "name": "If Your Children Are Not Headed for College, Prepare Them for Home Business",
+          "location": "Chapel",
+          "speaker": "Rhea Perry",
+          "description":
+            "If you have children who think outside of the box, they may not respond well to traditional education. They are visionaries and leaders who solve problems, create products and services, and create jobs by nurturing teams. They think differently than employees. Hear about Rhea’s son who owns and operates a roofing company and never went to college. Learn ten concepts foundational to operating a successful home business. Think like an entrepreneur.",
+          "RECID": "19-103",
+          "RID": 2658
+        },
+        {
+          "name": "Developing a Plan for High School: Sample Four-Year Plans",
+          "location": "Red 7&8",
+          "speaker": "Carol Becker",
+          "description":
+            "How do you plan for the homeschool high school years? What subjects do you teach and when? Do you follow a basic, general college prep, or rigorous college prep plan? How do you evaluate credits? Determine grades? Make a transcript and diploma? If you are just beginning to think about high school homeschooling, Carol helps you get organized and lay groundwork for a viable four-year plan",
+          "RECID": "19-104",
+          "RID": 2659
+        },
+        {
+          "name": "The War on the Constitution and Why Youth Should Care",
+          "location": "MSM Room",
+          "speaker": "Jake MacAulay",
+          "description":
+            "\"It cannot be emphasized too strongly or too often that this great Nation was founded, not by religionists, but by Christians; not on religions, but on the Gospel of Jesus Christ,\" said Patrick Henry. The Bible says, \"If the foundations be destroyed what can the righteous do?\" What this next generation does with the Gospel and the Constitution will determine future Christian liberties of America.",
+          "RECID": "19-105",
+          "RID": 2660
+        },
+        {
+          "name": "Hacking Physics: Making Physics Wonderful for Your Students",
+          "location": "Third Floor Lobby",
+          "speaker": "Wes Olson",
+          "description":
+            "God invented physics to make the world, so it should be wonderful. But terribly intimidating formulas and equations scare off many would-be explorers. Instead, maybe an introduction to physics should teach the big concepts rather than getting lost in the details. Learn about the seven major gears that drive the universe and rediscover the wonder of God’s physical universe.",
+          "RECID": "19-106",
+          "RID": 2661
+        },
+        {
+          "name": "Knights in Training: Boys into Men",
+          "location": "Lobby Room North",
+          "speaker": "Heather Haupt",
+          "description":
+            "Discover how to reach the heart of boys and inspire them to embrace a training phase of their lives to pursue a purpose that, like knights of old, courageously puts needs of others before their own. The world needs kind, courageous, and bold men who lead their families well and make an impact with their lives. Ignite their imagination, honor their love for adventure, and cast a vision for the training process.",
+          "RECID": "19-107",
+          "RID": 2662
+        },
+        {
+          "name": "That’s Impossible",
+          "location": "Lobby Room South",
+          "speaker": "Mike Snavely",
+          "description":
+            "Animals display incredible variety. This includes the amazing aspect of instinct, which each animal possesses uniquely. Some, however, go beyond this and enter the world of symbiosis, especially mutualism-when creatures need others to survive! It is inconceivable to imagine that both instinct and symbiosis just randomly happened, unguided by a Designer!",
+          "RECID": "19-108",
+          "RID": 2663
+        },
+        {
+          "name": "Getting Kids to Help at Home: Training in Diligence and Thoroughness",
+          "location": "Green 7",
+          "speaker": "Vicki Bentley",
+          "description":
+            "Letting your children be more involved in helping has some great benefits—both for training in character and practical skills AND for your sanity! But where do you begin? This foster mom to over fifty children shares tips and practical helps that have enabled her to homeschool seventeen children and still be able to open the front door to guests.",
+          "RECID": "19-109",
+          "RID": 2664
+        },
+        {
+          "name": "The Journey to Novarupta",
+          "location": "Red 9",
+          "speaker": "Pat Roy",
+          "description":
+            "The biggest eruption in modern times happened in the Alaskan Peninsula in 1912. It was thirty times larger than Mount St. Helens’s eruption! Afterwards, Dr. Robert Griggs led an expedition into the blast zone. His book inspired another explorer a hundred years later to return to this amazing wilderness and document evidence for a worldwide flood and a biblical ice-age.",
+          "RECID": "19-110",
+          "RID": 2665
+        },
+        {
+          "name": "Strong Marriages for Healthy Homeschooling Environments",
+          "location": "Red 5",
+          "speaker": "Scott LaPierre",
+          "description":
+            "Homeschooled children can flourish when their parents have strong, healthy marriages. Conversely, children suffer when there’s conflict between Mom and Dad. Learn how parents can have a relationship that allows their children to prosper, not just academically, but emotionally and spiritually.",
+          "RECID": "19-111",
+          "RID": 2666
+        },
+        {
+          "name": "Teaching Literature from a Christian Worldview",
+          "location": "Green 4",
+          "speaker": "Kevin Swanson",
+          "description":
+            "Teaching literature is not for the faint of heart, or for those who are easily taken by bad worldviews. Many of our homeschooled children like to read and may become great leaders unless they are corrupted by wrong worldviews. As the developer of the Christian Curriculum Project, Kevin invites parents and students to discernment on both content and method of great literary works.",
+          "RECID": "19-112",
+          "RID": 2667
+        },
+        {
+          "name": "Christian Heritage Chorale Session #1",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "Concessions",
+          "location": null,
+          "speaker": null,
+          "description":
+            "K.C Deez BBQ - Front Driveway \nLa Riviera Maya - Front Driveway \nCH Healthy Eats & Treats - Fellowship Park"
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null,
+          "description": null
+        },
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null,
+          "description": null
+        }
+      ],
+      "5": [
+        {
+          "name": "Disposing of Baggage: The Proper Disposal of Generational Junk",
+          "location": "Worship Center",
+          "speaker": "David McAlvany",
+          "description":
+            "What are your generational blessings? What baggage do you carry from one generation to the next? We have baggage from earlier generations; we leave baggage for future generations. It’s not our intention, but as frail and imperfect human beings, we can (BUT DON’T HAVE TO) perpetuate cycles of sin and pain. Our goal is to find gratitude, learn about practicing grace, and live together unburdened and free.",
+          "RECID": "19-201",
+          "RID": 2668
+        },
+        {
+          "name": "Harnessing the Power of Emotions",
+          "location": "Gym",
+          "speaker": "Ken Sande",
+          "description":
+            "Emotions are wired into all people by God’s design and are tied to our greatest joys and accomplishments of life—as well as our greatest struggles and agonies. Ken explores the biblical nature of emotions, how God intends them to enrich our lives, and how we can channel both negative and positive emotions into constructive action.",
+          "RECID": "19-202",
+          "RID": 2669
+        },
+        {
+          "name": "Formative Discipline",
+          "location": "Chapel",
+          "speaker": "Dr. Voddie Baucham, Jr.",
+          "description":
+            "What pops into your mind when you hear the word, discipline? Many of us instantly think of corrective discipline. However, when using a biblical perspective, you know that the overwhelming majority of discipline should be formative as opposed to corrective. Voddie explores different approaches to discipline in Scripture with strategies to help emphasize and improve your application of formative discipline at home.",
+          "RECID": "19-203",
+          "RID": 2670
+        },
+        {
+          "name": "Essential Skills for Successful Teens: Study and Time Management",
+          "location": "Red 7&8",
+          "speaker": "Carol Becker",
+          "description":
+            "The high school years are a prime opportunity to equip your teens with skills they need for future success. If your teen is headed to college, the workforce, or the military, they benefit from study and time management skills. Parents, join Carol for ideas to incorporate these skills into high school coursework and lists of resources to help teens cultivate these essential skills.",
+          "RECID": "19-204",
+          "RID": 2671
+        },
+        {
+          "name": "Maximizing on the Power of Mentorship",
+          "location": "MSM Room",
+          "speaker": "Kevin Swanson",
+          "description":
+            "Young people are less prepared for life, family, and work than they ever have been. Yet, the revival of mentorship and discipleship has been a saving grace. There is nothing better for spiritual and economic preparation for the marketplace. With twelve years of experience in mentoring, Kevin shares about leveraging a work opportunity into a mentorship and what makes mentorship so successful.",
+          "RECID": "19-205",
+          "RID": 2678
+        },
+        {
+          "name": "Preparing the Biblical Christian for Engagement in the Culture War",
+          "location": "Third Floor Lobby",
+          "speaker": "Jake MacAulay",
+          "description":
+            "There is a very real war for hearts and minds of the next generation. If we do not fight we are guaranteed to lose. Come be equipped to stand successfully in the battle for truth. Homeschooling parents may fear that when their children graduate they may turn against their upbringing. Is there a way to prevent that? Come explore God’s powerful tools and learn from homeschooling parents’ experiences.",
+          "RECID": "19-206",
+          "RID": 2673
+        },
+        {
+          "name": "Ten Ways to Boost Brain Power",
+          "location": "Lobby Room North",
+          "speaker": "Heather Haupt",
+          "description":
+            "We hear about the brain a lot these days and sometimes it’s tempting to cram more book learnin’ into our children’s heads to produce little geniuses. But this is counter-productive. Some important tips and tricks can be easily incorporated into everyday learning and living to maximize your children’s learning potential. Come find out ten key ways to turn your child ON to learning and have that learning STICK!",
+          "RECID": "19-207",
+          "RID": 2674
+        },
+        {
+          "name": "Grand Canyon – The Puzzle on the Plateau",
+          "location": "Lobby Room South",
+          "speaker": "Mike Snavely",
+          "description":
+            "The plateau is a most breathtaking and perplexing site. Standard geological explanations for its formation are wrong, and most creationists overlook major pieces of the puzzle. Amazingly, what carved the canyon also explains fascinating geological features (e.g. Monument Valley, The Petrified Forest, Canyonlands and Arches, Canyon de Chelley). Furthermore, they all formed quickly! What happened?!",
+          "RECID": "19-208",
+          "RID": 2675
+        },
+        {
+          "name": "Exploring Curriculum Options",
+          "location": "Green 7",
+          "speaker": "Vicki Bentley",
+          "description":
+            "Drawing on her experience as a mom of seventeen homeschool students and a curriculum counselor for a statewide homeschool organization, Vicki shares secrets for you to map out a successful course of study. Vicki helps beginners get a solid start in home education and encourages veteran homeschoolers to re-examine goals and priorities. She also includes a basic overview of different teaching approaches.",
+          "RECID": "19-209",
+          "RID": 2676
+        },
+        {
+          "name": "The Laws of Thermodynamics",
+          "location": "Red 9",
+          "speaker": "Pat Roy",
+          "description":
+            "The First Law of Thermodynamics says that energy/matter can neither be created nor destroyed. The Second Law states that disorder in the universe is always increasing. Together, these laws completely invalidate the idea that the universe could create itself. But, they are in harmony with the Bible.",
+          "RECID": "19-210",
+          "RID": 2677
+        },
+        {
+          "name": "Health from a Biblical Perspective",
+          "location": "Red 5",
+          "speaker": "Allan Blain",
+          "description":
+            "Learn how to better protect the most valuable earthly asset we all possess, for the kingdom of God—our family’s health. We dig into Scripture, cutting through modern day hype, and discover a simple logical and refreshing approach to health. Does God’s Word speak to health related topics? Learn how to care for the “fearfully and wonderfully made” human body to maximize your family’s service in the kingdom.",
+          "RECID": "19-211",
+          "RID": 2679
+        },
+        {
+          "name": "Relational Wisdom in the Movies",
+          "location": "Green 4",
+          "speaker": "Jeff Sande",
+          "description":
+            "Most of our children watch hundreds of hours of electronic media every year—often with little benefit. Jeff shares practical guidance on how to use popular Hollywood movies to teach life-changing relational skills to your children.",
+          "RECID": "19-212",
+          "RID": 2844
+        },
+        {
+          "name": "The Grand Design: A Chess Master’s Strategies to Success in Life",
+          "location": "Lecture Hall",
+          "speaker": "Elliott Neff",
+          "description":
+            "Chess is like life. Circumstances keep changing before and after every move. New choices must be made. The same mindsets and strategies to succeed in chess can help you navigate life’s decisions. Using the game of chess as a launching pad, Elliott brings strategies off the board and into everyday life. Learn chess, be captivated by students’ transformations, identify ways you can empower others, and discover key mindsets and strategies to help you and your children.",
+          "RECID": "19-213",
+          "RID": 2845
+        },
+        {
+          "name": "Christian Heritage Chorale #2",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "6": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
+      "7": [
+        {
+          "name": "Relational Wisdom: Preparing Children for Life",
+          "location": "Worship Center",
+          "speaker": "Ken Sande",
+          "description":
+            "Relational wisdom is the ability to discern emotions and interests in yourself and others, interpret them in the light of God’s Word, and use them to manage responses and relationships successfully. In this life-changing message, Ken describes the biblical and neurological basis for relational wisdom and shows how these skills lead to less stressful and more productive homeschool experiences while also preparing children for durable marriages, better job performance, and a more credible witness for Christ.",
+          "RECID": "19-002A",
+          "RID": 2838,
+          "DVD_RID": 2851
+        },
+        {
+          "name": "Relational Wisdom: Preparing for Life",
+          "location": "Chapel",
+          "speaker": "Jeff Sande",
+          "description": "",
+          "RECID": "19-002B",
+          "RID": 2839
+        }
+      ],
+      "8": [
+        {
+          "name": "Concessions",
+          "location": null,
+          "speaker": null,
+          "description":
+            "K.C Deez BBQ - Front Driveway \nLa Riviera Maya - Front Driveway \nCH Healthy Eats & Treats - Fellowship Park"
+        },
+        {
+          "name": "Chess Simul Demonstration",
+          "speaker": "Elliott Neff",
+          "location": "Gym",
+          "description": "4:45-6:15"
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        },
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        }
+      ],
+      "9": [
+        {
+          "name": "Homeschool Concert, Blindfold Chess",
+          "location": "Worship Center",
+          "speaker": "",
+          "description": "- Family Night Performances\n- Chiorsters Performance",
+          "DVD_RID": 2856
+        },
+        {
+          "name": "Doing Apologetics in an Anti-Apologetic Age",
+          "location": "Worship Center",
+          "speaker": "Dr. Voddie Baucham, Jr.",
+          "description":
+            "Can you defend your faith?  Do you even want to?  Or do you think doing so would be unkind, arrogant, or even unchristian?  Voddie exposes the contemporary ideologies that stand opposed to the idea of apologetics and introduces the basics of defending the faith.  He also speaks to contemporary cultural apologetic issues.",
+          "RECID": "19-003",
+          "RID": 2729,
+          "DVD_RID": 2852
+        }
+      ]
+    }
+  },
+  "saturday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Father/Son Breakfast *Preregistration Required*",
+        "startTime": "6:30AM",
+        "endTime": "8:00AM",
+        "duration": "90"
+      },
+      {
+        "id": 1,
+        "name": "Registration",
+        "startTime": "8:00AM",
+        "endTime": "9:00AM",
+        "duration": 60
+      },
+      {
+        "id": 2,
+        "name": "Keynote",
+        "startTime": "9:00AM",
+        "endTime": "10:15AM",
+        "duration": 75
+      },
+      {
+        "id": 3,
+        "name": "Break",
+        "startTime": "10:15AM",
+        "endTime": "10:45AM",
+        "duration": 30
+      },
+      {
+        "id": 4,
+        "name": "Workshop C",
+        "startTime": "10:45AM",
+        "endTime": "11:45AM",
+        "duration": 60
+      },
+      {
+        "id": 5,
+        "name": "Lunch",
+        "startTime": "11:45AM",
+        "endTime": "1:00PM",
+        "duration": 75
+      },
+      {
+        "id": 6,
+        "name": "Workshop D",
+        "startTime": "1:00PM",
+        "endTime": "2:00PM",
+        "duration": 60
+      },
+      {
+        "id": 7,
+        "name": "Break",
+        "startTime": "2:00PM",
+        "endTime": "2:30PM",
+        "duration": 30
+      },
+      {
+        "id": 8,
+        "name": "Workshop E",
+        "startTime": "2:30PM",
+        "endTime": "3:30PM",
+        "duration": 60
+      },
+      {
+        "id": 9,
+        "name": "Break",
+        "startTime": "3:30PM",
+        "endTime": "4:30PM",
+        "duration": 60
+      },
+      {
+        "id": 10,
+        "name": "Keynote",
+        "startTime": "4:30PM",
+        "endTime": "6:00PM",
+        "duration": 90
+      },
+      {
+        "id": 11,
+        "name": "End of Conference",
+        "startTime": "6:00PM",
+        "endTime": "6:30PM",
+        "duration": 30
+      }
+    ],
+    "activities": {
+      "0": [
+        {
+          "name": "Building a Strong Father and Son Legacy",
+          "location": "Chapel",
+          "speaker": "Ken Sande",
+          "RECID": "19-300",
+          "RID": "2848",
+          "description":
+            "Ken and Jeff Sande share their journey to build a strong father and son relationship, struggles and all! Expect to be encouraged with fresh insights of how you too, can pass on a strong father and son legacy as you connect with other men on this same journey."
+        }
+      ],
+      "1": [
+        {
+          "name": "Registration",
+          "location": "Registration Table",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
+      "2": [
+        {
+          "name": "The Theology of Work",
+          "location": "Worship Center",
+          "speaker": "Dr. Voddie Baucham, Jr.",
+          "description":
+            "Have you heard of the Protestant Work Ethic?  Did you know it is more than just a predisposition to hard work?  There was actually a significant theology of work that undergirded Protestant culture and led to prosperity and freedom we take for granted.  Voddie explores that theology and gives you tools to help you incorporate it into the education of your children.",
+          "RECID": "19-004",
+          "RID": 2730,
+          "DVD_RID": 2853
+        }
+      ],
+      "3": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
+      "4": [
+        {
+          "name": "Pop Culture, Entertainment, and the Family",
+          "location": "Worship Center",
+          "speaker": "Kevin Swanson",
+          "description":
+            "How does a family interact with popular culture? Popular culture is everywhere. It influences peer groups and sets worldview and cultural perspectives of almost everybody. Very few have wisdom and strength to swim against the stream. So, how does a family make its cultural choices? What part should entertainment play in the home? What are major biblical principles for discernment of music, movies, tattoos, dress, etc.?",
+          "RECID": "19-301",
+          "RID": 2731
+        },
+        {
+          "name": "The Negotiation Skills of Solomon",
+          "location": "Gym",
+          "speaker": "Ken Sande",
+          "description":
+            "Take a look at the negotiation skills used by the heroes of the Bible to resolve conflicts with hostile civil authorities, critical relatives, and oppressive employers—the same kinds of people homeschool families sometimes need to negotiate with today!",
+          "RECID": "19-302",
+          "RID": 2732
+        },
+        {
+          "name": "5 Home Business Projects that Teach Financial Literacy and Create Income",
+          "location": "Chapel",
+          "speaker": "Rhea Perry",
+          "description":
+            "As an award-winning Internet business owner and veteran homeschool mom of seven, Rhea shares the fundamentals of five proven home businesses your family can start part-time that could possibly bring your dad home. Her family did it! Find out why some of your children never finish a job, why others are not self-motivated, and how to work toward a lifestyle of freedom.",
+          "RECID": "19-303",
+          "RID": 2733
+        },
+        {
+          "name": "Multi-level Teaching",
+          "location": "Red 7&8",
+          "speaker": "Vicki Bentley",
+          "description":
+            "When you had one child, it seemed easy. But adding more children sometimes makes homeschooling feel like a zany plate-spinning act. Vicki shares ideas for keeping the homeschooling “plates” from crashing to the floor! Come hear practical tips for teaching multiple ages, from a mom of seventeen homeschool students. (Seven school-aged kids at one time!)",
+          "RECID": "19-304",
+          "RID": 2734
+        },
+        {
+          "name": "Embracing Disturbance: Blessings in Disguise",
+          "location": "MSM Room",
+          "speaker": "David McAlvany",
+          "description":
+            "Learn about successful crisis management and the disposition needed to turn disturbance into blessing. There are life events outside of our control but to which we must respond. Unemployment, health crisis, loss of a loved one, moral failure, and a long list of other “surprises” are either a basis for family implosion or can be handled in a way with redemption and growth as outcomes.",
+          "RECID": "19-305",
+          "RID": 2735
+        },
+        {
+          "name": "The Homeschooling Dad",
+          "location": "Third Floor Lobby",
+          "speaker": "Jake MacAulay",
+          "description":
+            "How does Dad meet the challenge of homeschooling when he works one or more jobs and still tries to maintain influence and leadership in the home? Jake gives practical advice and encouragement from his personal experience.",
+          "RECID": "19-306",
+          "RID": 2736
+        },
+        {
+          "name": "Spiders!",
+          "location": "Lobby Room North",
+          "speaker": "Mike Snavely",
+          "description":
+            "Repulsive beasts, right? Perhaps, but spiders have incredible abilities. They are marvels of design and very beneficial to mankind. Let’s take a fun and fascinating look at these creatures in a new light. Will you hesitate to squish the ones you see in your house after this? No, probably not! But outside? That’s another matter!",
+          "RECID": "19-307",
+          "RID": 2737
+        },
+        {
+          "name": "The Life of Isaac Newton and Why it Matters",
+          "location": "Lobby Room South",
+          "speaker": "Wes Olson",
+          "description":
+            "“I have a fundamental belief in the Bible as the Word of God, written by men who were inspired.  I study the Bible daily.” That was said by Isaac Newton, and he wrote more on the Bible than on mathematics or physics. Yet, he is consistently ranked as the greatest scientist of all time. Learn the surprising life of the world’s greatest scientist, who lost twenty years of his life’s work when his dog set his laboratory on fire.",
+          "RECID": "19-308",
+          "RID": 2738
+        },
+        {
+          "name": "Building on a Sure Foundation: Staying the Course through High School",
+          "location": "Green 7",
+          "speaker": "Carol Becker",
+          "description":
+            "As your child grows older, you may consider high school at home—but you’ve got doubts. Why is homeschooling high school a crucial decision for your teen? How is it possible? What help is available? Carol answers your questions—but more importantly, encourages and challenges you to explore the steps to take as you weigh the possibility of teaching high school at home.",
+          "RECID": "19-309",
+          "RID": 2739
+        },
+        {
+          "name": "The Need to be Prepared",
+          "location": "Red 9",
+          "speaker": "Scott LaPierre",
+          "description":
+            "Trials are part of life on this side of heaven. What can we do as families to ensure that we’re prepared for them when they come?",
+          "RECID": "19-310",
+          "RID": 2740
+        },
+        {
+          "name": "Why Movement is Essential to Learning",
+          "location": "Red 5",
+          "speaker": "Heather Haupt",
+          "description":
+            "Come explore the scientific research behind the mind/body connection and how movement can be the key to turn your child ON to learning. Find out ways to incorporate movement into everyday learning to maximize your child’s potential.",
+          "RECID": "19-311",
+          "RID": 2741
+        },
+        {
+          "name": "The Scopes Trials",
+          "location": "Green 4",
+          "speaker": "Pat Roy",
+          "description":
+            "In 1925 there was a trial in America that changed the world’s trust in God’s Word. Pat reviews the main evidence given during the case, and shows what we know about the evidence almost one hundred years later.",
+          "RECID": "19-312",
+          "RID": 2742
+        },
+        {
+          "name": "Young Peacemakers",
+          "location": "Lecture Hall",
+          "speaker": "Corlette Sande",
+          "description":
+            "Corlette shares from her highly acclaimed curriculum, The Young Peacemaker, twelve peacemaking principles. Parents can teach these principles to preschool and grade school children to equip them to resolve conflict quickly and develop character qualities that prevent conflict.",
+          "RECID": "19-313",
+          "RID": "2846"
+        },
+        {
+          "name": "Christian Heritage Chorale #3",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "5": [
+        {
+          "name": "Concessions",
+          "location": null,
+          "speaker": null,
+          "description":
+            "K.C Deez BBQ - Front Driveway \nLa Riviera Maya - Front Driveway \nCH Healthy Eats & Treats - Fellowship Park"
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        },
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        }
+      ],
+      "6": [
+        {
+          "name": "Building a Financial Legacy: A Jump Start Before Marriage",
+          "location": "Worship Center",
+          "speaker": "David McAlvany",
+          "description":
+            "Financial foundations, begun with individual habits and practices early in life, emerge later in the life of the family. Savings, investment, and proper planning for your life begun at a very young age can serve as a blessing to a young married couple. What do you need to know about debt, operating a business, buying a house, managing possessions as a steward of God’s resources and other important topics?",
+          "RECID": "19-401",
+          "RID": 2743
+        },
+        {
+          "name": "Homeschooling and Missions",
+          "location": "Gym",
+          "speaker": "Dr. Voddie Baucham, Jr.",
+          "description":
+            "God is a God of missions.  God’s people are a people on a mission.  Voddie explores the biblical idea of missions from Genesis to Revelation (that’s right… missions did not originate with the Great Commission or even the New Testament).  Then we explore ways to 1) teach missions in the home, and 2) get involved with missions through praying, giving, and going. We may even discuss the Baucham family mission endeavor in Zambia.",
+          "RECID": "19-402",
+          "RID": 2744
+        },
+        {
+          "name":
+            "How We Brought Our Dad Home from Corporate America in Just 3 Years and How You Can Too! ",
+          "location": "Chapel",
+          "speaker": "Rhea Perry",
+          "description":
+            "When Drew Perry was 18 he became a real estate investor, and his dad came home from a corporate job just three years later. He sold to investors his system for selling houses on eBay in just seven days. If you don’t know what to do with a budding entrepreneur, don’t miss this story (with pictures) of how the Perrys live simply, glorify God by serving others, and build financial freedom through a home business.",
+          "RECID": "19-403",
+          "RID": 2745
+        },
+        {
+          "name": "Hope for the Organizationally Challenged",
+          "location": "Red 7&8",
+          "speaker": "Vicki Bentley",
+          "description":
+            "\"Help! I'm committed to homeschooling, but I'm feeling overwhelmed just by everyday life!\" Have you ever felt like this? For many of us, standard organizing suggestions don’t “stick,” and we wonder what’s wrong with us. Vicki shares tools that helped her (and other busy moms) homeschool and get dinner on the table—on the same day. (Even if you were \"born organized,\" you'll glean a lot from this workshop!) ",
+          "RECID": "19-404",
+          "RID": 2746
+        },
+        {
+          "name": "Managing Change",
+          "location": "MSM Room",
+          "speaker": "Ken Sande",
+          "description":
+            "Change is one of the most frequent causes of conflict, whether in the home, office, church, or on a home school board. This workshop will provide a strategy for managing change in a way that builds unity, honors the “old guard,” empowers the “new guard” and inspires entire groups to see every transition in life as an opportunity to grow in character and become more useful to God.",
+          "RECID": "19-405",
+          "RID": 2747
+        },
+        {
+          "name": "Ape Men Fossils",
+          "location": "Third Floor Lobby",
+          "speaker": "Pat Roy",
+          "description":
+            "A recent survey shows that teens believe that ape men fossils are the strongest proof for evolution. Pat shows that the evidence clearly tells us something else. ",
+          "RECID": "19-406",
+          "RID": 2748
+        },
+        {
+          "name": "The Pillars of Evolution",
+          "location": "Lobby Room North",
+          "speaker": "Mike Snavely",
+          "description":
+            "Mike defines “science” and illustrates the scientific method of problem solving. In the light of true science, three main concepts that the theory of evolution is based upon are examined and shown to be faith-based rather than science-based. Mike will not only show you that science does not support evolutionary theory, but also give you some “tools” with which to combat the theory.",
+          "RECID": "19-407",
+          "RID": 2749
+        },
+        {
+          "name": "Making Math and Science Meaningful",
+          "location": "Lobby Room South",
+          "speaker": "Kevin Swanson",
+          "description":
+            "Kevin obtained his Bachelor of Science in Mechanical Engineering but would be first to tell you he didn’t like science very much (as taught in secular college). He has a passion for making mathematics and science meaningful to children by bringing it back into a God-centered view. Why do we study science? And how can we make it 10,000 times more thrilling for our children than the average teacher? It can be done!",
+          "RECID": "19-408",
+          "RID": 2750
+        },
+        {
+          "name": "You Can Homeschool High School... If You Can Make It Through Tomorrow! ",
+          "location": "Green 7",
+          "speaker": "Carol Becker",
+          "description":
+            "As a parent homeschooling a teen (or thinking about homeschooling a teen), you may have doubts about your ability... and your sanity. Are you weighed down by the seriousness of high school? Do you question your competence to teach? Come and be encouraged as you discover a new long-range perspective for teaching teens that is filled with much hope, faith, help, and joy! ",
+          "RECID": "19-409",
+          "RID": 2751
+        },
+        {
+          "name": "The Institute on the Constitution for Youth",
+          "location": "Red 9",
+          "speaker": "Jake MacAulay",
+          "description":
+            "Listen up youth! Your God-given constitutional liberties are daily being stripped from you and your history is being re-written to reflect a secular godless America. This is a direct assault on you and your future. The fight is upon you and knowledge with God’s grace is your power. Get ready for boot camp; learn the fundamentals and stop this frontal attack on your country.",
+          "RECID": "19-410",
+          "RID": 2752
+        },
+        {
+          "name": "Conquering Your Fear of Educational Gaps",
+          "location": "Red 5",
+          "speaker": "Heather Haupt",
+          "description":
+            "Have you ever felt paralyzed by the idea of your children having huge glaring gaps in their education? Heather helps you face your fear and conquer it! Fear is a joy-thief. There is nothing quite so horrible as being held hostage this way. Join us to learn four tips that set the stage for a life-long pursuit of learning and help you conquer that fear of the gaps!",
+          "RECID": "19-411",
+          "RID": 2753
+        },
+        {
+          "name": "Tips for Enjoying the Process of Child Training",
+          "location": "Green 4",
+          "speaker": "Mary Craig",
+          "description":
+            "Come, learn how to love and enjoy your role of nurturing and training your children in God’s ways. Learn how to look kind, sound kind, and BE kind in the process. Get excited about seeing your kindness and love passed on to your kids. In addition to taking a fresh look at these truths, a Q & A time allows you to get answers to your specific struggles.",
+          "RECID": "19-412",
+          "RID": 2754
+        }
+      ],
+      "7": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
+      "8": [
+        {
+          "name": "Raising Empathetic Children",
+          "location": "Worship Center",
+          "speaker": "Ken Sande",
+          "description":
+            "Every person is made in the image of God and therefore has a natural capacity for developing and exercising Christ-like empathy. Like all character qualities and skills, this can be deliberately cultivated, beginning as early as two years of age. As children grow in empathy and compassion, they enjoy more positive friendships, more fulfilling and durable marriages, and a more compelling witness for Christ.",
+          "RECID": "19-501",
+          "RID": 2755
+        },
+        {
+          "name": "Avoiding the Pitfalls of Investing in Today’s Markets",
+          "location": "Gym",
+          "speaker": "David McAlvany",
+          "description":
+            "Learn about the practical advantages of becoming one of the “sons of Issachar.” As stewards, how can we understand the big picture for successful investing and risk mitigation? How do you avoid big losses? What are the biblical mandates imperative to stewardship and investment? Do politics, economics, or even international relations matter as we invest successfully in todays’ markets?",
+          "RECID": "19-502",
+          "RID": 2756
+        },
+        {
+          "name": "Understanding the Times - How the Western World Loses the Christian Faith",
+          "location": "Chapel",
+          "speaker": "Kevin Swanson",
+          "description":
+            "As the author of the groundbreaking book, Apostate—the Men Who Destroyed the Christian West, Kevin details the ideas, philosophers, classical authors, and popular cultural icons making the post-modern man. Many Christian kids in Christian homes are destroyed by philosophies and vain deceit, because their parents did not understand the times. This is a critical presentation for anybody who wants to know how we got where we are today, and how modern man thinks.",
+          "RECID": "19-503",
+          "RID": 2757
+        },
+        {
+          "name": "When Life Broadsides Your Homeschool",
+          "location": "Red 7&8",
+          "speaker": "Vicki Bentley",
+          "description":
+            "You had a wonderful plan at the beginning of the school year for a well-rounded education, envisioning academic excellence from and character development in your smiling, well-adjusted offspring. But then—life happened. How do you find “normal” again? Vicki helps you focus on the essentials when you’re on the frontlines, especially in a crisis situation. (There is some focus on specific life crises.) ",
+          "RECID": "19-504",
+          "RID": 2758
+        },
+        {
+          "name": "Rebels/Prodigals: God Can Rescue Them . . . He is Our Hope",
+          "location": "MSM Room",
+          "speaker": "Jake MacAulay",
+          "description":
+            "How can our wonderful home-trained son go off the rails? He forsook his faith and all he was taught. Next thing, we were at odds on everything. Lies consumed our relationship. He plunged into a lifestyle of worldly passions and fell into the legal deep end. We lost our son. But God…! This prodigal came back to the kingdom of heaven, took it by force, and revenged all his disobedience. The impossible happened. That son is Jake MacAulay and he shares his story. Parents, there is hope.",
+          "RECID": "19-505",
+          "RID": 2759
+        },
+        {
+          "name": "Expanding your Comfort Zone for Maximum Impact",
+          "location": "Third Floor Lobby",
+          "speaker": "Allan Blain",
+          "description":
+            "Are you growing or dying? Thriving or surviving? Are you all God created you to be? If you are tired of not living up to your full potential, come and learn the importance of growing personally to be more effective at fulfilling the great commission and reaching the world for Christ. These principles overflow into academics, relationships, health, business, and more. Expand your family’s comfort zone today.",
+          "RECID": "19-506",
+          "RID": 2760
+        },
+        {
+          "name": "Dinosaurs",
+          "location": "Lobby Room North",
+          "speaker": "Pat Roy",
+          "description":
+            "Dinosaurs confuse Christians more than just about any other topic that we’ve dealt with. Pat discusses dinosaurs living at the same time as man, dinosaur soft-tissue discoveries, and dinosaur graveyards. He’ll show how they make a strong case for the worldwide flood. He’ll also bring real dinosaur fossils so your group can actually handle them!",
+          "RECID": "19-507",
+          "RID": 2761
+        },
+        {
+          "name": "The Life of Albert Einstein and Why it Matters",
+          "location": "Lobby Room South",
+          "speaker": "Wes Olson",
+          "description":
+            "Nobody knows what happened to Einstein’s daughter and contrary to popular myth, Einstein did not fail high school math. Now a celebrated scientist, Einstein had a life full of surprises. His ideas rocked the world; he played the violin, sailed boats, and sort-of believed in God. Peek behind the iconic curtain and get a glimpse of the real man, the father and husband whose very name is a synonym for genius.",
+          "RECID": "19-508",
+          "RID": 2762
+        },
+        {
+          "name": "Preparing Your Teen for Life",
+          "location": "Green 7",
+          "speaker": "Carol Becker",
+          "description":
+            "The high school years present an opportune time to develop skills young adults use for the rest of their lives. Learn about the importance of teaching finance, health care, car ownership, job preparation, spiritual principles, and more. All of these areas benefit teens when taking that giant step into independence and adulthood. Get Carol’s list of suggested resources. ",
+          "RECID": "19-509",
+          "RID": 2763
+        },
+        {
+          "name": "Overcoming Artificial Maturity",
+          "location": "Red 9",
+          "speaker": "Jeff Sande",
+          "description":
+            "The “iY Generation” (22 and younger) has acquired massive amounts of electronic information—often without practical experience and associated responsibility. This creates an artificial maturity leaving them ill-equipped for real life. Jeff, an “iY” himself, shares vivid examples of the devastating impact of such immaturity and, more importantly, practical guidance on how teens can develop relational skills that enable them to enjoy successful marriages, careers, and ministries.  ",
+          "RECID": "19-510",
+          "RID": 2764
+        },
+        {
+          "name": "Equipping Kids to Persevere and Pursue Excellence",
+          "location": "Red 5",
+          "speaker": "Heather Haupt",
+          "description":
+            "We live in a culture that craves the easy way. Kids sometimes whine, complain, and struggle to get things done. They need to develop habits of persevering and pursuing excellence. Find out how they can thrive and give their all to every endeavor. Learn to minimize weaknesses and maximize strengths of a homeschool education by connecting kids to a greater purpose and setting habits for them to succeed.",
+          "RECID": "19-511",
+          "RID": 2765
+        },
+        {
+          "name": "How to Permanently Remove the Deep Roots of Bitterness",
+          "location": "Green 4",
+          "speaker": "Tim Roth",
+          "description":
+            "Are there walls between you and someone that has hurt you?  Come and hear Pastor Tim Roth’s personal struggle and victory in this area. What he shares is scriptural and practical in application.",
+          "RECID": "19-512",
+          "RID": 2766
+        },
+        {
+          "name": "Christian Heritage Chorale #4",
+          "location": "Chorale Room",
+          "speaker": "Neil Craig",
+          "description": ""
+        }
+      ],
+      "9": [
+        {
+          "name": "Vendor Hall",
+          "location": "Vendor Hall",
+          "speaker": null
+        },
+        {
+          "name": "Silent Auction Pick Up",
+          "location": "Second Floor Hallway",
+          "speaker": null
+        }
+      ],
+      "10": [
+        {
+          "name": "Modern Spirituality and Your Mind: Truth Endures",
+          "location": "Worship Center",
+          "speaker": "Dr. Voddie Baucham, Jr.",
+          "description":
+            "Modern Christianity is awash with pragmatism and mysticism.  Unfortunately, these ideologies are so common that many Christians are not even aware of the influence in their own lives and families.  Voddie examines these ideologies and shows you how to counter them with biblical thinking and decision making.",
+          "RECID": "19-005",
+          "RID": 2767,
+          "DVD_RID": 2854
+        }
+      ],
+      "11": [
+        {
+          "name": "End of Conference",
+          "description":
+            "Final opportunity to order recordings at discounted conference pricing. Doors close at 6:30 PM"
+        }
+      ]
+    }
+  }
+}

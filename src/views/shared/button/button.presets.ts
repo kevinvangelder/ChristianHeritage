@@ -14,7 +14,9 @@ const BASE_VIEW: ViewStyle = {
 }
 
 const BASE_TEXT: TextStyle = {
-  paddingHorizontal: spacing[3],
+  paddingHorizontal: spacing[2],
+  fontSize: 15,
+  fontWeight: "bold",
 }
 
 /**
@@ -26,11 +28,29 @@ export const viewPresets = {
   /**
    * A smaller piece of secondard information.
    */
-  primary: { ...BASE_VIEW, backgroundColor: color.palette.orange } as ViewStyle,
+  primary: { ...BASE_VIEW, backgroundColor: color.palette.bahamaBlue } as ViewStyle,
+  primarySmall: {
+    ...BASE_VIEW,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[1],
+    backgroundColor: color.palette.bahamaBlue,
+  } as ViewStyle,
+  delete: { ...BASE_VIEW, backgroundColor: color.palette.angry } as ViewStyle,
+  deleteSmall: {
+    ...BASE_VIEW,
+    backgroundColor: color.palette.angry,
+    paddingVertical: spacing[1],
+    paddingHorizontal: spacing[1],
+  } as ViewStyle,
+  disabled: { ...BASE_VIEW, backgroundColor: color.palette.mediumGrey } as ViewStyle,
 }
 
 export const textPresets = {
-  primary: { ...BASE_TEXT, fontSize: 9, color: color.palette.white } as TextStyle,
+  primary: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
+  primarySmall: { ...BASE_TEXT, color: color.palette.white, fontSize: 14 } as TextStyle,
+  delete: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
+  deleteSmall: { ...BASE_TEXT, color: color.palette.white, fontSize: 14 } as TextStyle,
+  disabled: { ...BASE_TEXT, color: color.palette.white } as TextStyle,
 }
 
 /**

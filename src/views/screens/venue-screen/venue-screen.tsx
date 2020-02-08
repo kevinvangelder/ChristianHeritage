@@ -1,16 +1,7 @@
 import * as React from "react"
-import {
-  Image,
-  View,
-  ImageStyle,
-  TextStyle,
-  ViewStyle,
-  ScrollView,
-  TouchableOpacity,
-  Linking,
-} from "react-native"
+import { Image, View, ImageStyle, TextStyle, ViewStyle, ScrollView } from "react-native"
 import { Text } from "../../shared/text"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/"
@@ -26,12 +17,12 @@ const TEXT: TextStyle = {
   textAlign: "center",
 }
 const IMAGE: ImageStyle = {
-  flex: 1,
+  flex: 2,
   resizeMode: "contain",
   maxWidth: "100%",
-  maxHeight: "150%",
-  marginBottom: -spacing[8],
-  marginTop: -spacing[8] - spacing[5],
+  maxHeight: "180%",
+  // marginBottom: -spacing[8],
+  // marginTop: -spacing[8] - spacing[5],
 }
 const GRID_ROW: ViewStyle = {
   flexDirection: "row",
@@ -63,71 +54,27 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
   render() {
     return (
       <Screen preset="fixed" style={ROOT}>
-        <TitleBar title="Venue" />
+        <TitleBar
+          title="Venue"
+          back
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+        />
         <ScrollView
-          style={{ width: "100%", maxWidth: "100%", padding: spacing[2] }}
+          style={{ flex: 1, padding: spacing[2] }}
           contentContainerStyle={{ maxWidth: "100%" }}
         >
-          <Image source={require("./leavenworth.png")} style={LOGO} />
-          <View style={GRID_ROW}>
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.push("webview", {
-                  url: "https://leavenworth.org/shopping/",
-                  title: "Shopping",
-                })
-              }
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-shopping.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Shopping</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.push("webview", {
-                  url: "https://leavenworth.org/dining/",
-                  title: "Dining",
-                })
-              }
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-dining.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Dining</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={GRID_ROW}>
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.push("webview", {
-                  url: "https://leavenworth.org/attractions/",
-                  title: "Attractions",
-                })
-              }
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-activities.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Attractions</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.push("webview", {
-                  url: "https://leavenworth.org/recreation/",
-                  title: "Recreation",
-                })
-              }
-              style={GRID}
-            >
-              <Image source={require("./leavenworth-recreation.png")} style={GRID_IMAGE} />
-              <Text style={{ ...TEXT, ...LINK }}>Recreation</Text>
-            </TouchableOpacity>
-          </View>
           {/* <Image source={require("./ocean-shores.png")} style={IMAGE} /> */}
-          {/* <Text preset="header" text="First Floor" style={TEXT} />
+          <Text preset="header" text="First Floor" style={TEXT} />
           <Image source={require("./floor-1.png")} style={IMAGE} />
           <Text preset="header" text="Second Floor" style={TEXT} />
           <Image source={require("./floor-2.png")} style={IMAGE} />
           <Text preset="header" text="Third Floor" style={TEXT} />
-          <Image source={require("./floor-3.png")} style={IMAGE} /> */}
+          <Image
+            source={require("./floor-3.png")}
+            style={{ ...IMAGE, flex: 1, marginVertical: -spacing[8] * 3 }}
+          />
+          <Text preset="header" text="Vendors" style={TEXT} />
+          <Image source={require("./vendor-map.png")} style={IMAGE} />
         </ScrollView>
       </Screen>
     )

@@ -15,13 +15,14 @@ import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
 import { color } from "../../../theme"
+import { Button } from "../../shared/button"
 
 export interface InfoScreenProps extends NavigationScreenProps<{}> {}
 
 const ROOT: ViewStyle = {
-  flex: 1,
+  flexGrow: 1,
   paddingHorizontal: spacing[4],
-  paddingBottom: spacing[3],
+  paddingBottom: spacing[2],
 }
 const CENTER: ViewStyle = {
   alignItems: "center",
@@ -47,83 +48,72 @@ const IGNITE_URL = "https://infinite.red/ignite"
 export class InfoScreen extends React.Component<InfoScreenProps, {}> {
   render() {
     return (
-      <Screen preset="fixed">
-        <TitleBar title="Info" />
-        <ScrollView style={ROOT} contentContainerStyle={{ width: "100%" }}>
-          <Image
-            source={require("./CH-logo-wide.jpg")}
-            style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 90 }}
+      <Screen preset="scrollStack" style={ROOT}>
+        <Image
+          source={require("./CH-logo-wide.jpg")}
+          style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 90 }}
+        />
+        <View style={[CENTER, { flexDirection: "row", justifyContent: "center", paddingTop: 0 }]}>
+          <Text
+            preset="default"
+            text="Website"
+            onPress={() => Linking.openURL(WEBSITE_URL)}
+            style={LINK}
           />
-          <View style={[CENTER, { flexDirection: "row", justifyContent: "center", paddingTop: 0 }]}>
-            <Text
-              preset="default"
-              text="Website"
-              onPress={() => Linking.openURL(WEBSITE_URL)}
-              style={LINK}
-            />
-            <Text text=" | " />
-            <Text
-              preset="default"
-              text="Facebook"
-              onPress={() => Linking.openURL(FACEBOOK_URL)}
-              style={LINK}
-            />
+          <Text text=" | " />
+          <Text
+            preset="default"
+            text="Facebook"
+            onPress={() => Linking.openURL(FACEBOOK_URL)}
+            style={LINK}
+          />
+        </View>
+        <Image
+          source={require("./spring-2019.png")}
+          style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 280 }}
+        />
+        <Text style={{ ...PARAGRAPH, ...ITALICS }}>
+          Teaching purposefully, living righteously, to Build a Godly Legacy (Titus 2:12)
+        </Text>
+        <Text style={PARAGRAPH}>
+          Welcome to the 14th annual Christian Heritage Family Discipleship and Homeschooling
+          Conference! We are so excited you are here with us and pray you are encouraged and blessed
+          by what you learn and experience. The focus this year is on teaching purposefully, living
+          righteously, to build a godly legacy. (Titus 2:12) We hope you will be transformed by the
+          Word of God taught by the many wonderful speakers and leaders here with us! May God richly
+          bless you and your family these next few days!
+        </Text>
+        <Text>~ The Christian Heritage Board</Text>
+        <View
+          style={{
+            paddingTop: spacing[6],
+            justifyContent: "space-between",
+            flexDirection: "row",
+          }}
+        >
+          <View>
+            <Text text="Application Development" style={{ color: color.palette.mediumGrey }} />
+            <Text text="by Kevin VanGelder" style={{ color: color.palette.mediumGrey }} />
           </View>
-          <Image
-            source={require("./leavenworth.jpg")}
-            style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 280 }}
-          />
-          <Text style={{ ...PARAGRAPH, ...ITALICS }}>
-            Hebrews 13:4 Let marriage be held in honor among all..
-          </Text>
-          <Text style={PARAGRAPH}>
-            These days marriage is certainly not held in honor among many! All around us we see the
-            devastation, pain and heartbreak of broken marriage vows. We see the systematic attempts
-            to dismantle the sanctity of marriage and the redefining of it. The enemy knows how
-            foundational this institution is and has been working to destroy what God has
-            established as Holy.
-          </Text>
-          <Text style={PARAGRAPH}>
-            Here at Christian Heritage, we understand that the unity between a husband and wife is
-            foundational to the stability of the family. Therefore, we are committed to providing
-            services and events like this to help strengthen and equip you to bring glory to our
-            heavenly father through your family.
-          </Text>
-          <Text style={PARAGRAPH}>
-            We sincerely hope this retreat will be an encouragement to you and your spouse and that
-            you will grow in your commitment and devotion to the Lord and in turn Love, Respect and
-            Cherish each other more deeply.{" "}
-          </Text>
-          <Text style={PARAGRAPH}>To God’s Glory!</Text>
-          <Text>Your servant in Christ,</Text>
-          <Text style={PARAGRAPH}>P. Luke Peterson</Text>
-          <View
-            style={{
-              paddingTop: spacing[6],
-              justifyContent: "space-between",
-              flexDirection: "row",
-            }}
-          >
-            <View>
-              <Text text="Application Development" style={{ color: color.palette.mediumGrey }} />
-              <Text text="by Kevin VanGelder" style={{ color: color.palette.mediumGrey }} />
-            </View>
-            <View style={{ flexDirection: "row", marginTop: -spacing[1] }}>
-              <Text
-                text="Built with"
-                style={{ color: color.palette.mediumGrey, marginTop: spacing[3] + spacing[1] }}
-              />
-              <View style={[CENTER, { flexDirection: "row", justifyContent: "center" }]}>
-                <TouchableOpacity onPress={() => Linking.openURL(IGNITE_URL)}>
-                  <Image
-                    source={require("./ignite.png")}
-                    style={{ width: 60, height: 32, marginHorizontal: spacing[2], maxHeight: 32 }}
-                  />
-                </TouchableOpacity>
-              </View>
+          <View style={{ flexDirection: "row", marginTop: -spacing[1] }}>
+            <Text
+              text="Built with"
+              style={{ color: color.palette.mediumGrey, marginTop: spacing[3] + spacing[1] }}
+            />
+            <View style={[CENTER, { flexDirection: "row", justifyContent: "center" }]}>
+              <TouchableOpacity onPress={() => Linking.openURL(IGNITE_URL)}>
+                <Image
+                  source={require("./ignite.png")}
+                  style={{ width: 60, height: 32, marginHorizontal: spacing[2], maxHeight: 32 }}
+                />
+              </TouchableOpacity>
             </View>
           </View>
-        </ScrollView>
+        </View>
+        <Button
+          onPress={() => this.props.navigation.push("authentication", { next: "tabs" })}
+          text="Continue"
+        />
       </Screen>
     )
   }

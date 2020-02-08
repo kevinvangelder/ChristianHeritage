@@ -35,7 +35,7 @@ export const color = {
   /**
    * A subtle color used for borders and lines.
    */
-  line: palette.offWhite,
+  line: palette.lightGrey,
   /**
    * The default color of text in many components.
    */
@@ -43,7 +43,7 @@ export const color = {
   /**
    * Secondard information.
    */
-  dim: palette.lightGrey,
+  dim: palette.lighterGrey,
   /**
    * Error messages and icons.
    */

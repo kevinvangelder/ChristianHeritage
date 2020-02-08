@@ -39,6 +39,8 @@ export async function setupRootStore() {
   // track changes & save to storage
   onSnapshot(rootStore, snapshot => storage.save(ROOT_STATE_STORAGE_KEY, snapshot))
 
+  await onReady(rootStore, env)
+
   return rootStore
 }
 
@@ -61,4 +63,8 @@ export async function createEnvironment() {
   await env.api.setup()
 
   return env
+}
+
+async function onReady(rootStore: RootStore, env: Environment) {
+  env.api.onTokenExpired = rootStore.userStore.reauthenticate
 }

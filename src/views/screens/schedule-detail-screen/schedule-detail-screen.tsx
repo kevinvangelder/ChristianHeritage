@@ -1,47 +1,69 @@
 import * as React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, ScrollView } from "react-native"
+import {
+  View,
+  Image,
+  ViewStyle,
+  TextStyle,
+  ImageStyle,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from "react-native"
 import { Text } from "../../shared/text"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../../views/shared/title-bar"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
+import { Button } from "../../shared/button"
+import { inject, observer } from "mobx-react"
+import { CartStore } from "../../../models/cart-store"
+import { UserStore } from "../../../models/user-store"
+import { RecordingStore } from "../../../models/recording-store"
+import { color } from "../../../theme"
 
-export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {}
-
+export interface ScheduleDetailScreenProps extends NavigationScreenProps<{}> {
+  cartStore: CartStore
+  userStore: UserStore
+  recordingStore: RecordingStore
+}
 const ROOT: ViewStyle = {
   flex: 1,
   paddingHorizontal: spacing[4],
   paddingVertical: spacing[3],
   width: "100%",
 }
-
 const TITLE: TextStyle = {
   marginBottom: spacing[3],
 }
-
 const KEYNOTE_WRAPPER: TextStyle = {
   flexDirection: "row",
 }
-
 const KEYNOTE_CONTENT: TextStyle = {
   flexDirection: "column",
   flex: 2,
   paddingRight: spacing[1],
 }
-
 const SPEAKER: TextStyle = {
   marginBottom: spacing[1],
 }
-
 const TIME: TextStyle = {
   marginBottom: spacing[2],
 }
-
 const DESCRIPTION: TextStyle = {
   marginBottom: spacing[2],
 }
-
+const LINK: TextStyle = {
+  color: color.palette.bahamaBlue,
+  textDecorationLine: "underline",
+}
+const IMAGE_WRAPPER: ViewStyle = {
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  maxHeight: 180,
+  marginBottom: spacing[2],
+}
 const IMAGE: ImageStyle = {
   width: 120,
   resizeMode: "contain",
@@ -59,49 +81,96 @@ const INVISIBLE: ViewStyle = {
   width: 0,
 }
 
-const IMAGES = {
-  "Kevin Swanson": require("./Kevin_Swanson.png"),
-  "Steve Walker": require("./Steve_Walker.png"),
-  "Todd Friel": require("./Todd_Friel.png"),
-  "Bill Jack": require("./Bill_Jack.png"),
-  "Daniel Craig": require("./Daniel_Craig.png"),
-  "Dwight Cover": require("./Dwight_Cover.png"),
-  "Mark Ward": require("./Mark_Ward.png"),
-  "Wendy Walker": require("./Wendy_Walker.png"),
-  "Dwight & Sherrill Cover": require("./Dwight_and_Sherrill_Cover.jpg"),
-}
-const BIOS = {
-  "Kevin Swanson":
-    "Kevin Swanson is a father, pastor, host of the international radio program Generations Radio, and Director of Generations. After holding multiple leadership positions in corporate, church, and non-profit organizations, Kevin now speaks around the world on family-based discipleship, economics, and American culture.",
-  "Steve Walker":
-    "Steve Walker is passionate about ministering to and encouraging parents and children to turn their hearts towards one another for the glory of God. Steve pastors a church in Central California and enjoys dating his wife, running and playing softball with his children, entertaining his eight grandchildren, and teaching families to love and serve Christ.",
-  "Todd Friel":
-    "Todd Friel is the host of Wretched TV and Wretched Radio (wretched.org), heard daily on stations around the country. He is also the author of: Stressed Out, Reset for Parents, Jesus Unmasked, and many more DVD projects. He lives in Atlanta with his wife and three children.",
-  "Bill Jack":
-    "Bill Jack is married and has three children. He is the cofounder and faculty advisor of Worldview Academy, an academic leadership program that seeks to train Christian students to think and live in accord with a biblical worldview so that they will serve Christ and lead the culture.",
-  "Daniel Craig":
-    "Founder of LifeLaunch.com, Daniel is passionate about home education, discipleship and worldview. As a first generation homeschool graduate, he completed his Bachelor’s Degree in Music and has pursued Seminary Studies in Philosophy and Apologetics. With this background, Daniel has a great burden for furthering the home education and discipleship vision in the next generation.",
-  "Dwight Cover":
-    "Dwight Cover and his wife Sherrill have homeschooled in Grandview, Washington for over twenty years. Their vision is to disciple their children to live out their calling in robust Biblical manhood and womanhood that advances the kingdom of God among all nations through multigenerational discipleship. Dwight currently serves as the teaching pastor at Household of Faith—a new work with a focus on developing young men to shoulder the mantle of spiritual leadership.",
-  "Mark Ward":
-    "Mark Ward, PhD, is a writer and editor at Faithlife, makers of Logos Bible Software, in Bellingham, WA. His wife and three homeschooled children live in Mount Vernon, WA. Mark is the author of Biblical Worldview: Creation, Fall, Redemption and Authorized: The Use and Misuse of the King James Bible.",
-  "Wendy Walker":
-    "Wendy Walker is helpmeet to Steve, mother of six, grandmother to eight, and an adoring daughter of the King. She loves discipling women and teaching them about the importance of living as women of the Word and serving Jesus faithfully. Wendy delights in exploring Creation, cooking, reading, and training up the next generation.",
-  "Dwight & Sherrill Cover":
-    "As one fruit of a godly upbringing, Dwight Cover sensed God’s call to pastoral ministry at age fourteen. He prepared for that at Biola University (B.A.) and Dallas Theological Seminary (Th.M.). After five years as an Associate Pastor in Alaska, he became Senior Pastor of Grace Fellowship in Grandview, Washington, where he served for twenty-one years. In 2009, Dwight started Household of Faith in Grandview, where he currently serves as Teaching Pastor. Dwight has also spoken at collegiate retreats, men’s conferences, Christian Heritage conferences, and Generations conferences. Thirty-five years of pastoral ministry have only served to deepen Dwight’s passion to study the Word of God, to practice it, and to equip another generation of believers to advance the gospel for the glory of God. \n\nEarly in Dwight and Sherrill Cover’s marriage and ministry (1986), God gave them a passion for a godly marriage and family as a fruit of and a fruit-bearing-tool of the gospel. With God’s blessing, they have been discipling and home-educating their eight children and grandchildren to trust Christ and advance His kingdom. Now thirty-two years into their marriage, Dwight and Sherrill continue trusting God to help them not only grow old together but also better reflect the covenant-love of Christ in purifying His Bride, the Church. An undying love involves much dying; but Dwight and Sherrill are thankful for the life of greater oneness that comes from learning to die to self for Christ’s sake, for each other’s sake, and for the sake of future generations.",
+const DVD_BUTTON: ViewStyle = {
+  marginTop: spacing[3],
 }
 
+const IMAGES = {
+  "Dr. Voddie Baucham, Jr.": require("./Voddie_Baucham.png"),
+  "Allan Blain": require("./Allan_Blain.png"),
+  "Carol Becker": require("./Carol_Becker.png"),
+  "Corlette Sande": require("./Corlette_Sande.png"),
+  "David McAlvany": require("./David_McAlvany.png"),
+  "Elliott Neff": require("./Elliott_Neff.png"),
+  "Heather Haupt": require("./Heather_Haupt.png"),
+  "Jake MacAulay": require("./Jake_MacAulay.png"),
+  "Jeff Sande": require("./Jeff_Sande.png"),
+  "Ken Sande": require("./Ken_Sande.png"),
+  "Kevin Swanson": require("./Kevin_Swanson.png"),
+  "Mary Craig": require("./Mary_Craig.png"),
+  "Mike Snavely": require("./Mike_Snavely.png"),
+  "Neil Craig": require("./Neil_Craig.png"),
+  "Pat Roy": require("./Pat_Roy.png"),
+  "Rhea Perry": require("./Rhea_Perry.png"),
+  "Scott LaPierre": require("./Scott_LaPierre.png"),
+  "Tim Roth": require("./Tim_Roth.png"),
+  "Vicki Bentley": require("./Vicki_Bentley.png"),
+  "Wes Olson": require("./Wes_Olson.png"),
+}
+const BIOS = {
+  "Dr. Voddie Baucham, Jr.":
+    "Voddie is a husband, father, pastor, author, professor, and church planter. He currently serves as Dean of Theology at African Christian University in Lusaka, Zambia. By emphasizing cultural apologetics, he helps people understand the significance of thinking and living biblically in every area of life. Voddie and his wife, Bridget, have nine children and are committed home educators.",
+  "Ken Sande":
+    "Ken, an engineer, lawyer, and mediator, founded Peacemaker Ministries where he conciliated family, business, church, and legal conflicts and guided development of a global training program. He is President and founder of RW360, which teaches people to get upstream of conflict by building strong relationships in the family, church, and workplace. Ken is the author of books, articles, and training resources, including The Peacemaker, which has sold over 500,000 copies in seventeen languages.",
+  "Jeff Sande":
+    "Jeff is Director of Training and Marketing at RW360. He travels globally to churches, youth conferences, and corporate training seminars. A graduate of Montana State University-Billings in Business Management and Marketing, he mentored elementary school students, volunteering at schools and camps to teach peacemaking to young children.",
+  "Kevin Swanson":
+    "Kevin is pastor of Reformation Church of Elizabeth in Colorado and has an interest in education and teaching in schools-homeschool, public, Christian, and college. He hosts a daily radio program, Generations, and teaches on biblical worldview, Christian education, family discipleship, and cultural discernment of modern music and movies. With his wife, Brenda, he raised their five children, homeschooling them the whole way.",
+  "David McAlvany":
+    "David is a thought leader on the global economy and author of The Intentional Legacy, a book about creating meaningful family culture. A Biola graduate, then Morgan Stanley wealth manager, now guest on national television and at financial seminars around the world, he is the second-generation CEO of McAlvany Financial Companies. He and his wife, Mary Catherine, homeschool using theater, daily readings, hiking, cooking, and church life, with a priority on togetherness.",
+  "Wes Olson":
+    "Wes owns Westfield Studios and produces the 101 Series film to glorify God with an easy to use, understandable, and visually rich high school homeschool curriculum from a biblical perspective. Biology 101, Chemistry 101, Physics 101, and General Science 101 are in production. After graduating from film school and Multnomah Bible College, Wes produced corporate films for fifteen years. He and his wife, Tammy, have four children and seven grandchildren. They have been homeschooling over thirty years!",
+  "Rhea Perry":
+    "Rhea taught seven children at home and now educates entrepreneurs, helping families start home businesses through her company, Educating for Success. As an award-winning Internet business owner and now a widow, she shares her knowledge from twenty-nine years of homeschooling young people to be business owners, and loves encouraging parents to train others to serve God by serving mankind and building financial freedom.",
+  "Carol Becker":
+    "Carol, with her husband, Jim, homeschooled two children (K-12th) that graduated college. Having an Engineering BS and System Science MS, Carol directed a multiple-age co-op and a science co-op.  She taught Composition, American and British Literature, Algebra I & 2, and Geometry for homeschooled teens and tutored writing students. As an HSLDA High School Consultant, she writes articles, newsletters, and blogs to encourage and equip parents.",
+  "Heather Haupt":
+    "Heather is the mother of three knights-in-training and a spunky little princess. Her intention is to raise them to make a difference in this world. Recognizing the brevity of childhood and power of a parent’s influence, Heather inspires and equips families toward intentional parenting, pursuing God, and delighting in the learning adventure. She is author of Knights-in-Training: Ten Principles for Raising Honorable, Courageous and Compassionate Boys and The Ultimate Guide to Brain Breaks.",
+  "Elliott Neff":
+    "Elliott is a homeschool graduate, husband, father, National Master in Chess, author of A Pawn’s Journey, and founder/CEO of Chess4Life. Chess4Life programs help thousands of kids develop life skills weekly across the country. Elliott’s coaching expertise is reflected in his recent certification as a USCF Level V Coach, an honor that fewer than a dozen top level coaches in the U.S. share.",
+  "Jake MacAulay":
+    "Jake is a homeschooling father, ordained minister, former syndicated talk show host, and CEO at Institute on the Constitution (IOTC), an educational outreach that presents the founders’ biblical view of law and government. He speaks to audiences nationwide and is seen in many media outlets. He started American Club, a constitutional study group in public and private schools.",
+  "Mike Snavely":
+    "Mike, son of missionaries, grew up in South Africa. After college he returned to work in Kruger National Park then came again as a missionary. His ministry, Mission Imperative, teaches creation-oriented issues. He is a Creation Science Hall of Fame inductee, author of Creation or Evolution (curriculum), producer of creation DVDs, and developer of two unique excursions – Southwest Safari and African Wildlife Safari. With his wife, Carrie, he home-educated three children.",
+  "Vicki Bentley":
+    "Vicki has a heart for parents and shares practical wisdom and encouraging words. She has eight daughters, is foster mom of fifty, and is grandma to twenty-three grandbabies and four great-grandbabies. She is HSLDA’s Toddlers to Tweens consultant and Group Services director, a speaker, and an author of homeschooling and homemaking books. Vicki homeschooled seventeen children with her husband, Jim, led support groups, and was a Home Educators Association of Virginia board member.",
+  "Pat Roy":
+    "Pat was Director of Broadcast Media at the Institute for Creation Research for twelve years. During this time, he and his wife created the creation-based Jonathan Park audio dramas heard by millions around the world. They also created the new audio drama, Time Chroniclers. Then as Director at Genesis Apologetics he traveled the nation speaking to hundreds of audiences, of all ages, about the importance of trusting God’s Word.",
+  "Tim Roth":
+    "Tim Roth has been married to Ruth for forty years and they have nine children and ten grandchildren. He has served as pastor for forty-five years, chaplain with the local fire department for twenty-five years, and board member with Christian Heritage from the beginning. He enjoys hiking, gardening, and playing with his grandchildren. With his family, he ministers in their church, community, and to homeschoolers across the state.",
+  "Mary Craig":
+    "Mary is the wife of Neil Craig, mother of five, and grandmother of eighteen under age twelve. Since her children were small, she has desired to learn and grow in parenting. She can witness that God has always sent help via people and resources. Now she desires to pass this wisdom along to others looking for help and hope.",
+  "Corlette Sande":
+    "Corlette has degrees in Elementary Education and Counseling and is certified as a Relational Wisdom Instructor. As RW360’s Director of Ministry Relations, she counsels families and mediates child custody disputes. She authored the Young Peacemaker curriculum, teaching conflict resolution to parents and children around the world. She enhances Ken’s teaching with her own insights and provides encouragement and counsel.",
+  "Scott LaPierre":
+    "Scott is Senior Pastor of Woodland Christian Church in Woodland, Washington, as well as an author and conference speaker. He and his wife, Katie, grew up together in northern California, and God has blessed them with seven children.",
+  "Allan Blain":
+    "Allan is an entrepreneur, trainer, and coach. With his wife, Nicole, they’ve homeschooled six children for eighteen years. Over twenty-five years, Allan owned several companies, including a real estate development company. As CEO, he grew it from $10 to over $40 million/year in revenue. His greatest satisfaction professionally comes from helping dad-preneurs and mom-preneurs to integrate family into their work-life.",
+  "Neil Craig":
+    "Neil was Minister of Music in several churches and served as arranger, accompanist, and Director of Music of an international Bible-teaching ministry. Neil is President and Executive Director of Christian Heritage Home Educators of Washington and instructs and directs the annual Christian Heritage Chorale. He and his wife, Mary, are on the Christian Heritage Board.",
+}
+
+@inject("cartStore", "userStore", "recordingStore")
+@observer
 export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenProps, {}> {
-  static navigationOptions = ({ navigation }) => ({
-    headerTitle: TitleBar,
-  })
+  openBio(speakerName, bio, image) {
+    this.props.navigation.push("speakerDetail", { speaker: { name: speakerName, bio, image } })
+  }
+
+  addToCart(RID) {
+    this.props.cartStore.addToCart(RID)
+  }
+
+  removeFromCart(RID) {
+    this.props.cartStore.removeFromCart(RID)
+  }
 
   render() {
     return (
       <Screen preset="fixed">
         <TitleBar
           back
-          onPress={this.props.navigation.popToTop}
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
           title={this.props.navigation.state.params.title}
         />
         {this.renderContent()}
@@ -121,18 +190,37 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   renderKeynote = () => {
     const { timeSlotActivities, item } = this.props.navigation.state.params
     const activity = timeSlotActivities[0]
+    const recording = activity.RID && this.props.recordingStore.findRecording(activity.RID)
+    const dvdRecording =
+      activity.DVD_RID && this.props.recordingStore.findRecording(activity.DVD_RID)
     return (
-      <ScrollView style={ROOT}>
+      <ScrollView style={ROOT} contentContainerStyle={{ paddingBottom: spacing[3] }}>
         <Text preset="header" text={activity.name} style={TITLE} />
         <View style={KEYNOTE_WRAPPER}>
           <View style={KEYNOTE_CONTENT}>
-            <Text preset="subheader" text={activity.speaker} style={SPEAKER} />
+            <Text
+              preset="subheader"
+              text={activity.speaker}
+              style={SPEAKER}
+              onPress={() =>
+                this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+              }
+            />
             <Text preset="fieldLabel" text={`${item.startTime} - ${item.endTime}`} style={TIME} />
             <Text preset="default" text={activity.description} style={DESCRIPTION} />
-            <Text preset="default" text={BIOS[activity.speaker]} style={DESCRIPTION} />
+            {/* <Text preset="default" text={BIOS[activity.speaker]} style={DESCRIPTION} /> */}
           </View>
-          <Image source={IMAGES[activity.speaker]} style={IMAGE} />
+          <TouchableOpacity
+            onPress={() =>
+              this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+            }
+            style={IMAGE_WRAPPER}
+          >
+            <Image source={IMAGES[activity.speaker]} style={IMAGE} />
+          </TouchableOpacity>
         </View>
+        {recording && this.renderCartButton(recording)}
+        {dvdRecording && this.renderDvdButton(dvdRecording)}
       </ScrollView>
     )
   }
@@ -140,20 +228,30 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
   renderOther = () => {
     const { timeSlotActivities } = this.props.navigation.state.params
     return (
-      <ScrollView style={ROOT}>
+      <ScrollView style={ROOT} contentContainerStyle={{ paddingBottom: spacing[3] }}>
         {timeSlotActivities.map(activity => this.renderActivity(activity))}
       </ScrollView>
     )
   }
 
   renderActivity = activity => {
+    const recording = activity.RID && this.props.recordingStore.findRecording(activity.RID)
+    const dvdRecording =
+      activity.DVD_RID && this.props.recordingStore.findRecording(activity.DVD_RID)
     return (
       <View style={ACTIVITY} key={activity.name}>
         <Text preset="subheader" text={activity.name} style={TITLE} />
         <View style={KEYNOTE_WRAPPER}>
           <View style={KEYNOTE_CONTENT}>
             {activity.speaker ? (
-              <Text preset="default" text={activity.speaker} style={SPEAKER} />
+              <Text
+                preset="default"
+                text={activity.speaker}
+                style={SPEAKER}
+                onPress={() =>
+                  this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+                }
+              />
             ) : (
               <View style={INVISIBLE} />
             )}
@@ -167,11 +265,81 @@ export class ScheduleDetailScreen extends React.Component<ScheduleDetailScreenPr
             ) : (
               <View style={INVISIBLE} />
             )}
-            <Text preset="secondary" text={BIOS[activity.speaker]} style={DESCRIPTION} />
+            {activity.name === "Concessions" && (
+              <Text onPress={() => this.props.navigation.push("concessionsDetail")} style={LINK}>
+                See Menus
+              </Text>
+            )}
+            {/* <Text preset="secondary" text={BIOS[activity.speaker]} style={DESCRIPTION} /> */}
           </View>
-          <Image source={IMAGES[activity.speaker]} style={IMAGE} />
+          <TouchableOpacity
+            onPress={() =>
+              this.openBio(activity.speaker, BIOS[activity.speaker], IMAGES[activity.speaker])
+            }
+            style={IMAGE_WRAPPER}
+          >
+            <Image source={IMAGES[activity.speaker]} style={IMAGE} />
+          </TouchableOpacity>
         </View>
+        {recording && this.renderCartButton(recording)}
+        {dvdRecording && this.renderDvdButton(dvdRecording)}
       </View>
     )
+  }
+
+  renderCartButton = recording => {
+    const { itemIds, setSessionIds } = this.props.cartStore.currentCart
+    if (itemIds.includes(recording.RID)) {
+      return (
+        <Button
+          text="Remove from Cart"
+          preset="delete"
+          onPress={() => this.removeFromCart(recording.RID)}
+        />
+      )
+    } else if (setSessionIds.includes(recording.RID)) {
+      return <Button text="Included in Set" preset="disabled" disabled />
+    } else {
+      const { purchaseHistoryIds } = this.props.userStore.currentUser
+      if (purchaseHistoryIds.includes(recording.RID)) {
+        return <Button text="Already Purchased" preset="disabled" disabled />
+      } else {
+        return (
+          <Button
+            text={`Add to Cart - $${recording.displayPrice}`}
+            onPress={() => this.addToCart(recording.RID)}
+          />
+        )
+      }
+    }
+  }
+
+  renderDvdButton = dvdRecording => {
+    const { itemIds, setSessionIds } = this.props.cartStore.currentCart
+    if (itemIds.includes(dvdRecording.RID)) {
+      return (
+        <Button
+          text="Remove DVD from Cart"
+          preset="delete"
+          onPress={() => this.removeFromCart(dvdRecording.RID)}
+          style={DVD_BUTTON}
+        />
+      )
+    } else if (setSessionIds.includes(dvdRecording.RID)) {
+      return <Button text="DVD Included in Set" preset="disabled" disabled style={DVD_BUTTON} />
+    } else {
+      const { purchaseHistoryIds } = this.props.userStore.currentUser
+      if (purchaseHistoryIds.includes(dvdRecording.RID)) {
+        return <Button text="Already Purchased" preset="disabled" disabled style={DVD_BUTTON} />
+      } else {
+        return (
+          <Button
+            text={`Add DVD to Cart - $${dvdRecording.displayPrice}`}
+            onPress={() => this.addToCart(dvdRecording.RID)}
+            style={DVD_BUTTON}
+          />
+        )
+      }
+    }
   }
 }

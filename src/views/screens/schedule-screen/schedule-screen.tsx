@@ -1,13 +1,13 @@
 import * as React from "react"
 import { FlatList, View, TouchableOpacity, ViewStyle } from "react-native"
-import { NavigationScreenProps } from "react-navigation"
+import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TimeSlot } from "./time-slot"
 import { TitleBar } from "../../shared/title-bar"
 import { Text } from "../../shared/text"
 import { spacing } from "../../../theme/spacing"
 import { palette } from "../../../theme/palette"
-const data = require("../../../models/marriage-retreat-2019.json")
+const data = require("../../../models/spring-2019.json")
 const moment = require("moment")
 
 export interface ScheduleScreenProps extends NavigationScreenProps<{}> {}
@@ -19,22 +19,18 @@ const NAV_ITEM: ViewStyle = {
 }
 
 export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selectedDay: string }> {
-  // static navigationOptions = {
-  //   headerTitle: TitleBar,
-  // }
-
   constructor(props) {
     super(props)
     let selectedDay = null
     switch (moment().day()) {
-      case 4:
-        selectedDay = "thursday"
+      case 6:
+        selectedDay = "saturday"
         break
       case 5:
         selectedDay = "friday"
         break
       default:
-        selectedDay = "saturday"
+        selectedDay = "thursday"
         break
     }
     this.state = {
@@ -76,7 +72,11 @@ export class ScheduleScreen extends React.Component<ScheduleScreenProps, { selec
     return (
       <Screen preset="fixed">
         {/* {this.renderCurrentTimeIndicator} */}
-        <TitleBar title="Schedule" />
+        <TitleBar
+          title="Schedule"
+          back
+          onPress={() => this.props.navigation.dispatch(NavigationActions.back())}
+        />
         <FlatList
           data={dayTimeSlots}
           extraData={this.state}
