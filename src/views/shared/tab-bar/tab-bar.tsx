@@ -52,7 +52,7 @@ export const Tab = ({
     case "schedule":
       text = "Schedule"
       break
-    case "venue":
+    case "venueTab":
       text = "Venue"
       break
     case "info":

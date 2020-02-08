@@ -32,7 +32,7 @@ export const RootNavigator = StackNavigator(
             navigationOptions: { gesturesEnabled: true },
           },
         ),
-        venue: StackNavigator(
+        venueTab: StackNavigator(
           {
             venue: { screen: VenueScreen },
             webview: { screen: WebViewScreen },
@@ -61,7 +61,7 @@ export const RootNavigator = StackNavigator(
         initialRouteName: "schedule",
         tabBarPosition: "bottom",
         tabBarComponent: TabBar,
-        order: ["schedule", "venue", "cart"],
+        order: ["schedule", "venueTab", "cart"],
         backBehavior: "none",
       },
     ),

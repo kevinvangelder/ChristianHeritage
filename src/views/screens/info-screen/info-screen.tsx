@@ -69,12 +69,12 @@ export class InfoScreen extends React.Component<InfoScreenProps, {}> {
           />
         </View>
         <Image
-          source={require("./spring-2019.png")}
+          source={require("./CH_MR_2020.jpg")}
           style={{ alignSelf: "center", resizeMode: "contain", maxWidth: "100%", maxHeight: 280 }}
         />
-        <Text style={{ ...PARAGRAPH, ...ITALICS }}>
+        {/* <Text style={{ ...PARAGRAPH, ...ITALICS }}>
           Teaching purposefully, living righteously, to Build a Godly Legacy (Titus 2:12)
-        </Text>
+        </Text> */}
         <Text style={PARAGRAPH}>
           Welcome to the 14th annual Christian Heritage Family Discipleship and Homeschooling
           Conference! We are so excited you are here with us and pray you are encouraged and blessed
