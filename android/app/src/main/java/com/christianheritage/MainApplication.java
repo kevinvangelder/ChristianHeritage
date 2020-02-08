@@ -30,8 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
             new RNAuthorizeNetPackage(),
             new AsyncStoragePackage(),
             new KeychainPackage(),
-            new RNI18nPackage(),
-          new RNAuthorizeNetPackage()
+            new RNI18nPackage()
       );
     }
 

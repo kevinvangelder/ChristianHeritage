@@ -1,0 +1,224 @@
+{
+  "thursday": {
+    "timeSlots": [
+      {
+        "id": 0,
+        "name": "Hotel Check-in begins",
+        "startTime": "4:00PM",
+        "endTime": "6:30PM",
+        "duration": 90
+      },
+      {
+        "id": 1,
+        "name": "Event Check-in",
+        "startTime": "6:30PM",
+        "endTime": "7:00PM",
+        "duration": 30
+      },
+      {
+        "id": 2,
+        "name": "Session #1",
+        "startTime": "7:00PM",
+        "endTime": "9:00PM",
+        "duration": 120
+      }
+    ],
+    "activities": {
+      "0": [],
+      "1": [],
+      "2": [
+        {
+          "name": "Marriage and Conflict",
+          "speaker": "Israel and Brook Wayne",
+          "description": "",
+          "RECID": "20MR-001",
+          "RID": 3203
+        }
+      ]
+    }
+  },
+  "friday": {
+    "timeSlots": [
+      {
+        "id": 1,
+        "name": "Breakfast Buffet",
+        "startTime": "7:30AM",
+        "endTime": "9:30AM",
+        "duration": 120
+      },
+      {
+        "id": 2,
+        "name": "Session #2",
+        "startTime": "9:30AM",
+        "endTime": "10:30AM",
+        "duration": 60
+      },
+      {
+        "id": 3,
+        "name": "Break",
+        "startTime": "10:30AM",
+        "endTime": "11:00AM",
+        "duration": 30
+      },
+      {
+        "id": 4,
+        "name": "Session #3",
+        "startTime": "11:00AM",
+        "endTime": "12:00PM",
+        "duration": 60
+      },
+      {
+        "id": 5,
+        "name": "Lunch",
+        "startTime": "12:00PM",
+        "endTime": "2:30PM",
+        "duration": 150
+      },
+      {
+        "id": 6,
+        "name": "Session #4",
+        "startTime": "2:30PM",
+        "endTime": "3:30PM",
+        "duration": 60
+      },
+      {
+        "id": 7,
+        "name": "Break",
+        "startTime": "3:30PM",
+        "endTime": "4:00PM",
+        "duration": 30
+      },
+      {
+        "id": 8,
+        "name": "Session #5",
+        "startTime": "4:00PM",
+        "endTime": "5:00PM",
+        "duration": 60
+      },
+      {
+        "id": 9,
+        "name": "See you tomorrow",
+        "startTime": "5:00PM",
+        "endTime": "8:00PM",
+        "duration": 180
+      }
+    ],
+    "activities": {
+      "1": [
+        {
+          "name": "Breakfast Buffet",
+          "description":
+            "Enjoy a delicious chef-prepared breakfast buffet, with omelets available by personal order."
+        }
+      ],
+      "2": [
+        {
+          "name": "Marriage and Communication",
+          "speaker": "Israel and Brook Wayne",
+          "description": "",
+          "RECID": "20MR-002",
+          "RID": 3204
+        }
+      ],
+      "3": [
+        {
+          "name": "Break",
+          "description": ""
+        }
+      ],
+      "4": [
+        {
+          "name": "Marriage and Parenting",
+          "speaker": "Israel and Brook Wayne",
+          "description": "",
+          "RECID": "20MR-003",
+          "RID": 3205
+        }
+      ],
+      "5": [
+        {
+          "name": "Lunch",
+          "description": "There are a variety of restaurants in town within walking distance"
+        }
+      ],
+      "6": [
+        {
+          "name": "Marriage and Intimacy",
+          "speaker": "Israel and Brook Wayne",
+          "description": "",
+          "RECID": "20MR-004",
+          "RID": 3206
+        }
+      ],
+      "7": [
+        {
+          "name": "Break",
+          "description": ""
+        }
+      ],
+      "8": [
+        {
+          "name": "Q&A with Israel and Brook",
+          "speaker": "Israel and Brook Wayne",
+          "description": ""
+        }
+      ],
+      "9": [
+        {
+          "name": "See you tomorrow",
+          "description":
+            "The evening does not have any scheduled activities, so you are free to enjoy a romantic dinner with your spouse or visit with fellow retreat attendees. There are a variety of restaurants in town within walking distance."
+        }
+      ]
+    }
+  },
+  "saturday": {
+    "timeSlots": [
+      {
+        "id": 10,
+        "name": "Breakfast Buffet",
+        "startTime": "7:30AM",
+        "endTime": "9:30AM",
+        "duration": 120
+      },
+      {
+        "id": 11,
+        "name": "Session #6",
+        "startTime": "9:30AM",
+        "endTime": "11:00AM",
+        "duration": 60
+      },
+      {
+        "id": 12,
+        "name": "Retreat Concludes",
+        "startTime": "11:00AM",
+        "endTime": "11:00AM",
+        "duration": 0
+      }
+    ],
+    "activities": {
+      "10": [
+        {
+          "name": "Breakfast Buffet",
+          "description":
+            "Enjoy a delicious chef-prepared breakfast buffet, with omelets available by personal order."
+        }
+      ],
+      "11": [
+        {
+          "name": "Safeguarding Your Marriage",
+          "speaker": "Israel and Brook Wayne",
+          "description": "",
+          "RECID": "20MR-006",
+          "RID": 3207
+        }
+      ],
+      "12": [
+        {
+          "name": "Retreat Concludes",
+          "description": "See you next year!"
+        }
+      ]
+    }
+  }
+}

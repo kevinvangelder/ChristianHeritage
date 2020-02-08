@@ -5,7 +5,7 @@ import * as Types from "./api.types"
 import { transformRecordingSnapshots } from "./api.transform"
 
 const ORG_ID = 136
-const CONF_ID = 74
+const CONF_ID = 86
 
 /**
  * Manages all requests to the API.

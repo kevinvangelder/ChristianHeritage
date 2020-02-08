@@ -1,5 +1,13 @@
 import * as React from "react"
-import { Image, View, ImageStyle, TextStyle, ViewStyle, ScrollView } from "react-native"
+import {
+  Image,
+  View,
+  ImageStyle,
+  TextStyle,
+  ViewStyle,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native"
 import { Text } from "../../shared/text"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
@@ -63,8 +71,11 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
           style={{ flex: 1, padding: spacing[2] }}
           contentContainerStyle={{ maxWidth: "100%" }}
         >
+          {/* Fall Conference */}
           {/* <Image source={require("./ocean-shores.png")} style={IMAGE} /> */}
-          <Text preset="header" text="First Floor" style={TEXT} />
+
+          {/* Spring Conference */}
+          {/* <Text preset="header" text="First Floor" style={TEXT} />
           <Image source={require("./floor-1.png")} style={IMAGE} />
           <Text preset="header" text="Second Floor" style={TEXT} />
           <Image source={require("./floor-2.png")} style={IMAGE} />
@@ -74,7 +85,62 @@ export class VenueScreen extends React.Component<VenueScreenProps, {}> {
             style={{ ...IMAGE, flex: 1, marginVertical: -spacing[8] * 3 }}
           />
           <Text preset="header" text="Vendors" style={TEXT} />
-          <Image source={require("./vendor-map.png")} style={IMAGE} />
+          <Image source={require("./vendor-map.png")} style={IMAGE} /> */}
+
+          {/* Marriage Retreat */}
+          <Image source={require("./leavenworth.png")} style={LOGO} />
+          <View style={GRID_ROW}>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/shopping/",
+                  title: "Shopping",
+                })
+              }
+              style={GRID}
+            >
+              <Image source={require("./leavenworth-shopping.png")} style={GRID_IMAGE} />
+              <Text style={{ ...TEXT, ...LINK }}>Shopping</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/dining/",
+                  title: "Dining",
+                })
+              }
+              style={GRID}
+            >
+              <Image source={require("./leavenworth-dining.png")} style={GRID_IMAGE} />
+              <Text style={{ ...TEXT, ...LINK }}>Dining</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={GRID_ROW}>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/attractions/",
+                  title: "Attractions",
+                })
+              }
+              style={GRID}
+            >
+              <Image source={require("./leavenworth-activities.png")} style={GRID_IMAGE} />
+              <Text style={{ ...TEXT, ...LINK }}>Attractions</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.push("webview", {
+                  url: "https://leavenworth.org/recreation/",
+                  title: "Recreation",
+                })
+              }
+              style={GRID}
+            >
+              <Image source={require("./leavenworth-recreation.png")} style={GRID_IMAGE} />
+              <Text style={{ ...TEXT, ...LINK }}>Recreation</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </Screen>
     )
