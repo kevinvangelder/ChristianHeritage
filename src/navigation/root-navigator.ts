@@ -12,6 +12,7 @@ import { TabBar } from "../views/shared/tab-bar"
 import { CheckoutScreen } from "../views/screens/checkout-screen"
 import { FinalizeOrderScreen } from "../views/screens/finalize-order-screen"
 import { UpdateUserScreen } from "../views/screens/update-user-screen"
+import { WebViewScreen } from "../views/screens/webview-screen"
 
 export const RootNavigator = StackNavigator(
   {
@@ -31,7 +32,16 @@ export const RootNavigator = StackNavigator(
             navigationOptions: { gesturesEnabled: true },
           },
         ),
-        venue: { screen: VenueScreen },
+        venue: StackNavigator(
+          {
+            venue: { screen: VenueScreen },
+            webview: { screen: WebViewScreen },
+          },
+          {
+            headerMode: "none",
+            navigationOptions: { gesturesEnabled: true },
+          },
+        ),
         cart: StackNavigator(
           {
             cart: { screen: CartScreen },
