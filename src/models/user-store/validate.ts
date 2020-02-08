@@ -20,10 +20,6 @@ export const validationRules = {
       minimum: 8,
       tooShort: "Password must be 8 or more characters",
     },
-    format: {
-      pattern: /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&\{\}\[\]\(\)\+\=\-\_\/\\\.;:~^|])[a-z\d@$!%*#?&\{\}\[\]\(\)\+\=\-\_\=\/\\\.;:~^|]{3,}$/gi,
-      message: "Password must contain at least one letter, number, and symbol",
-    },
   },
   confirm: {
     equality: {
