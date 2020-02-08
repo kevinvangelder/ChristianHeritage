@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ScrollView, View, ViewStyle, TextInput, TextStyle } from "react-native"
+import { ScrollView, View, ViewStyle, TextInput, TextStyle, Platform } from "react-native"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../shared/title-bar"
 import { Text } from "../../shared/text"
@@ -20,7 +20,12 @@ const ROW: ViewStyle = {
   marginTop: spacing[3],
   justifyContent: "space-between",
 }
-
+const INPUT: ViewStyle = {
+  marginVertical: spacing[2],
+  paddingBottom: spacing[1],
+  borderBottomColor: color.line,
+  borderBottomWidth: 1,
+}
 const BOLD: TextStyle = {
   fontWeight: "bold",
 }
@@ -99,6 +104,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
       setState,
       setZip,
     } = this.props.userStore.currentUser
+    const isIos = Platform.OS === "ios"
     return (
       <Screen preset="fixed">
         <TitleBar
@@ -126,6 +132,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.firstName.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           {passwordError !== null &&
             passwordError.length > 0 && <Text style={ERROR}>{passwordError}</Text>}
@@ -138,6 +145,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.lastName.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           {firstNameError !== null &&
             firstNameError.length > 0 && <Text style={ERROR}>{firstNameError}</Text>}
@@ -150,6 +158,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.phone.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           {lastNameError !== null &&
             lastNameError.length > 0 && <Text style={ERROR}>{lastNameError}</Text>}
@@ -163,6 +172,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
             }}
             returnKeyLabel="Next"
             keyboardType="phone-pad"
+            style={isIos ? INPUT : {}}
           />
           {phoneError !== null && phoneError.length > 0 && <Text style={ERROR}>{phoneError}</Text>}
           <TextInput
@@ -174,6 +184,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.address2.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           {address1Error !== null &&
             address1Error.length > 0 && <Text style={ERROR}>{address1Error}</Text>}
@@ -186,6 +197,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.city.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           <TextInput
             placeholder="City"
@@ -196,6 +208,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.state.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           {cityError !== null && cityError.length > 0 && <Text style={ERROR}>{cityError}</Text>}
           <TextInput
@@ -207,6 +220,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
               this.zip.focus()
             }}
             returnKeyLabel="Next"
+            style={isIos ? INPUT : {}}
           />
           {stateError !== null && stateError.length > 0 && <Text style={ERROR}>{stateError}</Text>}
           <TextInput
@@ -217,6 +231,7 @@ export class UpdateUserScreen extends React.Component<{ userStore: UserStore }, 
             onSubmitEditing={this.submit}
             returnKeyLabel="Next"
             keyboardType="numeric"
+            style={isIos ? INPUT : {}}
           />
           {zipError !== null && zipError.length > 0 && <Text style={ERROR}>{zipError}</Text>}
           <Button onPress={this.submit} text="Finish" />

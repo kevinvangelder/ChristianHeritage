@@ -1,5 +1,18 @@
 import * as React from "react"
-import { View, ViewStyle, TextInput, ScrollView, TextStyle, Alert, Picker } from "react-native"
+import {
+  View,
+  ViewStyle,
+  TextInput,
+  ScrollView,
+  TextStyle,
+  Alert,
+  Picker,
+  NativeModules,
+  Platform,
+  TouchableOpacity,
+  Modal,
+  SafeAreaView,
+} from "react-native"
 import { NavigationScreenProps, NavigationActions } from "react-navigation"
 import { Screen } from "../../shared/screen"
 import { TitleBar } from "../../shared/title-bar"
@@ -11,7 +24,6 @@ import { spacing, color } from "../../../theme"
 import { validate } from "../../../lib/validate"
 import { Button } from "../../shared/button"
 import { cardRules } from "../../../models/cart-store/validate"
-import RNAuthorizeNet from "react-native-authorize-net-acceptsdk"
 
 // Sandbox
 // const LOGIN_ID = "76m2skPQr"
@@ -30,6 +42,12 @@ const ROW: ViewStyle = {
 const COLUMN: ViewStyle = {
   flex: 1,
   flexDirection: "column",
+}
+const INPUT: ViewStyle = {
+  marginVertical: spacing[2],
+  paddingBottom: spacing[1],
+  borderBottomColor: color.line,
+  borderBottomWidth: 1,
 }
 const ERROR: TextStyle = {
   color: color.error,
@@ -50,6 +68,12 @@ const CARD: ViewStyle = {
   borderWidth: 1,
   marginVertical: spacing[3],
   alignItems: "center",
+}
+const PICKER_OPTION: ViewStyle = {
+  marginHorizontal: spacing[4],
+  padding: spacing[4],
+  borderBottomColor: color.line,
+  borderBottomWidth: 1,
 }
 
 export interface CheckoutScreenProps extends NavigationScreenProps<{}> {
@@ -74,7 +98,9 @@ export class CheckoutScreen extends React.Component<
     CVV_NO: string | null
     CVV_NO_ERROR: string | null
     ZIP_CODE: string | null
-    ZIP_CODE_ERROR: string | null,
+    ZIP_CODE_ERROR: string | null
+    modalVisible: boolean
+    modalType: string | null,
   }
 > {
   constructor(props) {
@@ -93,6 +119,8 @@ export class CheckoutScreen extends React.Component<
       CVV_NO_ERROR: null,
       ZIP_CODE: null,
       ZIP_CODE_ERROR: null,
+      modalVisible: false,
+      modalType: null,
     }
   }
   setCardName = value => {
@@ -112,10 +140,10 @@ export class CheckoutScreen extends React.Component<
     }
   }
   setExpirationMonth = value => {
-    this.setState({ EXPIRATION_MONTH: value })
+    this.setState({ EXPIRATION_MONTH: value, modalVisible: false, modalType: null })
   }
   setExpirationYear = value => {
-    this.setState({ EXPIRATION_YEAR: value })
+    this.setState({ EXPIRATION_YEAR: value, modalVisible: false, modalType: null })
   }
   setCvv = value => {
     this.setState({ CVV_NO: value })
@@ -144,7 +172,7 @@ export class CheckoutScreen extends React.Component<
         LOGIN_ID,
         CLIENT_KEY,
       }
-      RNAuthorizeNet.getTokenWithRequestForCard(card, true, (status, response) => {
+      NativeModules.RNAuthorizeNet.getTokenWithRequestForCard(card, true, (status, response) => {
         if (status) {
           const { setLastFour, setToken, setExpiration } = this.props.cartStore.currentCart
           setLastFour(CARD_NO.slice(-4))
@@ -235,72 +263,89 @@ export class CheckoutScreen extends React.Component<
       ZIP_CODE,
       ZIP_CODE_ERROR,
     } = this.state
+    const isIos = Platform.OS === "ios"
     return (
       <View>
+        <Modal
+          visible={this.state.modalVisible}
+          onRequestClose={() => this.setState({ modalVisible: false, modalType: null })}
+        >
+          {this.renderModalContent()}
+        </Modal>
         <TextInput
           placeholder="Name on Card"
+          placeholderTextColor={color.palette.mediumGrey}
           value={ACCOUNT_HOLDER_NAME}
           onChangeText={this.setCardName}
+          style={isIos ? INPUT : {}}
         />
         {ACCOUNT_HOLDER_NAME_ERROR && <Text style={ERROR}>{ACCOUNT_HOLDER_NAME_ERROR}</Text>}
         <TextInput
           placeholder="Card Number"
+          placeholderTextColor={color.palette.mediumGrey}
           value={cardNumberDisplay}
           onChangeText={this.setCardNumber}
           onBlur={this.cardNumberBlur}
           onFocus={this.cardNumberFocus}
           maxLength={16}
           keyboardType="numeric"
+          style={isIos ? INPUT : {}}
         />
         {CARD_NO_ERROR && <Text style={ERROR}>{CARD_NO_ERROR}</Text>}
         <View style={ROW}>
           <View style={COLUMN}>
             <View style={ROW}>
               <Text style={{ alignSelf: "center" }}>Exp. Month:</Text>
-              <Picker
-                selectedValue={EXPIRATION_MONTH}
-                onValueChange={value => this.setExpirationMonth(value)}
-                style={{ flex: 1 }}
-              >
-                <Picker.Item label="Select" value={false} />
-                <Picker.Item label="01" value="01" />
-                <Picker.Item label="02" value="02" />
-                <Picker.Item label="03" value="03" />
-                <Picker.Item label="04" value="04" />
-                <Picker.Item label="05" value="05" />
-                <Picker.Item label="06" value="06" />
-                <Picker.Item label="07" value="07" />
-                <Picker.Item label="08" value="08" />
-                <Picker.Item label="09" value="09" />
-                <Picker.Item label="10" value="10" />
-                <Picker.Item label="11" value="11" />
-                <Picker.Item label="12" value="12" />
-              </Picker>
+              {!isIos && (
+                <Picker
+                  selectedValue={EXPIRATION_MONTH}
+                  onValueChange={value => this.setExpirationMonth(value)}
+                  style={{ flex: 1 }}
+                >
+                  <Picker.Item label="Select" value={false} />
+                  <Picker.Item label="01" value="01" />
+                  <Picker.Item label="02" value="02" />
+                  <Picker.Item label="03" value="03" />
+                  <Picker.Item label="04" value="04" />
+                  <Picker.Item label="05" value="05" />
+                  <Picker.Item label="06" value="06" />
+                  <Picker.Item label="07" value="07" />
+                  <Picker.Item label="08" value="08" />
+                  <Picker.Item label="09" value="09" />
+                  <Picker.Item label="10" value="10" />
+                  <Picker.Item label="11" value="11" />
+                  <Picker.Item label="12" value="12" />
+                </Picker>
+              )}
+              {isIos && this.renderIosPicker("month")}
             </View>
             {EXPIRATION_MONTH_ERROR && <Text style={ERROR}>{EXPIRATION_MONTH_ERROR}</Text>}
           </View>
           <View style={COLUMN}>
             <View style={ROW}>
               <Text style={{ alignSelf: "center" }}>Exp Year:</Text>
-              <Picker
-                selectedValue={EXPIRATION_YEAR}
-                onValueChange={value => this.setExpirationYear(value)}
-                style={{ flex: 1 }}
-              >
-                <Picker.Item label="Select" value={false} />
-                <Picker.Item label="2019" value="19" />
-                <Picker.Item label="2020" value="20" />
-                <Picker.Item label="2021" value="21" />
-                <Picker.Item label="2022" value="22" />
-                <Picker.Item label="2023" value="23" />
-                <Picker.Item label="2024" value="24" />
-                <Picker.Item label="2025" value="25" />
-                <Picker.Item label="2026" value="26" />
-                <Picker.Item label="2027" value="27" />
-                <Picker.Item label="2028" value="28" />
-                <Picker.Item label="2029" value="29" />
-                <Picker.Item label="2030" value="30" />
-              </Picker>
+              {!isIos && (
+                <Picker
+                  selectedValue={EXPIRATION_YEAR}
+                  onValueChange={value => this.setExpirationYear(value)}
+                  style={{ flex: 1 }}
+                >
+                  <Picker.Item label="Select" value={false} />
+                  <Picker.Item label="2019" value="19" />
+                  <Picker.Item label="2020" value="20" />
+                  <Picker.Item label="2021" value="21" />
+                  <Picker.Item label="2022" value="22" />
+                  <Picker.Item label="2023" value="23" />
+                  <Picker.Item label="2024" value="24" />
+                  <Picker.Item label="2025" value="25" />
+                  <Picker.Item label="2026" value="26" />
+                  <Picker.Item label="2027" value="27" />
+                  <Picker.Item label="2028" value="28" />
+                  <Picker.Item label="2029" value="29" />
+                  <Picker.Item label="2030" value="30" />
+                </Picker>
+              )}
+              {isIos && this.renderIosPicker("year")}
             </View>
             {EXPIRATION_YEAR_ERROR && <Text style={ERROR}>{EXPIRATION_YEAR_ERROR}</Text>}
           </View>
@@ -309,25 +354,152 @@ export class CheckoutScreen extends React.Component<
           <View style={COLUMN}>
             <TextInput
               placeholder="CVV"
+              placeholderTextColor={color.palette.mediumGrey}
               value={CVV_NO}
               onChangeText={this.setCvv}
               maxLength={3}
               keyboardType="numeric"
+              style={isIos ? [INPUT, { marginRight: spacing[3] }] : {}}
             />
             {CVV_NO_ERROR && <Text style={ERROR}>{CVV_NO_ERROR}</Text>}
           </View>
           <View style={COLUMN}>
             <TextInput
               placeholder="Zip"
+              placeholderTextColor={color.palette.mediumGrey}
               value={ZIP_CODE}
               onChangeText={this.setZipCode}
               maxLength={5}
               keyboardType="numeric"
+              style={isIos ? INPUT : {}}
             />
             {ZIP_CODE_ERROR && <Text style={ERROR}>{ZIP_CODE_ERROR}</Text>}
           </View>
         </View>
         <Button onPress={this.submit} text="Continue" />
+      </View>
+    )
+  }
+
+  renderIosPicker = type => {
+    const { EXPIRATION_MONTH, EXPIRATION_YEAR } = this.state
+    const currentValue = type === "month" ? EXPIRATION_MONTH : EXPIRATION_YEAR
+    const setter = type === "month" ? this.setExpirationMonth : this.setExpirationYear
+    return (
+      <TouchableOpacity
+        style={{ marginLeft: spacing[2] }}
+        onPress={() => this.setState({ modalVisible: true, modalType: type })}
+      >
+        <Text>
+          {currentValue ? (type === "year" ? `20${currentValue}` : currentValue) : "Select"}
+        </Text>
+      </TouchableOpacity>
+    )
+  }
+
+  renderModalContent = () => {
+    const { modalType } = this.state
+    return (
+      <SafeAreaView>
+        <View>
+          <Text preset="header" style={{ textAlign: "center" }}>
+            Select Expiration {modalType === "month" ? "Month" : "Year"}
+          </Text>
+          {modalType === "month" && this.renderMonthOptions()}
+          {modalType === "year" && this.renderYearOptions()}
+          <Button
+            preset="delete"
+            text="Cancel"
+            onPress={() => this.setState({ modalVisible: false, modalType: null })}
+            style={{ margin: spacing[3] }}
+          />
+        </View>
+      </SafeAreaView>
+    )
+  }
+
+  renderMonthOptions = () => {
+    return (
+      <View>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("01")}>
+          <Text>01</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("02")}>
+          <Text>02</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("03")}>
+          <Text>03</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("04")}>
+          <Text>04</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("05")}>
+          <Text>05</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("06")}>
+          <Text>06</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("07")}>
+          <Text>07</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("08")}>
+          <Text>08</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("09")}>
+          <Text>09</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("10")}>
+          <Text>10</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("11")}>
+          <Text>11</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationMonth("12")}>
+          <Text>12</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  renderYearOptions = () => {
+    return (
+      <View>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("19")}>
+          <Text>2019</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("20")}>
+          <Text>2020</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("21")}>
+          <Text>2021</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("22")}>
+          <Text>2022</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("23")}>
+          <Text>2023</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("24")}>
+          <Text>2024</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("25")}>
+          <Text>2025</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("26")}>
+          <Text>2026</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("27")}>
+          <Text>2027</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("28")}>
+          <Text>2028</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("29")}>
+          <Text>2029</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={PICKER_OPTION} onPress={() => this.setExpirationYear("30")}>
+          <Text>2030</Text>
+        </TouchableOpacity>
       </View>
     )
   }
